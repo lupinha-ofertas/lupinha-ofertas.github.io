@@ -1,2 +1,2 @@
-Coloque aqui o logo oficial como logo.png (700x137, fundo transparente).
-Sem ele, as artes usam o logo desenhado.
+logo.png: logo horizontal oficial (fundo transparente), usado no topo das artes.
+Se for trocar, mantenha a proporção (~5:1).

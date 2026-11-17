@@ -1,8 +1,9 @@
 """Gera as artes de story (1080x1920, PNG) dos achados do dia, no template da Lupinha.
 
 Uso:
-  python stories/gerar_artes.py                 # todos os produtos da lista do dia
-  python stories/gerar_artes.py --numeros 2 6 4 # só esses (na ordem da lista)
+  python stories/gerar_artes.py                 # as 5 melhores do dia (maior desconto, máx. 2 por loja)
+  python stories/gerar_artes.py --numeros 2 6 4 # escolha manual (números da lista do dia)
+  python stories/gerar_artes.py --sem-numero    # sem o selo "Achado nº X"
   python stories/gerar_artes.py --sem-busca     # não tenta buscar foto pelo link
 
 Sem foto (nem reserva nem pelo link) a arte NÃO é gerada: o script avisa qual
@@ -46,9 +47,9 @@ def _logo() -> str:
 </div>'''
 
 
-def _foto(foto: Path | None, altura: int, numero: int, desconto: str | None) -> str:
-    selo_n = (f'<div style="position:absolute;top:20px;left:20px;background:{TINTA};color:{CREME};font-size:38px;'
-              f'font-weight:800;padding:10px 24px;border-radius:20px">Achado nº {numero}</div>')
+def _foto(foto: Path | None, altura: int, numero: int | None, desconto: str | None) -> str:
+    selo_n = (f'<div style="position:absolute;top:22px;left:22px;background:rgba(58,31,43,.72);color:{CREME};font-size:26px;'
+              f'font-weight:600;padding:8px 18px;border-radius:999px">Achado nº {numero}</div>') if numero else ""
     selo_d = (f'<div style="position:absolute;top:20px;right:20px;background:{ROSA};color:{CREME};font-size:46px;'
               f'font-weight:800;padding:10px 26px;border-radius:20px">-{desconto}%</div>') if desconto else ""
     if foto:
@@ -66,10 +67,11 @@ def _nome(nome: str) -> str:
             f'-webkit-box-orient:vertical;overflow:hidden">{html.escape(nome)}</div>')
 
 
-def montar_html(p: dict, foto: Path | None) -> str:
+def montar_html(p: dict, foto: Path | None, selo: bool = True) -> str:
+    n = p["numero"] if selo else None
     amazon = p["loja"] == "Amazon"
     if amazon:
-        corpo = _foto(foto, 670, p["numero"], None) + _nome(p["nome"])
+        corpo = _foto(foto, 670, n, None) + _nome(p["nome"])
         if p["motivo"]:
             corpo += f'<div style="font-size:34px;font-weight:500;line-height:1.35;color:{CINZA}">⭐ {html.escape(p["motivo"])}</div>'
         corpo += (f'<div style="display:flex;align-items:center;gap:20px;background:{ROSA};border-radius:28px;padding:26px 30px">'
@@ -78,7 +80,7 @@ def montar_html(p: dict, foto: Path | None) -> str:
         rodape = "*Preço e estoque podem mudar a qualquer momento"
     else:
         extras = sum(bool(x) for x in (p["preco_antigo"], p["parcelas"], p["cupom"]))
-        corpo = _foto(foto, 740 - 60 * extras, p["numero"], p["desconto"]) + _nome(p["nome"])
+        corpo = _foto(foto, 740 - 60 * extras, n, p["desconto"]) + _nome(p["nome"])
         precos = ""
         if p["preco_antigo"]:
             precos += f'<div style="font-size:34px;font-weight:500;color:{CINZA};text-decoration:line-through">R$ {p["preco_antigo"]}</div>'
@@ -111,6 +113,19 @@ def montar_html(p: dict, foto: Path | None) -> str:
 </div></body></html>'''
 
 
+def escolher_melhores(produtos: list[dict], quantos: int = 5, por_loja: int = 2) -> list[dict]:
+    """Maior desconto primeiro; empate (ou sem desconto) segue a ordem da lista. Máx. 2 por loja."""
+    ordem = sorted(produtos, key=lambda p: (-int(p["desconto"] or 0), p["numero"]))
+    escolhidos, conta = [], {}
+    for p in ordem:
+        if conta.get(p["loja"], 0) < por_loja:
+            escolhidos.append(p)
+            conta[p["loja"]] = conta.get(p["loja"], 0) + 1
+        if len(escolhidos) == quantos:
+            break
+    return escolhidos
+
+
 def _navegador(pw):
     try:
         return pw.chromium.launch()
@@ -120,7 +135,9 @@ def _navegador(pw):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--numeros", type=int, nargs="*", help="números da lista a gerar (padrão: todos)")
+    ap.add_argument("--numeros", type=int, nargs="*", help="escolha manual (padrão: as 5 melhores)")
+    ap.add_argument("--quantos", type=int, default=5, help="quantos stories por dia (padrão 5)")
+    ap.add_argument("--sem-numero", action="store_true", help="desliga o selo Achado nº X")
     ap.add_argument("--sem-busca", action="store_true", help="usa só fotos-reserva")
     ap.add_argument("--rascunho", action="store_true", help="gera mesmo sem foto (espaço vazio)")
     args = ap.parse_args()
@@ -129,6 +146,8 @@ def main():
     if args.numeros:
         por_n = {p["numero"]: p for p in produtos}
         produtos = [por_n[n] for n in args.numeros if n in por_n]
+    else:
+        produtos = escolher_melhores(produtos, args.quantos)
 
     from playwright.sync_api import sync_playwright
     SAIDA.mkdir(parents=True, exist_ok=True)
@@ -146,7 +165,7 @@ def main():
                 faltando.append(p)
                 print(f"⚠️  nº {ordem} sem foto ({origem}): salve stories/fotos-reserva/{p['slug']}.jpg")
                 continue
-            pag.set_content(montar_html(p, foto), wait_until="networkidle", timeout=30000)
+            pag.set_content(montar_html(p, foto, selo=not args.sem_numero), wait_until="networkidle", timeout=30000)
             arq = SAIDA / f"achado-{ordem:02d}-{p['slug'][:40]}.png"
             pag.screenshot(path=str(arq), clip={"x": 0, "y": 0, "width": 1080, "height": 1920})
             print(f"✅ nº {ordem} {p['loja']}: {arq.name} (foto: {origem if foto else 'sem foto'})")
