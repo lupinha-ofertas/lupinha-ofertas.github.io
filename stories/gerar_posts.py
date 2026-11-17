@@ -27,7 +27,7 @@ def ler(caminho: Path) -> list[dict]:
         return list(csv.DictReader(f, delimiter=";"))
 
 
-TEXTO_ADESIVO = "COMPRAR AQUI"  # texto que vai no adesivo de link do story
+TEXTO_ADESIVO = "Clique para comprar"  # texto que vai no adesivo de link do story
 
 
 def montar(stories: list[dict], feed: list[dict], base: str) -> str:
