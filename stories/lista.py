@@ -48,6 +48,13 @@ def _reais(v) -> str | None:
     return f"{float(v):,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
 
 
+def _do_robo(o: dict) -> dict:
+    """Preço antigo e desconto que vieram prontos do robô (têm prioridade sobre o texto da mensagem)."""
+    if o.get("loja") == "Amazon" or not o.get("desconto") or not o.get("preco_antigo"):
+        return {}
+    return {"preco_antigo": _reais(o["preco_antigo"]), "desconto": str(o["desconto"])}
+
+
 def ler_dados(caminho: Path = DADOS) -> list[dict]:
     d = json.loads(caminho.read_text(encoding="utf-8"))
     produtos = []
@@ -55,7 +62,7 @@ def ler_dados(caminho: Path = DADOS) -> list[dict]:
         hora = (re.search(r"(\d{1,2})h", o.get("horario", "")) or [None, ""])[1]
         produtos.append({"numero": o["numero"], "loja": o["loja"], "categoria": o.get("categoria", ""),
                          "nome": o["nome"].strip(), "preco": None if o["loja"] == "Amazon" else _reais(o.get("preco")),
-                         **_da_mensagem(o.get("msg", "")), "link": o["link"], "horario": o.get("horario", ""),
+                         **_da_mensagem(o.get("msg", "")), **_do_robo(o), "link": o["link"], "horario": o.get("horario", ""),
                          "hora": hora, "slug": slug(o["nome"]), "foto_url": o.get("foto") or None,
                          "item_id": o.get("itemId"), "data": d.get("data"), "msg": o.get("msg", ""),
                          "tipo": "reserva" if o.get("reserva") else "extra" if o.get("extra") else "lista"})

@@ -112,9 +112,14 @@ def montar_html(p: dict, foto: Path | None, selo: bool = True, bio: bool = False
         extras = sum(bool(x) for x in (p["preco_antigo"], p["parcelas"], p["cupom"]))
         corpo = _foto(foto, (500 - 55 * extras) if feed else (740 - 60 * extras), n, p["desconto"]) + _nome(p["nome"])
         precos = ""
+        grande = 80 if feed else 92
         if p["preco_antigo"]:
-            precos += f'<div style="font-size:34px;font-weight:500;color:{CINZA};text-decoration:line-through">R$ {p["preco_antigo"]}</div>'
-        precos += f'<div style="font-size:{80 if feed else 92}px;font-weight:800;line-height:1.05;letter-spacing:-2px;color:{ROSA}">R$ {p["preco"]}</div>'
+            precos += (f'<div style="font-size:36px;font-weight:500;color:{CINZA}">De <span style="text-decoration:line-through">'
+                       f'R$ {p["preco_antigo"]}</span> por</div>')
+        selo = (f'<div style="background:{ROSA};color:{CREME};font-size:{40 if feed else 44}px;font-weight:800;padding:8px 20px;'
+                f'border-radius:16px;white-space:nowrap">{p["desconto"]}% OFF</div>') if p["desconto"] else ""
+        precos += (f'<div style="display:flex;align-items:center;gap:22px;flex-wrap:wrap">'
+                   f'<div style="font-size:{grande}px;font-weight:800;line-height:1.05;letter-spacing:-2px;color:{ROSA}">R$ {p["preco"]}</div>{selo}</div>')
         if p["parcelas"]:
             precos += f'<div style="font-size:34px;font-weight:500">ou {p["parcelas"]}</div>'
         corpo += f'<div style="display:flex;flex-direction:column;gap:4px">{precos}</div>'
