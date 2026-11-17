@@ -43,7 +43,18 @@ def _baixar(url: str, timeout: int = 20) -> tuple[bytes, str]:
 SHOPEE_API = "https://open-api.affiliate.shopee.com.br/graphql"
 
 
-def _shopee_api(consulta: str) -> dict:
+def _shopee_api(consulta: str, tentativas: int = 3) -> dict:
+    """Chama a API; o erro 10000 (System Error) às vezes some tentando de novo."""
+    for i in range(tentativas):
+        try:
+            return _shopee_api_uma_vez(consulta)
+        except RuntimeError as e:
+            if "10000" not in str(e) or i == tentativas - 1:
+                raise
+            time.sleep(3 * (i + 1))
+
+
+def _shopee_api_uma_vez(consulta: str) -> dict:
     app_id, segredo = os.environ.get("SHOPEE_APP_ID"), os.environ.get("SHOPEE_SECRET")
     if not app_id or not segredo:
         raise RuntimeError("sem SHOPEE_APP_ID/SHOPEE_SECRET")
