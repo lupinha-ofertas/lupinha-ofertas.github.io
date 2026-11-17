@@ -48,7 +48,7 @@ def foto_src(p: dict, buscar: bool) -> str | None:
 def card(p: dict, n: int, src: str | None) -> str:
     e = html.escape
     if src:
-        foto, cls = f'<img src="{e(src)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="semFoto(this)">', "foto"
+        foto, cls = f'<img src="{e(src)}" alt="" loading="lazy" referrerpolicy="no-referrer" onload="if(this.naturalWidth<50)semFoto(this)" onerror="semFoto(this)">', "foto"
     else:
         foto, cls = "", "foto sem"
     preco = "" if p["loja"] == "Amazon" or not p["preco"] else f'<span class="preco">R$ {e(p["preco"])}</span>'
@@ -110,7 +110,7 @@ def montar(produtos: list[dict], buscar: bool) -> str:
   footer a{{color:var(--cream)}}
 </style>
 <script>
-  // foto que não carregou: mostra o logo e manda o card para o fim da lista (o nº não muda)
+  // foto que não carregou (ou veio vazia, 1x1): mostra o logo e manda o card para o fim da lista (o nº não muda)
   function semFoto(img){{var c=img.closest(".item"),l=c.parentNode;img.parentNode.classList.add("sem");c.classList.add("semfoto");
     Array.from(l.querySelectorAll(".semfoto")).sort(function(a,b){{return a.dataset.n-b.dataset.n}}).forEach(function(x){{l.appendChild(x)}})}}
 </script>

@@ -3,7 +3,8 @@
 Ordem: 1) pasta fotos-reserva (o que a Ari salvou manualmente, sempre ganha);
        2) foto que veio do robô em enviar/dados.json (Shopee, pela API de afiliados);
        3) Mercado Livre e Shein: foto da página da loja (og:image);
-       Amazon (e Shopee sem foto): sem foto -> reserva ou logo.
+       4) Amazon: foto pelo código do produto (ASIN);
+       sem foto -> reserva ou logo.
 """
 import re
 import urllib.request
@@ -36,7 +37,14 @@ def _baixar(url: str, timeout: int = 20) -> tuple[bytes, str]:
         return r.read(), r.geturl()
 
 
-LOJAS_PELO_LINK = ("Mercado Livre", "Shein")  # Amazon e Shopee bloqueiam; usam reserva ou logo
+LOJAS_PELO_LINK = ("Mercado Livre", "Shein")  # Shopee bloqueia; usa a foto do robô, reserva ou logo
+AMAZON_FOTO = "https://m.media-amazon.com/images/P/{asin}.01._SCLZZZZZZZ_SL500_.jpg"  # pelo código (ASIN)
+
+
+def url_foto_amazon(link: str) -> str | None:
+    """Foto pelo código do produto. Produto novo às vezes não tem: vem 1x1 e cai na reserva/logo."""
+    m = re.search(r"/(?:dp|gp/product)/([A-Z0-9]{10})", link)
+    return AMAZON_FOTO.format(asin=m.group(1)) if m else None
 
 
 def url_da_foto_produto(produto: dict) -> str | None:
@@ -45,6 +53,8 @@ def url_da_foto_produto(produto: dict) -> str | None:
         return produto["foto_url"]
     if produto.get("loja") in LOJAS_PELO_LINK:
         return url_da_foto(produto["link"])
+    if produto.get("loja") == "Amazon":
+        return url_foto_amazon(produto["link"])
     return None
 
 
@@ -87,5 +97,5 @@ def achar_foto(produto: dict) -> tuple[Path | None, str]:
             return arq, "link"
     except Exception as e:  # loja bloqueou, caiu etc.
         return None, f"falhou ({type(e).__name__})"
-    return None, ("sem foto (salve uma reserva)" if produto.get("loja") not in LOJAS_PELO_LINK and not produto.get("foto_url")
-                  else "falhou (sem foto na página)")
+    return None, ("sem foto (salve uma reserva)" if produto.get("loja") == "Shopee" and not produto.get("foto_url")
+                  else "falhou (loja sem foto)")
