@@ -181,8 +181,8 @@ def escrever_resumo(linhas: list[dict], faltando: list) -> None:
     if faltando:
         md += ["", "### Sem foto (trocados pelo próximo da lista)",
                "Para usar algum deles, salve a foto com este nome em `stories/fotos-reserva/`:", "",
-               "| Loja | Produto | Salvar como | Link |", "|---|---|---|---|"]
-        md += [f"| {p['loja']} | {p['nome'][:50]} | `{p['slug']}.jpg` | {p['link']} |" for p, _ in faltando]
+               "| Loja | Produto | Salvar como | Link | Motivo |", "|---|---|---|---|---|"]
+        md += [f"| {p['loja']} | {p['nome'][:50]} | `{p['slug']}.jpg` | {p['link']} | {motivo} |" for p, motivo in faltando]
     texto = "\n".join(md) + "\n"
     destino = os.environ.get("GITHUB_STEP_SUMMARY")
     if destino:
