@@ -8,7 +8,8 @@ Uso:
 Saída em stories/saida/:
   artes/NN-story-*.png   1080x1920, com a faixa para o adesivo de link (posta na mão)
   feed/NN-feed-*.jpg     1080x1350, "Link na bio · Achados do dia · nº X"
-  agendar-stories.csv    nº, produto, loja, link, horário sugerido (8h-22h), arquivo
+  agendar-stories.csv    nº, produto, loja, link, tipo (lista/extra/reserva), horário sugerido (8h-22h),
+                         arquivo e a mensagem pronta do WhatsApp
   agendar-feed.csv       nº, produto, loja, horário, arquivo, legenda pronta
   feed.json              o mesmo do feed, para o robô que posta sozinho
 Produto sem foto (nem reserva, nem do robô, nem pelo link) fica de fora e vai para o resumo.
@@ -193,7 +194,8 @@ def _csv(caminho: Path, campos: list[str], linhas: list[dict]) -> None:
 
 def escrever_resumo(stories: list[dict], feed: list[dict], faltando: list) -> None:
     """Resumo no GitHub Actions (ou no terminal, rodando local)."""
-    md = [f"## Posts do dia: {len(stories)} stories + {len(feed)} no feed", "",
+    nr = sum(1 for l in stories if l.get("tipo") == "reserva")
+    md = [f"## Posts do dia: {len(stories) - nr} stories + {nr} na reserva + {len(feed)} no feed", "",
           "| nº | Horário | Loja | Produto | Feed? |", "|---|---|---|---|---|"]
     nf = {l["numero"] for l in feed}
     md += [f"| {l['numero']} | {l['horario_sugerido']} | {l['loja']} | {l['produto'][:50]} | {'✅' if l['numero'] in nf else ''} |" for l in stories]
@@ -234,14 +236,14 @@ def main():
             com_foto.append({**p, "_foto": foto})
         else:
             faltando.append((p, origem))
-    feed = escolher_feed(com_foto)
+    feed = escolher_feed([p for p in com_foto if p.get("tipo") != "reserva"])
 
     from playwright.sync_api import sync_playwright
     SAIDA.mkdir(parents=True, exist_ok=True)
     SAIDA_FEED.mkdir(parents=True, exist_ok=True)
     hoje_dt = datetime.now(ZoneInfo("America/Sao_Paulo"))
     hoje = hoje_dt.strftime("%d/%m/%Y")
-    horas = horarios_stories(len(com_foto))
+    horas = iter(horarios_stories(sum(1 for p in com_foto if p.get("tipo") != "reserva")))
     stories, feed_linhas, feed_posts = [], [], []
     with sync_playwright() as pw:
         nav = _navegador(pw)
@@ -251,7 +253,9 @@ def main():
             arq = SAIDA / f"{p['numero']:02d}-story-{p['slug'][:40]}.png"
             pag.screenshot(path=str(arq), clip={"x": 0, "y": 0, "width": 1080, "height": 1920})
             stories.append({"data": hoje, "numero": p["numero"], "produto": p["nome"], "loja": p["loja"],
-                            "link_afiliada": p["link"], "horario_sugerido": horas[i], "arquivo": arq.name})
+                            "link_afiliada": p["link"], "tipo": p.get("tipo", "lista"),
+                            "horario_sugerido": "reserva" if p.get("tipo") == "reserva" else next(horas),
+                            "arquivo": arq.name, "mensagem_whatsapp": p.get("msg", "")})
         pag.set_viewport_size({"width": 1080, "height": 1350})
         for i, p in enumerate(feed):
             pag.set_content(montar_html(p, p["_foto"], selo=not args.sem_numero, feed=True), wait_until="networkidle", timeout=30000)
@@ -263,7 +267,7 @@ def main():
             feed_posts.append({"numero": p["numero"], "imagem": MIDIA.format(ramo=args.ramo_midia) + f"feed/{arq.name}",
                                "legenda": leg, "horario": feed_linhas[-1]["horario"]})
         nav.close()
-    _csv(CSV, ["data", "numero", "produto", "loja", "link_afiliada", "horario_sugerido", "arquivo"], stories)
+    _csv(CSV, ["data", "numero", "produto", "loja", "link_afiliada", "tipo", "horario_sugerido", "arquivo", "mensagem_whatsapp"], stories)
     _csv(CSV_FEED, ["data", "numero", "produto", "loja", "horario", "arquivo", "legenda"], feed_linhas)
     FEED_JSON.write_text(json.dumps({"data": hoje_dt.date().isoformat(), "posts": feed_posts}, ensure_ascii=False, indent=1), encoding="utf-8")
     # mesma numeração em tudo: o nº é o da lista do dia

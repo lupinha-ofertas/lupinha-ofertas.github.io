@@ -57,7 +57,8 @@ def ler_dados(caminho: Path = DADOS) -> list[dict]:
                          "nome": o["nome"].strip(), "preco": None if o["loja"] == "Amazon" else _reais(o.get("preco")),
                          **_da_mensagem(o.get("msg", "")), "link": o["link"], "horario": o.get("horario", ""),
                          "hora": hora, "slug": slug(o["nome"]), "foto_url": o.get("foto") or None,
-                         "item_id": o.get("itemId"), "data": d.get("data")})
+                         "item_id": o.get("itemId"), "data": d.get("data"), "msg": o.get("msg", ""),
+                         "tipo": "reserva" if o.get("reserva") else "extra" if o.get("extra") else "lista"})
     produtos.sort(key=lambda p: p["numero"])
     return produtos
 

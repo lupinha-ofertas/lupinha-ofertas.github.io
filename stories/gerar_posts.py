@@ -34,11 +34,13 @@ def montar(stories: list[dict], feed: list[dict], base: str) -> str:
     e = html.escape
     hoje = datetime.now(ZoneInfo("America/Sao_Paulo")).strftime("%d/%m")
 
-    def card(tipo, l, img, texto, rotulo_texto, link=None):
+    def card(tipo, l, img, texto, rotulo_texto, link=None, wpp=None):
         botoes = f'<button class="baixar" data-url="{e(img)}" data-nome="{e(l["arquivo"])}">⬇️ Baixar imagem</button>'
         if link:
             botoes += f'<button class="copiar" data-txt="{e(link)}">🔗 Copiar link</button>'
         botoes += f'<button class="copiar" data-txt="{e(texto)}">📝 {rotulo_texto}</button>'
+        if wpp:
+            botoes += f'<button class="copiar wpp" data-txt="{e(wpp)}">💬 Copiar mensagem do WhatsApp</button>'
         prev = f'<pre>{e(texto)}</pre>' if not link else f'<p class="adesivo">Adesivo: <b>{e(texto)}</b></p>'
         return f'''    <article class="card" data-id="{tipo}-{l["numero"]}" data-url="{e(img)}" data-nome="{e(l["arquivo"])}">
       <div class="foto"><img src="{e(img)}" alt="" loading="lazy"><span class="num">{l["numero"]}</span></div>
@@ -51,8 +53,12 @@ def montar(stories: list[dict], feed: list[dict], base: str) -> str:
       </div>
     </article>'''
 
-    st = "\n".join(card("s", l, base + "stories/" + l["arquivo"], TEXTO_ADESIVO, "Copiar texto do adesivo", l["link_afiliada"])
-                   for l in stories)
+    def cards_story(grupo, linhas):
+        return "\n".join(card(grupo, l, base + "stories/" + l["arquivo"], TEXTO_ADESIVO, "Copiar texto do adesivo",
+                               l["link_afiliada"], l.get("mensagem_whatsapp")) for l in linhas)
+    reserva = [l for l in stories if l.get("tipo") == "reserva"]
+    stories = [l for l in stories if l.get("tipo") != "reserva"]
+    st, rs = cards_story("s", stories), cards_story("r", reserva)
     fd = "\n".join(card("f", l, base + "feed/" + l["arquivo"], l["legenda"], "Copiar legenda") for l in feed)
     return f'''<!doctype html>
 <html lang="pt-BR">
@@ -88,6 +94,7 @@ def montar(stories: list[dict], feed: list[dict], base: str) -> str:
   .acoes{{display:flex;flex-direction:column;gap:8px;margin-top:auto}}
   .acoes button{{border:0;border-radius:10px;padding:11px;font-weight:700;font-size:15px;cursor:pointer;background:var(--coral);color:var(--cream)}}
   .acoes .baixar{{background:var(--ink)}}
+  .acoes .wpp{{background:var(--green)}}
   .feito{{border:0;border-radius:10px;padding:8px;font-weight:700;font-size:13px;cursor:pointer;background:#E6F4EA;color:var(--green)}}
 </style>
 </head>
@@ -95,7 +102,7 @@ def montar(stories: list[dict], feed: list[dict], base: str) -> str:
 <main>
   <header>
     <h1>📲 Posts de {hoje}</h1>
-    <p>{len(stories)} stories e {len(feed)} posts no feed. Os números são os mesmos da página Achados do dia.<br>
+    <p>{len(stories)} stories, {len(feed)} posts no feed e {len(reserva)} ofertas na reserva. Os números são os mesmos da página Achados do dia.<br>
     Story: <b>Baixar imagem</b> → sobe no Business Suite → adesivo de link → <b>Copiar link</b> e <b>Copiar texto</b>.</p>
   </header>
   <div class="secao"><h3>📸 Stories (com adesivo de link)</h3><button class="todas" data-grupo="s">⬇️ Baixar todos os stories</button></div>
@@ -105,6 +112,10 @@ def montar(stories: list[dict], feed: list[dict], base: str) -> str:
   <div class="secao"><h3>🖼️ Feed (legenda pronta, link na bio)</h3><button class="todas" data-grupo="f">⬇️ Baixar os {len(feed)} do feed</button></div>
   <section class="grade">
 {fd or '<p style="color:var(--cream)">Nenhum post de feed hoje.</p>'}
+  </section>
+  <div class="secao"><h3>🗂️ Reserva ({len(reserva)} ofertas Shopee extras)</h3><button class="todas" data-grupo="r">⬇️ Baixar toda a reserva</button></div>
+  <section class="grade">
+{rs or '<p style="color:var(--cream)">Sem reserva hoje.</p>'}
   </section>
 </main>
 <script>
