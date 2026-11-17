@@ -1,8 +1,6 @@
 name: Testar fotos (manual)
 on:
   workflow_dispatch:
-  push:
-    branches: [stories-fase1]
 jobs:
   teste:
     runs-on: ubuntu-latest

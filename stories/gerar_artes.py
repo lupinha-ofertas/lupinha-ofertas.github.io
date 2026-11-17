@@ -6,15 +6,21 @@ Uso:
   python stories/gerar_artes.py --sem-numero    # sem o selo "Achado nº X"
   python stories/gerar_artes.py --sem-busca     # não tenta buscar foto pelo link
 
-Sem foto (nem reserva nem pelo link) a arte NÃO é gerada: o script avisa qual
-arquivo salvar em stories/fotos-reserva/. Com --rascunho ela sai com um
-espaço de foto vazio, só para conferir o layout.
+Sem foto (nem reserva nem pelo link) o produto é trocado pelo próximo da lista
+que tenha foto, e o resumo avisa qual arquivo salvar em stories/fotos-reserva/.
+Com --rascunho a arte sai com um espaço de foto vazio, só para conferir o layout.
+
+Também gera stories/saida/agendar-stories.csv (para agendar no Business Suite).
 """
 import argparse
 import base64
+import csv
 import html
 import mimetypes
+import os
 import sys
+from datetime import datetime
+from zoneinfo import ZoneInfo
 from pathlib import Path
 
 PASTA = Path(__file__).resolve().parent
@@ -23,6 +29,8 @@ from lista import ler_produtos  # noqa: E402
 from fotos import achar_foto, foto_reserva  # noqa: E402
 
 SAIDA = PASTA / "saida" / "artes"
+CSV = PASTA / "saida" / "agendar-stories.csv"
+HORARIOS = ["09:00", "12:00", "15:00", "18:00", "21:00"]  # horário sugerido de cada story
 LOGO = PASTA / "assets" / "logo.png"  # logo oficial (700x137); se faltar, usa o desenhado
 
 ROSA, ROSA_ESC, CREME, TINTA, CINZA, BORDA = "#C9425C", "#A8334B", "#FFF4EA", "#3A1F2B", "#6E5560", "#D9A3AE"
@@ -113,17 +121,72 @@ def montar_html(p: dict, foto: Path | None, selo: bool = True) -> str:
 </div></body></html>'''
 
 
+def _ordem(produtos: list[dict]) -> list[dict]:
+    """Maior desconto primeiro; empate (ou sem desconto) segue a ordem da lista."""
+    return sorted(produtos, key=lambda p: (-int(p["desconto"] or 0), p["numero"]))
+
+
 def escolher_melhores(produtos: list[dict], quantos: int = 5, por_loja: int = 2) -> list[dict]:
-    """Maior desconto primeiro; empate (ou sem desconto) segue a ordem da lista. Máx. 2 por loja."""
-    ordem = sorted(produtos, key=lambda p: (-int(p["desconto"] or 0), p["numero"]))
+    """As melhores sem olhar foto (usado no --rascunho). Máx. 2 por loja."""
     escolhidos, conta = [], {}
-    for p in ordem:
+    for p in _ordem(produtos):
         if conta.get(p["loja"], 0) < por_loja:
             escolhidos.append(p)
             conta[p["loja"]] = conta.get(p["loja"], 0) + 1
         if len(escolhidos) == quantos:
             break
     return escolhidos
+
+
+def escolher_com_foto(produtos, quantos, por_loja, achar):
+    """Como escolher_melhores, mas pula quem não tem foto e pega o próximo da lista.
+    Se nem assim completar (ex.: só 2 lojas com foto), libera o limite por loja."""
+    cache, faltando = {}, {}
+
+    def foto(p):
+        if p["numero"] not in cache:
+            cache[p["numero"]] = achar(p)
+            if not cache[p["numero"]][0]:
+                faltando[p["numero"]] = (p, cache[p["numero"]][1])
+        return cache[p["numero"]]
+
+    escolhidos, conta = [], {}
+    for limite in (por_loja, quantos):
+        for p in _ordem(produtos):
+            if len(escolhidos) == quantos:
+                break
+            if any(e[0]["numero"] == p["numero"] for e in escolhidos) or conta.get(p["loja"], 0) >= limite:
+                continue
+            arq, origem = foto(p)
+            if arq:
+                escolhidos.append((p, arq, origem))
+                conta[p["loja"]] = conta.get(p["loja"], 0) + 1
+    return escolhidos, list(faltando.values())
+
+
+def escrever_csv(linhas: list[dict]) -> None:
+    CSV.parent.mkdir(parents=True, exist_ok=True)
+    with CSV.open("w", newline="", encoding="utf-8-sig") as f:  # utf-8-sig + ";" abre certo no Excel BR
+        w = csv.DictWriter(f, fieldnames=["data", "numero", "produto", "loja", "link_afiliada", "horario_sugerido", "arquivo"], delimiter=";")
+        w.writeheader()
+        w.writerows(linhas)
+
+
+def escrever_resumo(linhas: list[dict], faltando: list) -> None:
+    """Resumo no GitHub Actions (ou no terminal, rodando local)."""
+    md = ["## Stories do dia", "", "| nº | Horário | Loja | Produto | Arte |", "|---|---|---|---|---|"]
+    md += [f"| {l['numero']} | {l['horario_sugerido']} | {l['loja']} | {l['produto'][:50]} | {l['arquivo']} |" for l in linhas]
+    if faltando:
+        md += ["", "### Sem foto (trocados pelo próximo da lista)",
+               "Para usar algum deles, salve a foto com este nome em `stories/fotos-reserva/`:", "",
+               "| Loja | Produto | Salvar como | Link |", "|---|---|---|---|"]
+        md += [f"| {p['loja']} | {p['nome'][:50]} | `{p['slug']}.jpg` | {p['link']} |" for p, _ in faltando]
+    texto = "\n".join(md) + "\n"
+    destino = os.environ.get("GITHUB_STEP_SUMMARY")
+    if destino:
+        with open(destino, "a", encoding="utf-8") as f:
+            f.write(texto)
+    print(texto)
 
 
 def _navegador(pw):
@@ -142,36 +205,44 @@ def main():
     ap.add_argument("--rascunho", action="store_true", help="gera mesmo sem foto (espaço vazio)")
     args = ap.parse_args()
 
+    def achar(p):
+        return (foto_reserva(p), "reserva") if args.sem_busca else achar_foto(p)
+
     produtos = ler_produtos()
-    if args.numeros:
-        por_n = {p["numero"]: p for p in produtos}
-        produtos = [por_n[n] for n in args.numeros if n in por_n]
+    if args.numeros or args.rascunho:  # escolha fixa: não troca ninguém
+        if args.numeros:
+            por_n = {p["numero"]: p for p in produtos}
+            fixos = [por_n[n] for n in args.numeros if n in por_n]
+        else:
+            fixos = escolher_melhores(produtos, args.quantos)
+        escolhidos, faltando = [], []
+        for p in fixos:
+            arq, origem = achar(p)
+            if arq or args.rascunho:
+                escolhidos.append((p, arq, origem))
+            else:
+                faltando.append((p, origem))
     else:
-        produtos = escolher_melhores(produtos, args.quantos)
+        escolhidos, faltando = escolher_com_foto(produtos, args.quantos, 2, achar)
 
     from playwright.sync_api import sync_playwright
     SAIDA.mkdir(parents=True, exist_ok=True)
-    faltando = []
+    hoje = datetime.now(ZoneInfo("America/Sao_Paulo")).strftime("%d/%m/%Y")
+    linhas = []
     with sync_playwright() as pw:
         nav = _navegador(pw)
         pag = nav.new_page(viewport={"width": 1080, "height": 1920})
-        for ordem, p in enumerate(produtos, 1):
+        for ordem, (p, foto, origem) in enumerate(escolhidos, 1):
             p = {**p, "numero": ordem}  # "Achado nº" segue a ordem dos selecionados
-            if args.sem_busca:
-                foto, origem = foto_reserva(p), "reserva"
-            else:
-                foto, origem = achar_foto(p)
-            if not foto and not args.rascunho:
-                faltando.append(p)
-                print(f"⚠️  nº {ordem} sem foto ({origem}): salve stories/fotos-reserva/{p['slug']}.jpg")
-                continue
             pag.set_content(montar_html(p, foto, selo=not args.sem_numero), wait_until="networkidle", timeout=30000)
             arq = SAIDA / f"achado-{ordem:02d}-{p['slug'][:40]}.png"
             pag.screenshot(path=str(arq), clip={"x": 0, "y": 0, "width": 1080, "height": 1920})
             print(f"✅ nº {ordem} {p['loja']}: {arq.name} (foto: {origem if foto else 'sem foto'})")
+            linhas.append({"data": hoje, "numero": ordem, "produto": p["nome"], "loja": p["loja"], "link_afiliada": p["link"],
+                           "horario_sugerido": HORARIOS[ordem - 1] if ordem <= len(HORARIOS) else "", "arquivo": arq.name})
         nav.close()
-    if faltando:
-        print(f"\n{len(faltando)} arte(s) esperando foto reserva.")
+    escrever_csv(linhas)
+    escrever_resumo(linhas, faltando)
 
 
 if __name__ == "__main__":

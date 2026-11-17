@@ -1,0 +1,44 @@
+name: Stories e Achados do dia
+# Roda sozinho quando o robô atualiza a lista do dia (enviar/index.html na main).
+# Na branch stories-fase1 roda como prévia: gera tudo, mas NÃO publica a página.
+on:
+  push:
+    branches: [main, stories-fase1]
+    paths: [enviar/index.html, stories/**, .github/workflows/stories-diario.yml]
+  workflow_dispatch:
+concurrency: { group: stories-diario, cancel-in-progress: false }
+permissions: { contents: write }
+env: { TZ: America/Sao_Paulo }
+jobs:
+  gerar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install playwright && python -m playwright install --with-deps chromium
+      - name: Artes dos stories + planilha
+        run: python stories/gerar_artes.py
+      - name: Página Achados do dia
+        run: python stories/gerar_pagina.py
+      - name: Pegar a data
+        id: data
+        run: echo "hoje=$(date +%Y-%m-%d)" >> "$GITHUB_OUTPUT"
+      - name: Guardar artes, planilha e página (baixe em Actions > esta execução > Artifacts)
+        uses: actions/upload-artifact@v4
+        with:
+          name: stories-${{ steps.data.outputs.hoje }}
+          path: |
+            stories/saida/artes/*.png
+            stories/saida/agendar-stories.csv
+            achados/index.html
+          retention-days: 30
+      - name: Publicar a página (só na main)
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name "lupinha-robo-stories"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add achados/index.html
+          git diff --cached --quiet && exit 0
+          git commit -m "Achados do dia ${{ steps.data.outputs.hoje }}"
+          git pull --rebase origin main && git push origin HEAD:main
