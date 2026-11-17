@@ -1,11 +1,16 @@
-"""Lê a lista do dia (enviar/index.html, gerada pelo robô) e devolve os produtos."""
+"""Lê a lista do dia e devolve os produtos.
+
+Fonte: enviar/dados.json (gravado pelo robo-ofertas). Se não existir, lê enviar/index.html.
+"""
 import html
+import json
 import re
 import unicodedata
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parent.parent
 LISTA = RAIZ / "enviar" / "index.html"
+DADOS = RAIZ / "enviar" / "dados.json"
 
 LOJAS = {"shopee": "Shopee", "mercado livre": "Mercado Livre", "amazon": "Amazon", "shein": "Shein"}
 
@@ -24,7 +29,42 @@ def _loja(tag: str) -> str:
     return "?"
 
 
+def _da_mensagem(msg: str) -> dict:
+    """Preço antigo, desconto, parcelas, cupom e motivo, tirados do texto da mensagem."""
+    de = re.search(r"De ~R\$ ?([\d.,]+)~ por \*R\$ ?([\d.,]+)\*(?: \((\d+)% OFF\))?", msg)
+    parcelas = re.search(r"(\d+)x de R\$ ?([\d.,]+)", msg)
+    cupom = re.search(r"cupom:?\s*\*?([A-Z0-9_-]{3,})\*?", msg, re.I)
+    motivo = next((l.strip() for l in msg.splitlines() if l.strip().startswith(("⭐", "🔥"))), "")
+    return {"preco_antigo": de.group(1) if de else None,
+            "desconto": de.group(3) if de and de.group(3) else None,
+            "parcelas": f"{parcelas.group(1)}x de R$ {parcelas.group(2)}" if parcelas else None,
+            "cupom": cupom.group(1) if cupom else None,
+            "motivo": motivo.lstrip("⭐🔥 ").strip()}
+
+
+def _reais(v) -> str | None:
+    if v in (None, "", 0):
+        return None
+    return f"{float(v):,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
+
+
+def ler_dados(caminho: Path = DADOS) -> list[dict]:
+    d = json.loads(caminho.read_text(encoding="utf-8"))
+    produtos = []
+    for o in d["produtos"]:
+        hora = (re.search(r"(\d{1,2})h", o.get("horario", "")) or [None, ""])[1]
+        produtos.append({"numero": o["numero"], "loja": o["loja"], "categoria": o.get("categoria", ""),
+                         "nome": o["nome"].strip(), "preco": None if o["loja"] == "Amazon" else _reais(o.get("preco")),
+                         **_da_mensagem(o.get("msg", "")), "link": o["link"], "horario": o.get("horario", ""),
+                         "hora": hora, "slug": slug(o["nome"]), "foto_url": o.get("foto") or None,
+                         "item_id": o.get("itemId"), "data": d.get("data")})
+    produtos.sort(key=lambda p: p["numero"])
+    return produtos
+
+
 def ler_produtos(caminho: Path = LISTA) -> list[dict]:
+    if caminho == LISTA and DADOS.exists():
+        return ler_dados()
     fonte = caminho.read_text(encoding="utf-8")
     produtos = []
     # cada <section> é um horário (Manhã · 9h etc.)

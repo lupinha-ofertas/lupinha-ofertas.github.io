@@ -1,15 +1,11 @@
 """Acha a foto de cada produto.
 
 Ordem: 1) pasta fotos-reserva (o que a Ari salvou manualmente, sempre ganha);
-       2) Shopee: API de afiliados (secrets SHOPEE_APP_ID e SHOPEE_SECRET);
-       3) foto buscada pelo link (og:image da página da loja).
+       2) foto que veio do robô em enviar/dados.json (Shopee, pela API de afiliados);
+       3) Mercado Livre e Shein: foto da página da loja (og:image);
+       Amazon (e Shopee sem foto): sem foto -> reserva ou logo.
 """
-import difflib
-import hashlib
-import json
-import os
 import re
-import time
 import urllib.request
 from pathlib import Path
 
@@ -40,72 +36,16 @@ def _baixar(url: str, timeout: int = 20) -> tuple[bytes, str]:
         return r.read(), r.geturl()
 
 
-SHOPEE_API = "https://open-api.affiliate.shopee.com.br/graphql"
-
-
-def _shopee_api(consulta: str, tentativas: int = 3) -> dict:
-    """Chama a API; o erro 10000 (System Error) às vezes some tentando de novo."""
-    for i in range(tentativas):
-        try:
-            return _shopee_api_uma_vez(consulta)
-        except RuntimeError as e:
-            if "10000" not in str(e) or i == tentativas - 1:
-                raise
-            time.sleep(3 * (i + 1))
-
-
-def _shopee_api_uma_vez(consulta: str) -> dict:
-    app_id, segredo = os.environ.get("SHOPEE_APP_ID"), os.environ.get("SHOPEE_SECRET")
-    if not app_id or not segredo:
-        raise RuntimeError("sem SHOPEE_APP_ID/SHOPEE_SECRET")
-    corpo = json.dumps({"query": consulta}, separators=(",", ":"))
-    ts = str(int(time.time()))
-    assinatura = hashlib.sha256((app_id + ts + corpo + segredo).encode()).hexdigest()
-    req = urllib.request.Request(SHOPEE_API, data=corpo.encode(), method="POST", headers={
-        "Content-Type": "application/json",
-        "Authorization": f"SHA256 Credential={app_id}, Timestamp={ts}, Signature={assinatura}"})
-    with urllib.request.urlopen(req, timeout=20) as r:
-        dados = json.loads(r.read())
-    if dados.get("errors"):
-        raise RuntimeError(f"API Shopee: {dados['errors'][0].get('message', '')[:80]}")
-    return dados["data"]["productOfferV2"]["nodes"]
-
-
-def ids_shopee(link: str) -> tuple[str, str] | None:
-    """Abre o link curto e acha (shopId, itemId) no endereço final ou na página."""
-    pagina, final = _baixar(link)
-    texto = final + " " + urllib.request.unquote(pagina.decode("utf-8", "ignore")[:200000])
-    for padrao in (r"-i\.(\d+)\.(\d+)", r"/product/(\d+)/(\d+)",
-                   r"shopid=(\d+)[^\d]+itemid=(\d+)", r'"shopid":(\d+),"itemid":(\d+)'):
-        m = re.search(padrao, texto, re.I)
-        if m:
-            return m.group(1), m.group(2)
-    return None
-
-
-def url_foto_shopee(produto: dict) -> str | None:
-    campos = "nodes { imageUrl productName itemId shopId }"
-    ids = ids_shopee(produto["link"])
-    if ids:
-        nos = _shopee_api(f"{{ productOfferV2(shopId: {ids[0]}, itemId: {ids[1]}, limit: 1) {{ {campos} }} }}")
-        if nos and nos[0].get("imageUrl"):
-            return nos[0]["imageUrl"]
-    # reserva: busca pelo nome e só aceita se o nome bater bem
-    nome = produto["nome"][:60].replace('"', "")
-    nos = _shopee_api(f'{{ productOfferV2(keyword: "{nome}", limit: 5) {{ {campos} }} }}')
-    for no in nos:
-        if difflib.SequenceMatcher(None, no["productName"].lower(), produto["nome"].lower()).ratio() > 0.8:
-            return no["imageUrl"]
-    return None
+LOJAS_PELO_LINK = ("Mercado Livre", "Shein")  # Amazon e Shopee bloqueiam; usam reserva ou logo
 
 
 def url_da_foto_produto(produto: dict) -> str | None:
-    """URL da foto do produto: Shopee pela API (se tiver credenciais), senão pela página."""
-    if produto.get("loja") == "Shopee" and os.environ.get("SHOPEE_APP_ID"):
-        url = url_foto_shopee(produto)
-        if url:
-            return url
-    return url_da_foto(produto["link"])
+    """Foto do robô (Shopee, pela API) ou, no ML e na Shein, a foto da página da loja."""
+    if produto.get("foto_url"):
+        return produto["foto_url"]
+    if produto.get("loja") in LOJAS_PELO_LINK:
+        return url_da_foto(produto["link"])
+    return None
 
 
 def url_da_foto(link: str) -> str | None:
@@ -147,4 +87,5 @@ def achar_foto(produto: dict) -> tuple[Path | None, str]:
             return arq, "link"
     except Exception as e:  # loja bloqueou, caiu etc.
         return None, f"falhou ({type(e).__name__})"
-    return None, "falhou (sem foto na página)"
+    return None, ("sem foto (salve uma reserva)" if produto.get("loja") not in LOJAS_PELO_LINK and not produto.get("foto_url")
+                  else "falhou (sem foto na página)")

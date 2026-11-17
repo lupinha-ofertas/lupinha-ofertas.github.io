@@ -1,11 +1,19 @@
 name: Stories e Achados do dia
-# Roda sozinho quando o robô atualiza a lista do dia (enviar/index.html na main).
-# Na branch stories-fase1 roda como prévia: gera tudo, mas NÃO publica a página.
+# Roda sozinho quando o robô publica a lista do dia (enviar/ na main), por volta das 5h-7h.
+# Trava: a primeira execução do dia vale. Se a lista mudar depois, artes, planilha e
+# numeração da página NÃO mudam (para bater com os stories já agendados).
+# Para refazer mesmo assim: Actions > Stories e Achados do dia > Run workflow > refazer = sim.
+# Na branch stories-fase1 roda como prévia: gera tudo, mas NÃO publica a página nem trava.
 on:
   push:
     branches: [main, stories-fase1]
-    paths: [enviar/index.html, stories/**, .github/workflows/stories-diario.yml]
+    paths: [enviar/index.html, enviar/dados.json, stories/**, .github/workflows/stories-diario.yml]
   workflow_dispatch:
+    inputs:
+      refazer:
+        description: "Refazer hoje mesmo já tendo gerado (muda artes e números!)"
+        type: boolean
+        default: false
 concurrency: { group: stories-diario, cancel-in-progress: false }
 permissions: { contents: write }
 env: { TZ: America/Sao_Paulo }
@@ -14,38 +22,45 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Trava do dia
+        id: trava
+        run: |
+          hoje=$(date +%F)
+          echo "hoje=$hoje" >> "$GITHUB_OUTPUT"
+          if [ "${{ github.ref }}" = "refs/heads/main" ] && grep -q "\"$hoje\"" achados/dia.json 2>/dev/null \
+             && [ "${{ inputs.refazer }}" != "true" ]; then
+            echo "pronto=sim" >> "$GITHUB_OUTPUT"
+            echo "### Já gerado hoje ($hoje): nada mudou. As artes estão na primeira execução do dia." >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - if: steps.trava.outputs.pronto != 'sim'
+        uses: actions/setup-python@v5
         with: { python-version: "3.12" }
-      - run: pip install playwright && python -m playwright install --with-deps chromium
+      - if: steps.trava.outputs.pronto != 'sim'
+        run: pip install playwright && python -m playwright install --with-deps chromium
       - name: Artes dos stories + planilha
+        if: steps.trava.outputs.pronto != 'sim'
         run: python stories/gerar_artes.py
-        env:
-          SHOPEE_APP_ID: ${{ secrets.SHOPEE_APP_ID }}
-          SHOPEE_SECRET: ${{ secrets.SHOPEE_SECRET }}
       - name: Página Achados do dia
-        run: python stories/gerar_pagina.py
-        env:
-          SHOPEE_APP_ID: ${{ secrets.SHOPEE_APP_ID }}
-          SHOPEE_SECRET: ${{ secrets.SHOPEE_SECRET }}
-      - name: Pegar a data
-        id: data
-        run: echo "hoje=$(date +%Y-%m-%d)" >> "$GITHUB_OUTPUT"
+        if: steps.trava.outputs.pronto != 'sim'
+        run: |
+          python stories/gerar_pagina.py
+          python -c "import json,sys; json.dump({'data': sys.argv[1], 'numeracao': json.load(open('stories/saida/numeracao.json'))}, open('achados/dia.json','w'))" "${{ steps.trava.outputs.hoje }}"
       - name: Guardar artes, planilha e página (baixe em Actions > esta execução > Artifacts)
+        if: steps.trava.outputs.pronto != 'sim'
         uses: actions/upload-artifact@v4
         with:
-          name: stories-${{ steps.data.outputs.hoje }}
+          name: stories-${{ steps.trava.outputs.hoje }}
           path: |
             stories/saida/artes/*.png
             stories/saida/agendar-stories.csv
-            stories/assets/logo.png
             achados/index.html
           retention-days: 30
-      - name: Publicar a página (só na main)
-        if: github.ref == 'refs/heads/main'
+      - name: Publicar a página e travar o dia (só na main)
+        if: steps.trava.outputs.pronto != 'sim' && github.ref == 'refs/heads/main'
         run: |
           git config user.name "lupinha-robo-stories"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add achados/index.html
+          git add achados/index.html achados/dia.json
           git diff --cached --quiet && exit 0
-          git commit -m "Achados do dia ${{ steps.data.outputs.hoje }}"
+          git commit -m "Achados do dia ${{ steps.trava.outputs.hoje }}"
           git pull --rebase origin main && git push origin HEAD:main

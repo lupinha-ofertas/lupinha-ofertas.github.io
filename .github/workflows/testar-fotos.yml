@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
     branches: [stories-fase1]
-    paths: [stories/fotos.py, stories/testar_fotos.py, .github/workflows/testar-fotos.yml]
+    paths: [stories/fotos.py, stories/testar_fotos.py, enviar/dados.json, .github/workflows/testar-fotos.yml]
 jobs:
   teste:
     runs-on: ubuntu-latest
@@ -12,6 +12,3 @@ jobs:
       - uses: actions/setup-python@v5
         with: { python-version: "3.12" }
       - run: python stories/testar_fotos.py | tee -a "$GITHUB_STEP_SUMMARY"
-        env:
-          SHOPEE_APP_ID: ${{ secrets.SHOPEE_APP_ID }}
-          SHOPEE_SECRET: ${{ secrets.SHOPEE_SECRET }}
