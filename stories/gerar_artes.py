@@ -1,0 +1,159 @@
+"""Gera as artes de story (1080x1920, PNG) dos achados do dia, no template da Lupinha.
+
+Uso:
+  python stories/gerar_artes.py                 # todos os produtos da lista do dia
+  python stories/gerar_artes.py --numeros 2 6 4 # só esses (na ordem da lista)
+  python stories/gerar_artes.py --sem-busca     # não tenta buscar foto pelo link
+
+Sem foto (nem reserva nem pelo link) a arte NÃO é gerada: o script avisa qual
+arquivo salvar em stories/fotos-reserva/. Com --rascunho ela sai com um
+espaço de foto vazio, só para conferir o layout.
+"""
+import argparse
+import base64
+import html
+import mimetypes
+import sys
+from pathlib import Path
+
+PASTA = Path(__file__).resolve().parent
+sys.path.insert(0, str(PASTA))
+from lista import ler_produtos  # noqa: E402
+from fotos import achar_foto, foto_reserva  # noqa: E402
+
+SAIDA = PASTA / "saida" / "artes"
+LOGO = PASTA / "assets" / "logo.png"  # logo oficial (700x137); se faltar, usa o desenhado
+
+ROSA, ROSA_ESC, CREME, TINTA, CINZA, BORDA = "#C9425C", "#A8334B", "#FFF4EA", "#3A1F2B", "#6E5560", "#D9A3AE"
+
+
+def _data_uri(arq: Path) -> str:
+    tipo = mimetypes.guess_type(arq.name)[0] or "image/jpeg"
+    return f"data:{tipo};base64,{base64.b64encode(arq.read_bytes()).decode()}"
+
+
+def _logo() -> str:
+    if LOGO.exists():
+        return f'<img src="{_data_uri(LOGO)}" alt="" style="width:700px;height:137px;display:block;object-fit:contain;object-position:left">'
+    # mesmo símbolo do site (lupa com coração), com o nome ao lado
+    return f'''<div style="display:flex;align-items:center;gap:26px;height:137px">
+  <div style="width:137px;height:137px;border-radius:50%;background:{CREME};display:flex;align-items:center;justify-content:center;flex-shrink:0">
+    <svg width="92" height="92" viewBox="0 0 100 100"><line x1="62" y1="62" x2="86" y2="86" stroke="{ROSA}" stroke-width="13" stroke-linecap="round"/>
+    <circle cx="42" cy="42" r="34" fill="{ROSA}"/><path transform="translate(42,30) scale(.3)" d="M0 35 C0 0 -50 -10 -50 25 C-50 55 -15 75 0 90 C15 75 50 55 50 25 C50 -10 0 0 0 35Z" fill="{CREME}"/></svg>
+  </div>
+  <div><div style="font-size:66px;font-weight:800;letter-spacing:-1.5px;line-height:1">lupinha da Ari</div>
+  <div style="font-size:24px;font-weight:600;letter-spacing:5px;text-transform:uppercase;margin-top:10px;opacity:.92">achadinhos que valem a pena</div></div>
+</div>'''
+
+
+def _foto(foto: Path | None, altura: int, numero: int, desconto: str | None) -> str:
+    selo_n = (f'<div style="position:absolute;top:20px;left:20px;background:{TINTA};color:{CREME};font-size:38px;'
+              f'font-weight:800;padding:10px 24px;border-radius:20px">Achado nº {numero}</div>')
+    selo_d = (f'<div style="position:absolute;top:20px;right:20px;background:{ROSA};color:{CREME};font-size:46px;'
+              f'font-weight:800;padding:10px 26px;border-radius:20px">-{desconto}%</div>') if desconto else ""
+    if foto:
+        miolo = f'<img src="{_data_uri(foto)}" alt="" style="width:100%;height:100%;object-fit:contain;display:block">'
+        estilo = "background:#FFFFFF"
+    else:
+        miolo = (f'<div style="font-size:30px;font-weight:600;color:{ROSA_ESC}">[FOTO DO PRODUTO]</div>')
+        estilo = f"background:#FFFFFF;border:4px dashed {BORDA};display:flex;align-items:center;justify-content:center"
+    return (f'<div style="position:relative;height:{altura}px;border-radius:32px;overflow:hidden;box-sizing:border-box;{estilo}">'
+            f'{miolo}{selo_n}{selo_d}</div>')
+
+
+def _nome(nome: str) -> str:
+    return (f'<div style="font-size:40px;font-weight:500;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;'
+            f'-webkit-box-orient:vertical;overflow:hidden">{html.escape(nome)}</div>')
+
+
+def montar_html(p: dict, foto: Path | None) -> str:
+    amazon = p["loja"] == "Amazon"
+    if amazon:
+        corpo = _foto(foto, 670, p["numero"], None) + _nome(p["nome"])
+        if p["motivo"]:
+            corpo += f'<div style="font-size:34px;font-weight:500;line-height:1.35;color:{CINZA}">⭐ {html.escape(p["motivo"])}</div>'
+        corpo += (f'<div style="display:flex;align-items:center;gap:20px;background:{ROSA};border-radius:28px;padding:26px 30px">'
+                  f'<svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="{CREME}" stroke-width="2.4" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><line x1="15.5" y1="15.5" x2="21" y2="21"/></svg>'
+                  f'<div style="font-size:50px;font-weight:800;letter-spacing:-1px;color:{CREME}">Confere o preço no link</div></div>')
+        rodape = "*Preço e estoque podem mudar a qualquer momento"
+    else:
+        extras = sum(bool(x) for x in (p["preco_antigo"], p["parcelas"], p["cupom"]))
+        corpo = _foto(foto, 740 - 60 * extras, p["numero"], p["desconto"]) + _nome(p["nome"])
+        precos = ""
+        if p["preco_antigo"]:
+            precos += f'<div style="font-size:34px;font-weight:500;color:{CINZA};text-decoration:line-through">R$ {p["preco_antigo"]}</div>'
+        precos += f'<div style="font-size:92px;font-weight:800;line-height:1.05;letter-spacing:-2px;color:{ROSA}">R$ {p["preco"]}</div>'
+        if p["parcelas"]:
+            precos += f'<div style="font-size:34px;font-weight:500">ou {p["parcelas"]}</div>'
+        corpo += f'<div style="display:flex;flex-direction:column;gap:4px">{precos}</div>'
+        if p["cupom"]:
+            corpo += (f'<div style="display:flex;align-items:center;gap:20px;background:#FBE1E3;border:4px dashed {ROSA};border-radius:28px;padding:22px 28px">'
+                      f'<div style="font-size:36px;font-weight:500">Use o cupom: <span style="font-weight:800;color:{ROSA_ESC}">{html.escape(p["cupom"])}</span></div></div>')
+        rodape = "*Promoção sujeita a alteração a qualquer momento"
+
+    return f'''<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<style>html,body{{margin:0}}*{{box-sizing:border-box}}</style></head><body>
+<div style="width:1080px;height:1920px;position:relative;overflow:hidden;background:{ROSA};font-family:'Inter',system-ui,sans-serif;color:{CREME};padding:190px 70px 200px;display:flex;flex-direction:column;gap:32px">
+<div style="position:absolute;right:-260px;top:-300px;width:760px;height:760px;border-radius:50%;background:rgba(255,244,234,.08)"></div>
+<div style="position:absolute;left:-300px;bottom:-320px;width:820px;height:820px;border-radius:50%;background:rgba(255,244,234,.08)"></div>
+<div style="position:relative;display:flex;align-items:center;justify-content:space-between;gap:24px;height:137px">
+{_logo()}
+<div style="font-size:24px;font-weight:700;padding:10px 22px;border-radius:999px;border:3px solid {CREME};flex-shrink:0">Publicidade</div></div>
+<div style="position:relative;background:{CREME};border-radius:48px;padding:44px;display:flex;flex-direction:column;gap:24px;color:{TINTA}">{corpo}</div>
+<div style="position:relative;display:flex;align-items:center;gap:24px;background:{CREME};border-radius:999px;padding:16px 28px 16px 16px;height:130px">
+<div style="width:98px;height:98px;border-radius:50%;background:{ROSA};display:flex;align-items:center;justify-content:center;flex-shrink:0">
+<svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="{CREME}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.5 1.5"/><path d="M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.5-1.5"/></svg></div>
+<div style="flex-grow:1;height:86px;border-radius:999px;border:3px dashed {BORDA};display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:500;color:{CINZA}">cole o adesivo de link aqui em cima</div></div>
+<div style="position:relative;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center">
+<div style="font-size:32px;font-weight:700">@lupinhadaari</div>
+<div style="font-size:26px;font-weight:600">{rodape}</div></div>
+</div></body></html>'''
+
+
+def _navegador(pw):
+    try:
+        return pw.chromium.launch()
+    except Exception:
+        return pw.chromium.launch(channel="chrome")
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--numeros", type=int, nargs="*", help="números da lista a gerar (padrão: todos)")
+    ap.add_argument("--sem-busca", action="store_true", help="usa só fotos-reserva")
+    ap.add_argument("--rascunho", action="store_true", help="gera mesmo sem foto (espaço vazio)")
+    args = ap.parse_args()
+
+    produtos = ler_produtos()
+    if args.numeros:
+        por_n = {p["numero"]: p for p in produtos}
+        produtos = [por_n[n] for n in args.numeros if n in por_n]
+
+    from playwright.sync_api import sync_playwright
+    SAIDA.mkdir(parents=True, exist_ok=True)
+    faltando = []
+    with sync_playwright() as pw:
+        nav = _navegador(pw)
+        pag = nav.new_page(viewport={"width": 1080, "height": 1920})
+        for ordem, p in enumerate(produtos, 1):
+            p = {**p, "numero": ordem}  # "Achado nº" segue a ordem dos selecionados
+            if args.sem_busca:
+                foto, origem = foto_reserva(p), "reserva"
+            else:
+                foto, origem = achar_foto(p)
+            if not foto and not args.rascunho:
+                faltando.append(p)
+                print(f"⚠️  nº {ordem} sem foto ({origem}): salve stories/fotos-reserva/{p['slug']}.jpg")
+                continue
+            pag.set_content(montar_html(p, foto), wait_until="networkidle", timeout=30000)
+            arq = SAIDA / f"achado-{ordem:02d}-{p['slug'][:40]}.png"
+            pag.screenshot(path=str(arq), clip={"x": 0, "y": 0, "width": 1080, "height": 1920})
+            print(f"✅ nº {ordem} {p['loja']}: {arq.name} (foto: {origem if foto else 'sem foto'})")
+        nav.close()
+    if faltando:
+        print(f"\n{len(faltando)} arte(s) esperando foto reserva.")
+
+
+if __name__ == "__main__":
+    main()

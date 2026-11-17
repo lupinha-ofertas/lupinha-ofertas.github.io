@@ -1,0 +1,2 @@
+Coloque aqui o logo oficial como logo.png (700x137, fundo transparente).
+Sem ele, as artes usam o logo desenhado.
