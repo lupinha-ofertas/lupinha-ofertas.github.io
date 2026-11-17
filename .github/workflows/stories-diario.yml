@@ -19,8 +19,14 @@ jobs:
       - run: pip install playwright && python -m playwright install --with-deps chromium
       - name: Artes dos stories + planilha
         run: python stories/gerar_artes.py
+        env:
+          SHOPEE_APP_ID: ${{ secrets.SHOPEE_APP_ID }}
+          SHOPEE_SECRET: ${{ secrets.SHOPEE_SECRET }}
       - name: Página Achados do dia
         run: python stories/gerar_pagina.py
+        env:
+          SHOPEE_APP_ID: ${{ secrets.SHOPEE_APP_ID }}
+          SHOPEE_SECRET: ${{ secrets.SHOPEE_SECRET }}
       - name: Pegar a data
         id: data
         run: echo "hoje=$(date +%Y-%m-%d)" >> "$GITHUB_OUTPUT"
@@ -31,6 +37,7 @@ jobs:
           path: |
             stories/saida/artes/*.png
             stories/saida/agendar-stories.csv
+            stories/assets/logo.png
             achados/index.html
           retention-days: 30
       - name: Publicar a página (só na main)

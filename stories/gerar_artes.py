@@ -16,6 +16,7 @@ import argparse
 import base64
 import csv
 import html
+import json
 import mimetypes
 import os
 import sys
@@ -30,6 +31,7 @@ from fotos import achar_foto, foto_reserva  # noqa: E402
 
 SAIDA = PASTA / "saida" / "artes"
 CSV = PASTA / "saida" / "agendar-stories.csv"
+NUMERACAO = PASTA / "saida" / "numeracao.json"  # nº da lista -> nº do achado (a página usa)
 HORARIOS = ["09:00", "12:00", "15:00", "18:00", "21:00"]  # horário sugerido de cada story
 LOGO = PASTA / "assets" / "logo.png"  # logo oficial (700x137); se faltar, usa o desenhado
 
@@ -114,7 +116,7 @@ def montar_html(p: dict, foto: Path | None, selo: bool = True) -> str:
 <div style="position:relative;display:flex;align-items:center;gap:24px;background:{CREME};border-radius:999px;padding:16px 28px 16px 16px;height:130px">
 <div style="width:98px;height:98px;border-radius:50%;background:{ROSA};display:flex;align-items:center;justify-content:center;flex-shrink:0">
 <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="{CREME}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.5 1.5"/><path d="M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.5-1.5"/></svg></div>
-<div style="flex-grow:1;height:86px;border-radius:999px;border:3px dashed {BORDA};display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:500;color:{CINZA}">cole o adesivo de link aqui em cima</div></div>
+<div style="flex-grow:1;height:86px;border-radius:999px;border:3px dashed {BORDA};display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:500;color:{CINZA}">toque no link para comprar</div></div>
 <div style="position:relative;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center">
 <div style="font-size:32px;font-weight:700">@lupinhadaari</div>
 <div style="font-size:26px;font-weight:600">{rodape}</div></div>
@@ -242,6 +244,10 @@ def main():
                            "horario_sugerido": HORARIOS[ordem - 1] if ordem <= len(HORARIOS) else "", "arquivo": arq.name})
         nav.close()
     escrever_csv(linhas)
+    # mesma numeração na página: as artes são 1..5, o resto segue a ordem da lista
+    usados = [p["numero"] for p, _, _ in escolhidos]
+    resto = [p["numero"] for p in produtos if p["numero"] not in usados]
+    NUMERACAO.write_text(json.dumps({str(n): i for i, n in enumerate(usados + resto, 1)}), encoding="utf-8")
     escrever_resumo(linhas, faltando)
 
 

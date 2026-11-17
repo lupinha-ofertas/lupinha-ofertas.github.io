@@ -4,7 +4,9 @@ Foto: fotos-reserva > foto da página da loja (og:image) > logo da Lupinha.
 Uso:  python stories/gerar_pagina.py [--sem-busca]
 """
 import argparse
+import base64
 import html
+import json
 import sys
 from datetime import datetime
 from pathlib import Path
@@ -14,11 +16,21 @@ from zoneinfo import ZoneInfo
 PASTA = Path(__file__).resolve().parent
 sys.path.insert(0, str(PASTA))
 from lista import ler_produtos  # noqa: E402
-from fotos import foto_reserva, url_da_foto  # noqa: E402
+from fotos import foto_reserva, url_da_foto_produto  # noqa: E402
 
 RAIZ = PASTA.parent
 DESTINO = RAIZ / "achados" / "index.html"
-LOGO = "../stories/assets/logo.png"
+LOGO = PASTA / "assets" / "logo.png"  # vai embutido na página (não depende de outro arquivo)
+NUMERACAO = PASTA / "saida" / "numeracao.json"  # gravado pelo gerar_artes.py
+
+
+def numeracao(produtos: list[dict]) -> dict[int, int]:
+    """nº da lista -> nº do achado (o mesmo das artes). Sem o arquivo, segue a lista."""
+    if NUMERACAO.exists():
+        mapa = {int(k): v for k, v in json.loads(NUMERACAO.read_text(encoding="utf-8")).items()}
+        if all(p["numero"] in mapa for p in produtos):
+            return mapa
+    return {p["numero"]: p["numero"] for p in produtos}
 
 
 def foto_src(p: dict, buscar: bool) -> str | None:
@@ -27,23 +39,21 @@ def foto_src(p: dict, buscar: bool) -> str | None:
         return "../" + quote(arq.relative_to(RAIZ).as_posix())
     if buscar:
         try:
-            return url_da_foto(p["link"])
+            return url_da_foto_produto(p)
         except Exception:
             return None
     return None
 
 
-def card(p: dict, src: str | None) -> str:
+def card(p: dict, n: int, src: str | None) -> str:
     e = html.escape
     if src:
-        foto = (f'<img src="{e(src)}" alt="" loading="lazy" referrerpolicy="no-referrer" '
-                f'onerror="this.onerror=null;this.src=\'{LOGO}\';this.parentNode.classList.add(\'sem\')">')
-        cls = "foto"
+        foto, cls = f'<img src="{e(src)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="semFoto(this)">', "foto"
     else:
-        foto, cls = f'<img src="{LOGO}" alt="">', "foto sem"
+        foto, cls = "", "foto sem"
     preco = "" if p["loja"] == "Amazon" or not p["preco"] else f'<span class="preco">R$ {e(p["preco"])}</span>'
-    return f'''    <article class="item">
-      <div class="{cls}">{foto}<span class="num">nº {p["numero"]}</span></div>
+    return f'''    <article class="item{" semfoto" if not src else ""}" data-n="{n}">
+      <div class="{cls}">{foto}<span class="num">nº {n}</span></div>
       <div class="info">
         <div class="meta"><span class="loja">{e(p["loja"])}</span>{preco}</div>
         <h2>{e(p["nome"])}</h2>
@@ -54,7 +64,11 @@ def card(p: dict, src: str | None) -> str:
 
 def montar(produtos: list[dict], buscar: bool) -> str:
     hoje = datetime.now(ZoneInfo("America/Sao_Paulo")).strftime("%d/%m/%Y")
-    cards = "\n".join(card(p, foto_src(p, buscar)) for p in produtos)
+    nums = numeracao(produtos)
+    itens = sorted(((nums[p["numero"]], p, foto_src(p, buscar)) for p in produtos),
+                   key=lambda t: (t[2] is None, t[0]))  # sem foto vão para o fim; nº não muda
+    cards = "\n".join(card(p, n, src) for n, p, src in itens)
+    logo = base64.b64encode(LOGO.read_bytes()).decode()
     return f'''<!doctype html>
 <html lang="pt-BR">
 <head>
@@ -81,7 +95,8 @@ def montar(produtos: list[dict], buscar: bool) -> str:
   .item{{display:flex;gap:14px;background:var(--cream);color:var(--ink);border-radius:18px;padding:12px;box-shadow:0 6px 0 var(--coral-dark);text-align:left}}
   .foto{{position:relative;flex:none;width:112px;height:112px;border-radius:12px;overflow:hidden;background:#fff}}
   .foto img{{width:100%;height:100%;object-fit:contain;display:block}}
-  .foto.sem{{background:var(--coral);padding:10px}}
+  .foto.sem{{background:var(--coral) url(data:image/png;base64,{logo}) center/86% auto no-repeat}}
+  .foto.sem img{{display:none}}
   .num{{position:absolute;top:6px;left:6px;background:rgba(74,31,42,.75);color:var(--cream);font-size:11px;font-weight:700;padding:2px 8px;border-radius:99px}}
   .info{{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px}}
   .meta{{display:flex;justify-content:space-between;align-items:center;font-size:12px}}
@@ -94,6 +109,11 @@ def montar(produtos: list[dict], buscar: bool) -> str:
   footer{{font-size:12px;opacity:.85;margin-top:26px;line-height:1.5}}
   footer a{{color:var(--cream)}}
 </style>
+<script>
+  // foto que não carregou: mostra o logo e manda o card para o fim da lista (o nº não muda)
+  function semFoto(img){{var c=img.closest(".item"),l=c.parentNode;img.parentNode.classList.add("sem");c.classList.add("semfoto");
+    Array.from(l.querySelectorAll(".semfoto")).sort(function(a,b){{return a.dataset.n-b.dataset.n}}).forEach(function(x){{l.appendChild(x)}})}}
+</script>
 </head>
 <body>
 <main>
