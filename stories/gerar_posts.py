@@ -1,5 +1,5 @@
-"""Gera a página "Posts do dia" (posts/index.html): cada story com a arte e o link para copiar,
-os posts do feed com a legenda para copiar, e o botão para baixar tudo (.zip).
+"""Gera a página "Posts do dia" (posts/index.html): cada arte numerada com Baixar imagem,
+Copiar link e Copiar texto (adesivo) nos stories, Copiar legenda no feed, e Baixar todas.
 
 As imagens ficam públicas no branch "midia" (o workflow publica lá todo dia).
 Uso:  python stories/gerar_posts.py [--ramo-midia midia]
@@ -27,27 +27,33 @@ def ler(caminho: Path) -> list[dict]:
         return list(csv.DictReader(f, delimiter=";"))
 
 
+TEXTO_ADESIVO = "COMPRAR AQUI"  # texto que vai no adesivo de link do story
+
+
 def montar(stories: list[dict], feed: list[dict], base: str) -> str:
     e = html.escape
     hoje = datetime.now(ZoneInfo("America/Sao_Paulo")).strftime("%d/%m")
 
-    def card(tipo, l, img, copiar, rotulo, extra=""):
-        return f'''    <article class="card" data-id="{tipo}-{l["numero"]}">
-      <a href="{e(img)}" target="_blank" rel="noopener"><img src="{e(img)}" alt="" loading="lazy"></a>
+    def card(tipo, l, img, texto, rotulo_texto, link=None):
+        botoes = f'<button class="baixar" data-url="{e(img)}" data-nome="{e(l["arquivo"])}">⬇️ Baixar imagem</button>'
+        if link:
+            botoes += f'<button class="copiar" data-txt="{e(link)}">🔗 Copiar link</button>'
+        botoes += f'<button class="copiar" data-txt="{e(texto)}">📝 {rotulo_texto}</button>'
+        prev = f'<pre>{e(texto)}</pre>' if not link else f'<p class="adesivo">Adesivo: <b>{e(texto)}</b></p>'
+        return f'''    <article class="card" data-id="{tipo}-{l["numero"]}" data-url="{e(img)}" data-nome="{e(l["arquivo"])}">
+      <div class="foto"><img src="{e(img)}" alt="" loading="lazy"><span class="num">{l["numero"]}</span></div>
       <div class="info">
-        <div class="top"><span class="tag">nº {l["numero"]} · {e(l["loja"])}</span><span class="hora">{e(l.get("horario_sugerido") or l.get("horario") or "")}</span></div>
-        <h2>{e(l["produto"])}</h2>{extra}
-        <div class="acoes">
-          <button class="copiar" data-txt="{e(copiar)}">{rotulo}</button>
-          <a class="abrir" href="{e(img)}" target="_blank" rel="noopener">Abrir arte</a>
-          <button class="feito" title="Marcar como postado">✓</button>
-        </div>
+        <div class="top"><span class="tag">{e(l["loja"])}</span><span class="hora">🕒 {e(l.get("horario_sugerido") or l.get("horario") or "")}</span></div>
+        <h2>{e(l["produto"])}</h2>
+        {prev}
+        <div class="acoes">{botoes}</div>
+        <button class="feito">✓ Marcar como postado</button>
       </div>
     </article>'''
 
-    st = "\n".join(card("s", l, base + "stories/" + l["arquivo"], l["link_afiliada"], "Copiar link") for l in stories)
-    fd = "\n".join(card("f", l, base + "feed/" + l["arquivo"], l["legenda"], "Copiar legenda",
-                        f'<details><summary>Ver legenda</summary><pre>{e(l["legenda"])}</pre></details>') for l in feed)
+    st = "\n".join(card("s", l, base + "stories/" + l["arquivo"], TEXTO_ADESIVO, "Copiar texto do adesivo", l["link_afiliada"])
+                   for l in stories)
+    fd = "\n".join(card("f", l, base + "feed/" + l["arquivo"], l["legenda"], "Copiar legenda") for l in feed)
     return f'''<!doctype html>
 <html lang="pt-BR">
 <head>
@@ -59,56 +65,83 @@ def montar(stories: list[dict], feed: list[dict], base: str) -> str:
   :root{{--coral:#C8435A;--coral-dark:#A9354A;--cream:#FDF3EA;--ink:#4A1F2A;--green:#1F9D4E}}
   *{{box-sizing:border-box;margin:0}}
   body{{background:var(--coral);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;padding:24px 16px 48px}}
-  main{{max-width:760px;margin:0 auto}}
+  main{{max-width:1180px;margin:0 auto}}
   header{{color:var(--cream);text-align:center}}
-  header h1{{font-size:26px;font-weight:800}}
-  header p{{font-size:14px;opacity:.9;margin-top:6px;line-height:1.45}}
-  .zip{{display:inline-block;margin-top:14px;background:var(--cream);color:var(--ink);font-weight:800;padding:12px 20px;border-radius:14px;text-decoration:none;box-shadow:0 5px 0 var(--coral-dark)}}
-  h3{{color:var(--cream);font-size:19px;margin:26px 4px 10px}}
-  .card{{display:flex;gap:14px;background:var(--cream);border-radius:18px;padding:12px;margin-bottom:12px;box-shadow:0 5px 0 var(--coral-dark)}}
+  header h1{{font-size:28px;font-weight:800}}
+  header p{{font-size:15px;opacity:.92;margin-top:8px;line-height:1.5}}
+  .secao{{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:30px 4px 12px}}
+  .secao h3{{color:var(--cream);font-size:20px}}
+  .todas{{background:var(--cream);color:var(--ink);border:0;font-weight:800;font-size:15px;padding:11px 18px;border-radius:12px;cursor:pointer;box-shadow:0 4px 0 var(--coral-dark)}}
+  .grade{{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}}
+  .card{{background:var(--cream);border-radius:18px;padding:12px;box-shadow:0 5px 0 var(--coral-dark);display:flex;flex-direction:column;gap:10px}}
   .card.ok{{opacity:.45}}
-  .card img{{width:96px;border-radius:10px;display:block;background:#fff}}
-  .info{{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px}}
+  .foto{{position:relative}}
+  .foto img{{width:100%;border-radius:12px;display:block;background:#fff}}
+  .num{{position:absolute;top:8px;left:8px;background:var(--ink);color:var(--cream);font-weight:800;font-size:22px;min-width:44px;height:44px;padding:0 10px;border-radius:99px;display:flex;align-items:center;justify-content:center}}
+  .info{{display:flex;flex-direction:column;gap:8px;flex:1}}
   .top{{display:flex;justify-content:space-between;font-size:13px}}
   .tag{{background:#FCE3E7;color:var(--coral);font-weight:700;padding:2px 9px;border-radius:99px}}
   .hora{{font-weight:800}}
-  h2{{font-size:14px;font-weight:600;line-height:1.3}}
-  details{{font-size:13px}} summary{{cursor:pointer;color:var(--coral);font-weight:600}}
-  pre{{white-space:pre-wrap;font-family:inherit;background:#fff;border-radius:10px;padding:8px;margin-top:6px}}
-  .acoes{{display:flex;gap:8px;margin-top:auto}}
-  .acoes button,.acoes a{{border:0;border-radius:10px;padding:9px 12px;font-weight:700;font-size:14px;cursor:pointer;text-decoration:none;text-align:center}}
-  .copiar{{flex:1;background:var(--coral);color:var(--cream)}}
-  .abrir{{background:#FCE3E7;color:var(--coral)}}
-  .feito{{background:#E6F4EA;color:var(--green)}}
+  h2{{font-size:15px;font-weight:600;line-height:1.3}}
+  .adesivo{{font-size:13px;color:#7a5560}}
+  pre{{white-space:pre-wrap;font-family:inherit;font-size:13px;background:#fff;border-radius:10px;padding:8px;max-height:120px;overflow:auto}}
+  .acoes{{display:flex;flex-direction:column;gap:8px;margin-top:auto}}
+  .acoes button{{border:0;border-radius:10px;padding:11px;font-weight:700;font-size:15px;cursor:pointer;background:var(--coral);color:var(--cream)}}
+  .acoes .baixar{{background:var(--ink)}}
+  .feito{{border:0;border-radius:10px;padding:8px;font-weight:700;font-size:13px;cursor:pointer;background:#E6F4EA;color:var(--green)}}
 </style>
 </head>
 <body>
 <main>
   <header>
     <h1>📲 Posts de {hoje}</h1>
-    <p>{len(stories)} stories (com adesivo de link) e {len(feed)} posts no feed.<br>
-    Baixe tudo, suba a arte, toque em <b>Copiar link</b> e cole no adesivo. Marque ✓ quando postar.</p>
-    <a class="zip" href="{e(base)}posts-do-dia.zip">⬇️ Baixar tudo (.zip)</a>
+    <p>{len(stories)} stories e {len(feed)} posts no feed. Os números são os mesmos da página Achados do dia.<br>
+    Story: <b>Baixar imagem</b> → sobe no Business Suite → adesivo de link → <b>Copiar link</b> e <b>Copiar texto</b>.</p>
   </header>
-  <h3>📸 Stories · cole o link no adesivo</h3>
+  <div class="secao"><h3>📸 Stories (com adesivo de link)</h3><button class="todas" data-grupo="s">⬇️ Baixar todos os stories</button></div>
+  <section class="grade">
 {st or '<p style="color:var(--cream)">Nenhum story hoje.</p>'}
-  <h3>🖼️ Feed · legenda pronta (link na bio)</h3>
+  </section>
+  <div class="secao"><h3>🖼️ Feed (legenda pronta, link na bio)</h3><button class="todas" data-grupo="f">⬇️ Baixar os {len(feed)} do feed</button></div>
+  <section class="grade">
 {fd or '<p style="color:var(--cream)">Nenhum post de feed hoje.</p>'}
+  </section>
 </main>
 <script>
   var DIA = {json.dumps(hoje)}, feitos = {{}};
   try {{ feitos = JSON.parse(localStorage.getItem("posts-" + DIA) || "{{}}"); }} catch (e) {{}}
+  function baixar(url, nome) {{
+    return fetch(url).then(function (r) {{ if (!r.ok) throw 0; return r.blob(); }}).then(function (b) {{
+      var a = document.createElement("a"); a.href = URL.createObjectURL(b); a.download = nome;
+      document.body.appendChild(a); a.click(); a.remove(); setTimeout(function () {{ URL.revokeObjectURL(a.href); }}, 5000);
+    }}).catch(function () {{ window.open(url, "_blank"); }});
+  }}
+  function aviso(b, t) {{ var o = b.textContent; b.textContent = t; setTimeout(function () {{ b.textContent = o; }}, 1500); }}
   document.querySelectorAll(".card").forEach(function (c) {{
     if (feitos[c.dataset.id]) c.classList.add("ok");
     c.querySelector(".feito").onclick = function () {{
       c.classList.toggle("ok"); feitos[c.dataset.id] = c.classList.contains("ok");
       try {{ localStorage.setItem("posts-" + DIA, JSON.stringify(feitos)); }} catch (e) {{}}
     }};
-    var b = c.querySelector(".copiar");
+  }});
+  document.querySelectorAll(".baixar").forEach(function (b) {{
+    b.onclick = function () {{ aviso(b, "Baixando…"); baixar(b.dataset.url, b.dataset.nome); }};
+  }});
+  document.querySelectorAll(".copiar").forEach(function (b) {{
     b.onclick = function () {{
-      var t = b.textContent;
-      navigator.clipboard.writeText(b.dataset.txt).then(function () {{ b.textContent = "Copiado!"; setTimeout(function () {{ b.textContent = t; }}, 1500); }})
-        .catch(function () {{ prompt("Copie:", b.dataset.txt); }});
+      navigator.clipboard.writeText(b.dataset.txt).then(function () {{ aviso(b, "✅ Copiado!"); }})
+        .catch(function () {{ window.prompt("Copie:", b.dataset.txt); }});
+    }};
+  }});
+  document.querySelectorAll(".todas").forEach(function (b) {{
+    b.onclick = async function () {{
+      var cards = document.querySelectorAll('.card[data-id^="' + b.dataset.grupo + '-"]');
+      for (var i = 0; i < cards.length; i++) {{
+        b.textContent = "Baixando " + (i + 1) + " de " + cards.length + "…";
+        await baixar(cards[i].dataset.url, cards[i].dataset.nome);
+        await new Promise(function (r) {{ setTimeout(r, 400); }});
+      }}
+      b.textContent = "✅ Pronto (" + cards.length + " imagens)";
     }};
   }});
 </script>

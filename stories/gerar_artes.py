@@ -6,8 +6,8 @@ Uso:
   python stories/gerar_artes.py --sem-busca     # não busca foto pelo link (só reserva e foto do robô)
 
 Saída em stories/saida/:
-  artes/story-NN-*.png   1080x1920, com a faixa para o adesivo de link (posta na mão)
-  feed/feed-NN-*.jpg     1080x1350, "Link na bio · Achados do dia · nº X"
+  artes/NN-story-*.png   1080x1920, com a faixa para o adesivo de link (posta na mão)
+  feed/NN-feed-*.jpg     1080x1350, "Link na bio · Achados do dia · nº X"
   agendar-stories.csv    nº, produto, loja, link, horário sugerido (8h-22h), arquivo
   agendar-feed.csv       nº, produto, loja, horário, arquivo, legenda pronta
   feed.json              o mesmo do feed, para o robô que posta sozinho
@@ -248,14 +248,14 @@ def main():
         pag = nav.new_page(viewport={"width": 1080, "height": 1920})
         for i, p in enumerate(com_foto):
             pag.set_content(montar_html(p, p["_foto"], selo=not args.sem_numero), wait_until="networkidle", timeout=30000)
-            arq = SAIDA / f"story-{p['numero']:02d}-{p['slug'][:40]}.png"
+            arq = SAIDA / f"{p['numero']:02d}-story-{p['slug'][:40]}.png"
             pag.screenshot(path=str(arq), clip={"x": 0, "y": 0, "width": 1080, "height": 1920})
             stories.append({"data": hoje, "numero": p["numero"], "produto": p["nome"], "loja": p["loja"],
                             "link_afiliada": p["link"], "horario_sugerido": horas[i], "arquivo": arq.name})
         pag.set_viewport_size({"width": 1080, "height": 1350})
         for i, p in enumerate(feed):
             pag.set_content(montar_html(p, p["_foto"], selo=not args.sem_numero, feed=True), wait_until="networkidle", timeout=30000)
-            arq = SAIDA_FEED / f"feed-{p['numero']:02d}-{p['slug'][:40]}.jpg"
+            arq = SAIDA_FEED / f"{p['numero']:02d}-feed-{p['slug'][:40]}.jpg"
             pag.screenshot(path=str(arq), type="jpeg", quality=92, clip={"x": 0, "y": 0, "width": 1080, "height": 1350})
             leg = legenda_feed(p)
             feed_linhas.append({"data": hoje, "numero": p["numero"], "produto": p["nome"], "loja": p["loja"],
