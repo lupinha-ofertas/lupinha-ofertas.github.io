@@ -9,6 +9,7 @@ import csv
 import html
 import json
 import sys
+from collections import Counter
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -34,16 +35,23 @@ def montar(stories: list[dict], feed: list[dict], base: str) -> str:
     e = html.escape
     hoje = datetime.now(ZoneInfo("America/Sao_Paulo")).strftime("%d/%m")
 
-    def card(tipo, l, img, texto, rotulo_texto, link=None, wpp=None):
-        botoes = f'<button class="baixar" data-url="{e(img)}" data-nome="{e(l["arquivo"])}">⬇️ Baixar imagem</button>'
+    def card(tipo, l, img, texto, rotulo_texto, link=None, wpp=None, frase=None):
+        img = img if l["arquivo"] else ""
+        botoes = f'<button class="baixar" data-url="{e(img)}" data-nome="{e(l["arquivo"])}">⬇️ Baixar imagem</button>' if img else ""
+        if frase:
+            botoes += f'<button class="copiar frase" data-txt="{e(frase)}">✍️ Copiar frase do story</button>'
         if link:
             botoes += f'<button class="copiar" data-txt="{e(link)}">🔗 Copiar link</button>'
         botoes += f'<button class="copiar" data-txt="{e(texto)}">📝 {rotulo_texto}</button>'
         if wpp:
             botoes += f'<button class="copiar wpp" data-txt="{e(wpp)}">💬 Copiar mensagem do WhatsApp</button>'
         prev = f'<pre>{e(texto)}</pre>' if not link else f'<p class="adesivo">Adesivo: <b>{e(texto)}</b></p>'
+        if frase:
+            prev = f'<p class="frase-txt">“{e(frase)}”</p>' + prev
+        foto = (f'<img src="{e(img)}" alt="" loading="lazy">' if img else
+                '<div class="semfoto">Sem arte ainda<br><small>use uma foto sua ou print do produto</small></div>')
         return f'''    <article class="card" data-id="{tipo}-{l["numero"]}" data-url="{e(img)}" data-nome="{e(l["arquivo"])}">
-      <div class="foto"><img src="{e(img)}" alt="" loading="lazy"><span class="num">{l["numero"]}</span></div>
+      <div class="foto">{foto}<span class="num">{l["numero"]}</span></div>
       <div class="info">
         <div class="top"><span class="tag">{e(l["loja"])}</span><span class="hora">🕒 {e(l.get("horario_sugerido") or l.get("horario") or "")}</span></div>
         <h2>{e(l["produto"])}</h2>
@@ -55,8 +63,10 @@ def montar(stories: list[dict], feed: list[dict], base: str) -> str:
 
     def cards_story(grupo, linhas):
         return "\n".join(card(grupo, l, base + "stories/" + l["arquivo"], TEXTO_ADESIVO, "Copiar texto do adesivo",
-                               l["link_afiliada"], l.get("mensagem_whatsapp")) for l in linhas)
-    reserva = [l for l in stories if l.get("tipo") == "reserva"]
+                               l["link_afiliada"], l.get("mensagem_whatsapp"),
+                               l.get("frase") if grupo == "r" else None) for l in linhas)
+    reserva = sorted((l for l in stories if l.get("tipo") == "reserva"), key=lambda l: (not l["arquivo"], int(l["numero"])))
+    lojas_r = " · ".join(f"{n} {loja}" for loja, n in sorted(Counter(l["loja"] for l in reserva).items(), key=lambda t: -t[1]))
     stories = [l for l in stories if l.get("tipo") != "reserva"]
     st, rs = cards_story("s", stories), cards_story("r", reserva)
     fd = "\n".join(card("f", l, base + "feed/" + l["arquivo"], l["legenda"], "Copiar legenda") for l in feed)
@@ -95,6 +105,11 @@ def montar(stories: list[dict], feed: list[dict], base: str) -> str:
   .acoes button{{border:0;border-radius:10px;padding:11px;font-weight:700;font-size:15px;cursor:pointer;background:var(--coral);color:var(--cream)}}
   .acoes .baixar{{background:var(--ink)}}
   .acoes .wpp{{background:var(--green)}}
+  .semfoto{{aspect-ratio:4/5;border-radius:12px;background:#fff;border:3px dashed #E2B3BC;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font-weight:700;color:var(--coral);padding:16px;line-height:1.4}}
+  .semfoto small{{font-weight:500;color:#7a5560}}
+  .frase-txt{{font-size:14px;font-weight:600;background:#fff;border-radius:10px;padding:8px}}
+  .acoes .frase{{background:#7A3E8E}}
+  .nota{{color:var(--cream);font-size:14px;margin:-4px 4px 12px;opacity:.92}}
   .feito{{border:0;border-radius:10px;padding:8px;font-weight:700;font-size:13px;cursor:pointer;background:#E6F4EA;color:var(--green)}}
 </style>
 </head>
@@ -113,7 +128,8 @@ def montar(stories: list[dict], feed: list[dict], base: str) -> str:
   <section class="grade">
 {fd or '<p style="color:var(--cream)">Nenhum post de feed hoje.</p>'}
   </section>
-  <div class="secao"><h3>🗂️ Reserva ({len(reserva)} ofertas Shopee extras)</h3><button class="todas" data-grupo="r">⬇️ Baixar toda a reserva</button></div>
+  <div class="secao"><h3>🗂️ Reserva: {len(reserva)} produtos para variar</h3><button class="todas" data-grupo="r">⬇️ Baixar as artes da reserva</button></div>
+  <p class="nota">{lojas_r}. Não estão entre os do dia. Cada um tem a frase do story pronta e o nº bate com a página Achados do dia.</p>
   <section class="grade">
 {rs or '<p style="color:var(--cream)">Sem reserva hoje.</p>'}
   </section>
@@ -146,7 +162,7 @@ def montar(stories: list[dict], feed: list[dict], base: str) -> str:
   }});
   document.querySelectorAll(".todas").forEach(function (b) {{
     b.onclick = async function () {{
-      var cards = document.querySelectorAll('.card[data-id^="' + b.dataset.grupo + '-"]');
+      var cards = [].filter.call(document.querySelectorAll('.card[data-id^="' + b.dataset.grupo + '-"]'), function (c) {{ return c.dataset.url; }});
       for (var i = 0; i < cards.length; i++) {{
         b.textContent = "Baixando " + (i + 1) + " de " + cards.length + "…";
         await baixar(cards[i].dataset.url, cards[i].dataset.nome);

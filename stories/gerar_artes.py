@@ -9,7 +9,8 @@ Saída em stories/saida/:
   artes/NN-story-*.png   1080x1920, com a faixa para o adesivo de link (posta na mão)
   feed/NN-feed-*.jpg     1080x1350, "Link na bio · Achados do dia · nº X"
   agendar-stories.csv    nº, produto, loja, link, tipo (lista/extra/reserva), horário sugerido (8h-22h),
-                         arquivo e a mensagem pronta do WhatsApp
+                         arquivo, a mensagem pronta do WhatsApp e uma frase curta de story
+                         (reserva sem foto entra sem arquivo: só link e frase)
   agendar-feed.csv       nº, produto, loja, horário, arquivo, legenda pronta
   feed.json              o mesmo do feed, para o robô que posta sozinho
 Produto sem foto (nem reserva, nem do robô, nem pelo link) fica de fora e vai para o resumo.
@@ -189,6 +190,17 @@ def legenda_feed(p: dict) -> str:
             f"#achadinhos #achadinhos{loja} #lupinhadaari")
 
 
+def frase_story(p: dict) -> str:
+    """Frase curta para escrever no story (a reserva tem botão de copiar)."""
+    palavras = p["nome"].split()
+    nome = " ".join(palavras[:7]).rstrip(" |-–,:;") + ("…" if len(palavras) > 7 else "")
+    onde = ("no " if p["loja"] == "Mercado Livre" else "na ") + p["loja"]
+    if p["loja"] == "Amazon" or not p.get("preco"):
+        return f"Achei {onde}: {nome} 😍 Confere o preço no link!"
+    preco = f"R$ {p['preco']}" + (f" ({p['desconto']}% OFF)" if p.get("desconto") else "")
+    return f"Achei {onde}: {nome} por {preco} 😍 Toca no link!"
+
+
 def _csv(caminho: Path, campos: list[str], linhas: list[dict]) -> None:
     caminho.parent.mkdir(parents=True, exist_ok=True)
     with caminho.open("w", newline="", encoding="utf-8-sig") as f:  # utf-8-sig + ";" abre certo no Excel BR
@@ -200,6 +212,7 @@ def _csv(caminho: Path, campos: list[str], linhas: list[dict]) -> None:
 def escrever_resumo(stories: list[dict], feed: list[dict], faltando: list) -> None:
     """Resumo no GitHub Actions (ou no terminal, rodando local)."""
     nr = sum(1 for l in stories if l.get("tipo") == "reserva")
+    faltando = [(p, m) for p, m in faltando if p.get("tipo") != "reserva"]  # reserva sem foto já está na página
     md = [f"## Posts do dia: {len(stories) - nr} stories + {nr} na reserva + {len(feed)} no feed", "",
           "| nº | Horário | Loja | Produto | Feed? |", "|---|---|---|---|---|"]
     nf = {l["numero"] for l in feed}
@@ -260,7 +273,13 @@ def main():
             stories.append({"data": hoje, "numero": p["numero"], "produto": p["nome"], "loja": p["loja"],
                             "link_afiliada": p["link"], "tipo": p.get("tipo", "lista"),
                             "horario_sugerido": "reserva" if p.get("tipo") == "reserva" else next(horas),
-                            "arquivo": arq.name, "mensagem_whatsapp": p.get("msg", "")})
+                            "arquivo": arq.name, "mensagem_whatsapp": p.get("msg", ""), "frase": frase_story(p)})
+        # reserva sem foto também vai para a página (sem arte, com link e frase para copiar)
+        for p, _ in faltando:
+            if p.get("tipo") == "reserva":
+                stories.append({"data": hoje, "numero": p["numero"], "produto": p["nome"], "loja": p["loja"],
+                                "link_afiliada": p["link"], "tipo": "reserva", "horario_sugerido": "reserva",
+                                "arquivo": "", "mensagem_whatsapp": p.get("msg", ""), "frase": frase_story(p)})
         pag.set_viewport_size({"width": 1080, "height": 1350})
         for i, p in enumerate(feed):
             pag.set_content(montar_html(p, p["_foto"], selo=not args.sem_numero, feed=True), wait_until="networkidle", timeout=30000)
@@ -272,7 +291,7 @@ def main():
             feed_posts.append({"numero": p["numero"], "imagem": MIDIA.format(ramo=args.ramo_midia) + f"feed/{arq.name}",
                                "legenda": leg, "horario": feed_linhas[-1]["horario"]})
         nav.close()
-    _csv(CSV, ["data", "numero", "produto", "loja", "link_afiliada", "tipo", "horario_sugerido", "arquivo", "mensagem_whatsapp"], stories)
+    _csv(CSV, ["data", "numero", "produto", "loja", "link_afiliada", "tipo", "horario_sugerido", "arquivo", "mensagem_whatsapp", "frase"], stories)
     _csv(CSV_FEED, ["data", "numero", "produto", "loja", "horario", "arquivo", "legenda"], feed_linhas)
     FEED_JSON.write_text(json.dumps({"data": hoje_dt.date().isoformat(), "posts": feed_posts}, ensure_ascii=False, indent=1), encoding="utf-8")
     # mesma numeração em tudo: o nº é o da lista do dia
