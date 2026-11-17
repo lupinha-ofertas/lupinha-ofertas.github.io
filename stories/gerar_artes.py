@@ -30,6 +30,7 @@ from lista import ler_produtos  # noqa: E402
 from fotos import achar_foto, foto_reserva  # noqa: E402
 
 SAIDA = PASTA / "saida" / "artes"
+SAIDA_BIO = PASTA / "saida" / "artes-bio"  # versão "Link na bio" (JPEG, para o robô postar)
 CSV = PASTA / "saida" / "agendar-stories.csv"
 NUMERACAO = PASTA / "saida" / "numeracao.json"  # nº da lista -> nº do achado (a página usa)
 HORARIOS = ["09:00", "12:00", "15:00", "18:00", "21:00"]  # horário sugerido de cada story
@@ -77,7 +78,17 @@ def _nome(nome: str) -> str:
             f'-webkit-box-orient:vertical;overflow:hidden">{html.escape(nome)}</div>')
 
 
-def montar_html(p: dict, foto: Path | None, selo: bool = True) -> str:
+def _faixa(p: dict, selo: bool, bio: bool) -> str:
+    if bio:
+        texto = "Link na bio · Achados do dia" + (f" · nº {p['numero']}" if selo else "")
+        return (f'<div style="flex-grow:1;height:86px;display:flex;align-items:center;justify-content:center;'
+                f'font-size:34px;font-weight:800;letter-spacing:-.5px;color:{ROSA_ESC}">{html.escape(texto)}</div>')
+    return (f'<div style="flex-grow:1;height:86px;border-radius:999px;border:3px dashed {BORDA};display:flex;align-items:center;'
+            f'justify-content:center;font-size:28px;font-weight:500;color:{CINZA}">toque no link para comprar</div>')
+
+
+def montar_html(p: dict, foto: Path | None, selo: bool = True, bio: bool = False) -> str:
+    """bio=True: versão para o robô postar (sem adesivo de link): faixa "Link na bio · Achados do dia · nº X"."""
     n = p["numero"] if selo else None
     amazon = p["loja"] == "Amazon"
     if amazon:
@@ -116,7 +127,7 @@ def montar_html(p: dict, foto: Path | None, selo: bool = True) -> str:
 <div style="position:relative;display:flex;align-items:center;gap:24px;background:{CREME};border-radius:999px;padding:16px 28px 16px 16px;height:130px">
 <div style="width:98px;height:98px;border-radius:50%;background:{ROSA};display:flex;align-items:center;justify-content:center;flex-shrink:0">
 <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="{CREME}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.5 1.5"/><path d="M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.5-1.5"/></svg></div>
-<div style="flex-grow:1;height:86px;border-radius:999px;border:3px dashed {BORDA};display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:500;color:{CINZA}">toque no link para comprar</div></div>
+{_faixa(p, selo, bio)}</div>
 <div style="position:relative;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center">
 <div style="font-size:32px;font-weight:700">@lupinhadaari</div>
 <div style="font-size:26px;font-weight:600">{rodape}</div></div>
@@ -239,6 +250,10 @@ def main():
             pag.set_content(montar_html(p, foto, selo=not args.sem_numero), wait_until="networkidle", timeout=30000)
             arq = SAIDA / f"achado-{ordem:02d}-{p['slug'][:40]}.png"
             pag.screenshot(path=str(arq), clip={"x": 0, "y": 0, "width": 1080, "height": 1920})
+            pag.set_content(montar_html(p, foto, selo=not args.sem_numero, bio=True), wait_until="networkidle", timeout=30000)
+            SAIDA_BIO.mkdir(parents=True, exist_ok=True)
+            pag.screenshot(path=str(SAIDA_BIO / f"{arq.stem}.jpg"), type="jpeg", quality=92,
+                           clip={"x": 0, "y": 0, "width": 1080, "height": 1920})
             print(f"✅ nº {ordem} {p['loja']}: {arq.name} (foto: {origem if foto else 'sem foto'})")
             linhas.append({"data": hoje, "numero": ordem, "produto": p["nome"], "loja": p["loja"], "link_afiliada": p["link"],
                            "horario_sugerido": HORARIOS[ordem - 1] if ordem <= len(HORARIOS) else "", "arquivo": arq.name})

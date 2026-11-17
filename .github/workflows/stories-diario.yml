@@ -52,6 +52,7 @@ jobs:
           name: stories-${{ steps.trava.outputs.hoje }}
           path: |
             stories/saida/artes/*.png
+            stories/saida/artes-bio/*.jpg
             stories/saida/agendar-stories.csv
             achados/index.html
           retention-days: 30
@@ -64,3 +65,14 @@ jobs:
           git diff --cached --quiet && exit 0
           git commit -m "Achados do dia ${{ steps.trava.outputs.hoje }}"
           git pull --rebase origin main && git push origin HEAD:main
+      - name: Imagem pública para o teste de story (só na branch stories-fase1)
+        if: steps.trava.outputs.pronto != 'sim' && github.ref == 'refs/heads/stories-fase1'
+        run: |
+          mkdir -p stories/teste
+          cp "$(ls stories/saida/artes-bio/*.jpg | head -1)" stories/teste/story-teste.jpg
+          git config user.name "lupinha-robo-stories"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add stories/teste/story-teste.jpg
+          git diff --cached --quiet && exit 0
+          git commit -m "Imagem de teste do story (Link na bio)"
+          git pull --rebase origin stories-fase1 && git push origin HEAD:stories-fase1
