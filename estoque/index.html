@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Completar estoque · Lupinha</title>
+<style>
+  :root{--coral:#C8435A;--coral-dark:#A9354A;--cream:#FDF3EA;--ink:#4A1F2A;--green:#1F9D4E}
+  *{box-sizing:border-box;margin:0}
+  body{background:var(--coral);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;padding:24px 16px 120px}
+  main{max-width:900px;margin:0 auto}
+  header{color:var(--cream);text-align:center}
+  header h1{font-size:26px;font-weight:800}
+  header p{font-size:14px;opacity:.92;margin-top:8px;line-height:1.5}
+  .abas{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:18px 0}
+  .abas button{border:0;border-radius:99px;padding:9px 16px;font-weight:700;cursor:pointer;background:rgba(255,255,255,.18);color:var(--cream)}
+  .abas button.on{background:var(--cream);color:var(--ink)}
+  .item{display:flex;gap:12px;align-items:center;background:var(--cream);border-radius:16px;padding:12px;margin-bottom:10px;box-shadow:0 4px 0 var(--coral-dark)}
+  .item.ok{outline:3px solid var(--green)}
+  .prev{width:64px;height:64px;border-radius:10px;background:#fff;object-fit:contain;flex:none}
+  .info{flex:1;min-width:0}
+  .info h2{font-size:14px;font-weight:600;line-height:1.3}
+  .info small{color:#7a5560;font-size:12px}
+  .campos{display:flex;gap:8px;align-items:center;margin-top:8px;flex-wrap:wrap}
+  .campos a{background:var(--ink);color:var(--cream);text-decoration:none;font-weight:700;font-size:13px;padding:9px 12px;border-radius:10px;white-space:nowrap}
+  .campos input{flex:1;min-width:160px;border:2px solid #e3c3ca;border-radius:10px;padding:9px 10px;font-size:14px}
+  .barra{position:fixed;left:0;right:0;bottom:0;background:var(--ink);color:var(--cream);padding:14px 16px;display:flex;gap:12px;justify-content:center;align-items:center;flex-wrap:wrap}
+  .barra button{border:0;border-radius:12px;padding:12px 20px;font-weight:800;font-size:16px;cursor:pointer;background:var(--green);color:#fff}
+  .barra button:disabled{opacity:.4;cursor:default}
+  .vazio{color:var(--cream);text-align:center;margin-top:20px}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>🧺 Completar estoque</h1>
+    <p><b>Amazon:</b> abra o produto, clique com o botão direito na foto → <i>Copiar endereço da imagem</i> e cole.<br>
+    <b>Mercado Livre e Shein:</b> abra o produto e digite o preço <i>riscado</i> (ex.: 129,90). Sem preço riscado, pule.<br>
+    No fim, clique em <b>Salvar</b>: abre o GitHub com tudo pronto, é só clicar em <b>Create</b>. O robô atualiza o estoque sozinho.</p>
+    <p id="data"></p>
+  </header>
+  <div class="abas" id="abas"></div>
+  <div id="lista"><p class="vazio">Carregando…</p></div>
+</main>
+<div class="barra"><span id="conta">Nada preenchido ainda</span><button id="salvar" disabled>💾 Salvar no estoque</button></div>
+<script>
+  var REPO = "https://github.com/lupinha-ofertas/robo-ofertas/issues/new";
+  var MAX = 50; // por vez (limite de tamanho do link do GitHub)
+  var itens = [], aba = "Amazon", rasc = {};
+  try { rasc = JSON.parse(localStorage.getItem("estoque-rascunho") || "{}"); } catch (e) {}
+  function guardar() { try { localStorage.setItem("estoque-rascunho", JSON.stringify(rasc)); } catch (e) {} }
+  function chave(i) { return i.arquivo + "|" + i.id; }
+  function valido(i, v) {
+    return i.falta === "foto" ? /^https:\/\/\S+$/.test(v) : /^\d{1,6}([.,]\d{1,2})?$/.test(v);
+  }
+  function preenchidos() { return itens.filter(function (i) { var v = (rasc[chave(i)] || "").trim(); return v && valido(i, v); }); }
+  function atualizarBarra() {
+    var n = preenchidos().length, b = document.getElementById("salvar");
+    document.getElementById("conta").textContent = n ? n + " preenchido(s)" + (n > MAX ? " · salva " + MAX + " por vez" : "") : "Nada preenchido ainda";
+    b.disabled = !n;
+  }
+  function desenhar() {
+    var lista = document.getElementById("lista"), da = itens.filter(function (i) { return i.loja === aba; });
+    document.querySelectorAll("#abas button").forEach(function (b) { b.classList.toggle("on", b.dataset.loja === aba); });
+    if (!da.length) { lista.innerHTML = '<p class="vazio">Nada faltando aqui 🎉</p>'; return; }
+    lista.innerHTML = "";
+    da.forEach(function (i) {
+      var foto = i.falta === "foto", k = chave(i), v = rasc[k] || "";
+      var el = document.createElement("div"); el.className = "item" + (v && valido(i, v) ? " ok" : "");
+      el.innerHTML = (foto ? '<img class="prev" alt="">' : "") +
+        '<div class="info"><h2></h2><small></small><div class="campos"><a target="_blank" rel="noopener">Abrir produto ↗</a>' +
+        '<input></div></div>';
+      el.querySelector("h2").textContent = i.nome;
+      el.querySelector("small").textContent = foto ? "falta: foto" : "falta: preço antigo" + (i.preco ? " · preço atual R$ " + String(i.preco).replace(".", ",") : "");
+      el.querySelector("a").href = i.link;
+      var inp = el.querySelector("input"), img = el.querySelector(".prev");
+      inp.placeholder = foto ? "cole o endereço da imagem (https://…)" : "preço riscado, ex.: 129,90";
+      inp.value = v;
+      if (img && v) img.src = v;
+      inp.oninput = function () {
+        rasc[k] = inp.value.trim(); guardar();
+        el.classList.toggle("ok", !!rasc[k] && valido(i, rasc[k]));
+        if (img) img.src = valido(i, rasc[k]) ? rasc[k] : "";
+        atualizarBarra();
+      };
+      lista.appendChild(el);
+    });
+  }
+  document.getElementById("salvar").onclick = function () {
+    var feitos = preenchidos().slice(0, MAX);
+    var linhas = feitos.map(function (i) { return i.arquivo + " | " + i.id + " | " + i.falta + " | " + rasc[chave(i)].trim(); });
+    var corpo = "Preenchido pela página Completar estoque (" + feitos.length + " produto(s)):\n\n" + linhas.join("\n");
+    var url = REPO + "?title=" + encodeURIComponent("Estoque: " + feitos.length + " produto(s)") + "&body=" + encodeURIComponent(corpo);
+    window.open(url, "_blank");
+    feitos.forEach(function (i) { delete rasc[chave(i)]; });
+    itens = itens.filter(function (i) { return feitos.indexOf(i) < 0; });
+    guardar(); desenhar(); atualizarBarra();
+  };
+  fetch("../enviar/pendencias.json?t=" + Date.now()).then(function (r) { return r.json(); }).then(function (d) {
+    itens = d.itens || [];
+    document.getElementById("data").textContent = "Lista de " + (d.data || "?").split("-").reverse().join("/") + " · " + itens.length + " produtos para completar";
+    var abas = document.getElementById("abas");
+    ["Amazon", "Mercado Livre", "Shein"].forEach(function (l) {
+      var n = itens.filter(function (i) { return i.loja === l; }).length;
+      var b = document.createElement("button"); b.dataset.loja = l;
+      b.textContent = l + " (" + n + ")"; b.onclick = function () { aba = l; desenhar(); };
+      abas.appendChild(b);
+    });
+    desenhar(); atualizarBarra();
+  }).catch(function () { document.getElementById("lista").innerHTML = '<p class="vazio">Ainda sem lista. Ela sai junto com as ofertas do dia.</p>'; });
+</script>
+</body>
+</html>

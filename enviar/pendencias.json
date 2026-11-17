@@ -1,0 +1,1598 @@
+{
+ "data": "2026-11-17",
+ "itens": [
+  {
+   "id": "amz-B0C2ZNDWK6",
+   "loja": "Amazon",
+   "nome": "Conjunto de Bowls Tigelas de Inox com Tampa Electrolux",
+   "link": "https://www.amazon.com.br/dp/B0C2ZNDWK6?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B0DK4975DJ",
+   "loja": "Amazon",
+   "nome": "NIVEA Kit Loção Hidratante Milk 400ml",
+   "link": "https://www.amazon.com.br/dp/B0DK4975DJ?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B07BSRM75G",
+   "loja": "Amazon",
+   "nome": "Finish Powerball Tabletes Lava-Louças 30 un",
+   "link": "https://www.amazon.com.br/dp/B07BSRM75G?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B07H113TPQ",
+   "loja": "Amazon",
+   "nome": "Elseve Óleo Extraordinário Finalizador Capilar",
+   "link": "https://www.amazon.com.br/dp/B07H113TPQ?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B074LTNQBP",
+   "loja": "Amazon",
+   "nome": "Lola Morte Súbita Máscara Super Hidratante 450g",
+   "link": "https://www.amazon.com.br/dp/B074LTNQBP?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B09KCYYZNG",
+   "loja": "Amazon",
+   "nome": "Lola Densidade Acidificante Capilar 250g",
+   "link": "https://www.amazon.com.br/dp/B09KCYYZNG?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B072MK7BN2",
+   "loja": "Amazon",
+   "nome": "La Roche-Posay Cicaplast Baume B5+",
+   "link": "https://www.amazon.com.br/dp/B072MK7BN2?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B0CDJ4L7CZ",
+   "loja": "Amazon",
+   "nome": "Sanduicheira Elétrica Cadence Click",
+   "link": "https://www.amazon.com.br/dp/B0CDJ4L7CZ?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B09GHN14FP",
+   "loja": "Amazon",
+   "nome": "Lola Danos Vorazes Óleo Reparador 50ml",
+   "link": "https://www.amazon.com.br/dp/B09GHN14FP?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B0CTR4FL63",
+   "loja": "Amazon",
+   "nome": "Principia Protetor Solar Mix de Filtros UV",
+   "link": "https://www.amazon.com.br/dp/B0CTR4FL63?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B098FKK5QD",
+   "loja": "Amazon",
+   "nome": "Detergente para Extratoras WAP Concentrado",
+   "link": "https://www.amazon.com.br/dp/B098FKK5QD?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B09GSQMVJS",
+   "loja": "Amazon",
+   "nome": "L'Oréal Professionnel Inforcer Shampoo Fortificante",
+   "link": "https://www.amazon.com.br/dp/B09GSQMVJS?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B0C2R9DDPJ",
+   "loja": "Amazon",
+   "nome": "Cif Derrete Gordura 500ml",
+   "link": "https://www.amazon.com.br/dp/B0C2R9DDPJ?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B086F9M5T8",
+   "loja": "Amazon",
+   "nome": "3 Corações Gourmet Sul de Minas Moído 250g",
+   "link": "https://www.amazon.com.br/dp/B086F9M5T8?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B0FWCTHSWQ",
+   "loja": "Amazon",
+   "nome": "Percarbonato de Sódio 1kg Tira Manchas",
+   "link": "https://www.amazon.com.br/dp/B0FWCTHSWQ?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B08B5GFHZN",
+   "loja": "Amazon",
+   "nome": "Protetor Solar Facial Anasol FPS 70 Clareador",
+   "link": "https://www.amazon.com.br/dp/B08B5GFHZN?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B08CPW5BR2",
+   "loja": "Amazon",
+   "nome": "Kit 5 Potes de Vidro 640ml com Tampa",
+   "link": "https://www.amazon.com.br/dp/B08CPW5BR2?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B076M7Z56P",
+   "loja": "Amazon",
+   "nome": "Conjunto 3 Facas Inox Tramontina",
+   "link": "https://www.amazon.com.br/dp/B076M7Z56P?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B0G3YGYW4Z",
+   "loja": "Amazon",
+   "nome": "Sérum Leave-in Elseve Colágeno",
+   "link": "https://www.amazon.com.br/dp/B0G3YGYW4Z?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B0G45KPX15",
+   "loja": "Amazon",
+   "nome": "Máscara Elseve Colágeno Encorpador",
+   "link": "https://www.amazon.com.br/dp/B0G45KPX15?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B07F1TLCYG",
+   "loja": "Amazon",
+   "nome": "Óleo Corporal Paixão Avelã 100ml",
+   "link": "https://www.amazon.com.br/dp/B07F1TLCYG?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B0D8CSWFJ8",
+   "loja": "Amazon",
+   "nome": "Nescafé Farmers Origins Cápsula (Nespresso)",
+   "link": "https://www.amazon.com.br/dp/B0D8CSWFJ8?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B099Z2K8PW",
+   "loja": "Amazon",
+   "nome": "Orfeu Clássico Drip Coffee 10 Sachês",
+   "link": "https://www.amazon.com.br/dp/B099Z2K8PW?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B09VM5MPDZ",
+   "loja": "Amazon",
+   "nome": "3 Corações Drip Coffee Dark Roast",
+   "link": "https://www.amazon.com.br/dp/B09VM5MPDZ?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B00EV5DLL0",
+   "loja": "Amazon",
+   "nome": "Filtro de Papel Melitta 103 30 unidades",
+   "link": "https://www.amazon.com.br/dp/B00EV5DLL0?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B0B75DWXZX",
+   "loja": "Amazon",
+   "nome": "3 Corações Drip Coffee Portinari",
+   "link": "https://www.amazon.com.br/dp/B0B75DWXZX?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B09QFLV3CD",
+   "loja": "Amazon",
+   "nome": "Coffee Mais ARARA Drip Coffee",
+   "link": "https://www.amazon.com.br/dp/B09QFLV3CD?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B0789M146B",
+   "loja": "Amazon",
+   "nome": "Faqueiro Tramontina Búzios Inox 24 Peças",
+   "link": "https://www.amazon.com.br/dp/B0789M146B?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B07HDSL78H",
+   "loja": "Amazon",
+   "nome": "Café Especial Orfeu Clássico em Grãos 1kg",
+   "link": "https://www.amazon.com.br/dp/B07HDSL78H?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B07K8XJF9D",
+   "loja": "Amazon",
+   "nome": "Garrafa Térmica Inox Parede Dupla 591ml",
+   "link": "https://www.amazon.com.br/dp/B07K8XJF9D?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B0754J31B7",
+   "loja": "Amazon",
+   "nome": "Pilha Recarregável AA Elgin 4 unidades",
+   "link": "https://www.amazon.com.br/dp/B0754J31B7?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B0C9L4ZNZ8",
+   "loja": "Amazon",
+   "nome": "Skin Aqua Protetor Solar Super Moisture Milk",
+   "link": "https://www.amazon.com.br/dp/B0C9L4ZNZ8?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B07HWWTY3K",
+   "loja": "Amazon",
+   "nome": "Café Orfeu Intenso em Grãos 1kg",
+   "link": "https://www.amazon.com.br/dp/B07HWWTY3K?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B0BXFM8PXN",
+   "loja": "Amazon",
+   "nome": "3 Corações Cápsulas Cerrado Mineiro (Nespresso)",
+   "link": "https://www.amazon.com.br/dp/B0BXFM8PXN?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B089T37GDT",
+   "loja": "Amazon",
+   "nome": "Orfeu Bourbon Amarelo Moído",
+   "link": "https://www.amazon.com.br/dp/B089T37GDT?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B077L8FVJD",
+   "loja": "Amazon",
+   "nome": "Orfeu Intenso Moído 250g",
+   "link": "https://www.amazon.com.br/dp/B077L8FVJD?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B0CCZNFDPF",
+   "loja": "Amazon",
+   "nome": "Strap Musculação Punch Par",
+   "link": "https://www.amazon.com.br/dp/B0CCZNFDPF?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B0B7K553HL",
+   "loja": "Amazon",
+   "nome": "3 Corações Drip Coffee Matas de Minas",
+   "link": "https://www.amazon.com.br/dp/B0B7K553HL?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B008S8RLTE",
+   "loja": "Amazon",
+   "nome": "Café Pilão Grãos Espresso 1kg",
+   "link": "https://www.amazon.com.br/dp/B008S8RLTE?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B0BVSTCXZY",
+   "loja": "Amazon",
+   "nome": "Hada Labo Gokujyun White Gel Hidratante",
+   "link": "https://www.amazon.com.br/dp/B0BVSTCXZY?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B0CMGXX165",
+   "loja": "Amazon",
+   "nome": "Pisca LED RGB 10m com Bluetooth e Controle",
+   "link": "https://www.amazon.com.br/dp/B0CMGXX165?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B0FN9F9FMB",
+   "loja": "Amazon",
+   "nome": "Pisca Smart Bluetooth 100 LEDs 10m",
+   "link": "https://www.amazon.com.br/dp/B0FN9F9FMB?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B0FNND59BM",
+   "loja": "Amazon",
+   "nome": "Selene Legging Sem Costura Zero Transparência",
+   "link": "https://www.amazon.com.br/dp/B0FNND59BM?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B0GTPWBMK6",
+   "loja": "Amazon",
+   "nome": "Shorts Academia Feminino Cintura Alta Romantic Crown",
+   "link": "https://www.amazon.com.br/dp/B0GTPWBMK6?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B0FH7BL59G",
+   "loja": "Amazon",
+   "nome": "Balão Letreiro Feliz Natal Metalizado",
+   "link": "https://www.amazon.com.br/dp/B0FH7BL59G?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B07QKN5NF1",
+   "loja": "Amazon",
+   "nome": "Liquidificador Mondial Turbo Power 550W",
+   "link": "https://www.amazon.com.br/dp/B07QKN5NF1?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B09DF9NWC7",
+   "loja": "Amazon",
+   "nome": "Corda de Pular Sem Emaranhados",
+   "link": "https://www.amazon.com.br/dp/B09DF9NWC7?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B09B17MQLC",
+   "loja": "Amazon",
+   "nome": "Ventilador de Mesa Mondial 30cm Super Power",
+   "link": "https://www.amazon.com.br/dp/B09B17MQLC?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B0DVMQVVDY",
+   "loja": "Amazon",
+   "nome": "Fone Sem Fio Philips TWS TAT1109",
+   "link": "https://www.amazon.com.br/dp/B0DVMQVVDY?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B01C5WCNPA",
+   "loja": "Amazon",
+   "nome": "Café Santa Mônica Gourmet em Grãos 1kg",
+   "link": "https://www.amazon.com.br/dp/B01C5WCNPA?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B07FW4BVZW",
+   "loja": "Amazon",
+   "nome": "Touca de Natação Speedo Flat Cap Silicone",
+   "link": "https://www.amazon.com.br/dp/B07FW4BVZW?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B08X1B72TP",
+   "loja": "Amazon",
+   "nome": "Bandeja de Bambu Lyor 28cm Mesa Posta",
+   "link": "https://www.amazon.com.br/dp/B08X1B72TP?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B0FDB9Z96L",
+   "loja": "Amazon",
+   "nome": "Fone Bluetooth 5.4 à Prova D'Água 45h",
+   "link": "https://www.amazon.com.br/dp/B0FDB9Z96L?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B07YVPPZKQ",
+   "loja": "Amazon",
+   "nome": "Café América em Grãos 1kg Torra Média",
+   "link": "https://www.amazon.com.br/dp/B07YVPPZKQ?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B0BSP1XKYL",
+   "loja": "Amazon",
+   "nome": "Mini Grill Oster 2 em 1 1000W",
+   "link": "https://www.amazon.com.br/dp/B0BSP1XKYL?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B092XLYV4J",
+   "loja": "Amazon",
+   "nome": "Coffee Mais Café Super Especial Moído Clássico",
+   "link": "https://www.amazon.com.br/dp/B092XLYV4J?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B0F4RFKH1S",
+   "loja": "Amazon",
+   "nome": "Selene Legging Academia Poliamida Cintura Alta",
+   "link": "https://www.amazon.com.br/dp/B0F4RFKH1S?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B085YDLGFR",
+   "loja": "Amazon",
+   "nome": "Caixa de Som Bluetooth I2GO Essential Sound Go",
+   "link": "https://www.amazon.com.br/dp/B085YDLGFR?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B07DNJ2QSP",
+   "loja": "Amazon",
+   "nome": "Baggio Cápsulas Aroma Caramelo (Nespresso)",
+   "link": "https://www.amazon.com.br/dp/B07DNJ2QSP?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B09GMT4KLC",
+   "loja": "Amazon",
+   "nome": "Colchonete Impermeável Academia Yoga",
+   "link": "https://www.amazon.com.br/dp/B09GMT4KLC?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B08TM18LQB",
+   "loja": "Amazon",
+   "nome": "Café Italle Arábica em Grãos 1kg",
+   "link": "https://www.amazon.com.br/dp/B08TM18LQB?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B0FCMLQ95G",
+   "loja": "Amazon",
+   "nome": "Caixa de Som Bluetooth INAVA Go-4",
+   "link": "https://www.amazon.com.br/dp/B0FCMLQ95G?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B0FN88Q38T",
+   "loja": "Amazon",
+   "nome": "Cortina 300 LEDs 3x3m a Pilha com Temporizador",
+   "link": "https://www.amazon.com.br/dp/B0FN88Q38T?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B0GTPWTTGM",
+   "loja": "Amazon",
+   "nome": "Calça Legging Feminina Fitness Romantic Crown",
+   "link": "https://www.amazon.com.br/dp/B0GTPWTTGM?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B0FXSBN5BB",
+   "loja": "Amazon",
+   "nome": "Cortina de LED 3x3m 300 LEDs",
+   "link": "https://www.amazon.com.br/dp/B0FXSBN5BB?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B08HD2BX52",
+   "loja": "Amazon",
+   "nome": "Caminho de Mesa de Natal Boneco Nevado",
+   "link": "https://www.amazon.com.br/dp/B08HD2BX52?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B0CMHZ7SK5",
+   "loja": "Amazon",
+   "nome": "Luz de Fada LED 10m Fio de Cobre",
+   "link": "https://www.amazon.com.br/dp/B0CMHZ7SK5?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B096JX36K8",
+   "loja": "Amazon",
+   "nome": "Cordão de Luz LED 3m 300 LEDs USB Fio de Cobre",
+   "link": "https://www.amazon.com.br/dp/B096JX36K8?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B0GMMKKQDJ",
+   "loja": "Amazon",
+   "nome": "Fone Bluetooth 5.3 Graves Potentes",
+   "link": "https://www.amazon.com.br/dp/B0GMMKKQDJ?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B0CCJK29GH",
+   "loja": "Amazon",
+   "nome": "Caminho de Mesa de Natal Vermelho Pinheiro",
+   "link": "https://www.amazon.com.br/dp/B0CCJK29GH?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B0GSRB8D19",
+   "loja": "Amazon",
+   "nome": "Fone Bluetooth INAVA 3ª Geração 50h",
+   "link": "https://www.amazon.com.br/dp/B0GSRB8D19?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B0FW18PWKW",
+   "loja": "Amazon",
+   "nome": "Balão Inflável 3D Papai Noel 63cm",
+   "link": "https://www.amazon.com.br/dp/B0FW18PWKW?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B0FM9S5J2Q",
+   "loja": "Amazon",
+   "nome": "Festão de Natal Tradicional",
+   "link": "https://www.amazon.com.br/dp/B0FM9S5J2Q?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "amz-B0BJJZBC7Z",
+   "loja": "Amazon",
+   "nome": "Jogo Americano de Natal Poinsétia",
+   "link": "https://www.amazon.com.br/dp/B0BJJZBC7Z?tag=lupinhadaari-20",
+   "preco": null,
+   "falta": "foto",
+   "arquivo": "estoque/amazon.csv"
+  },
+  {
+   "id": "B09XJL4B9H",
+   "loja": "Amazon",
+   "nome": "Electrolux Kit 12 Potes Herméticos",
+   "link": "https://link.amazon/B0fVKVspV",
+   "preco": 72.9,
+   "falta": "foto",
+   "arquivo": "curadoria/casa/amazon.csv"
+  },
+  {
+   "id": "B07NQ9PFKN",
+   "loja": "Amazon",
+   "nome": "Flash Limp Mop Giratório Fit com Balde 8 L",
+   "link": "https://link.amazon/B0bl7GVSA",
+   "preco": 52.67,
+   "falta": "foto",
+   "arquivo": "curadoria/casa/amazon.csv"
+  },
+  {
+   "id": "B08YZGMQ3S",
+   "loja": "Amazon",
+   "nome": "Neutrogena Hidratante Corporal Hidrata&Repara 400 ml",
+   "link": "https://link.amazon/B0gNagjCu",
+   "preco": 23.09,
+   "falta": "foto",
+   "arquivo": "curadoria/beleza/amazon.csv"
+  },
+  {
+   "id": "B07LC6189D",
+   "loja": "Amazon",
+   "nome": "Electrolux Kit 4 Potes Herméticos com Vedação de Silicone",
+   "link": "https://link.amazon/B0iXwVzmU",
+   "preco": 38.69,
+   "falta": "foto",
+   "arquivo": "curadoria/casa/amazon.csv"
+  },
+  {
+   "id": "B0BJ347WND",
+   "loja": "Amazon",
+   "nome": "La Roche-Posay Anthelios Airlicium+ FPS 80 Protetor Solar Facial",
+   "link": "https://link.amazon/B02vKa9O6",
+   "preco": 60.73,
+   "falta": "foto",
+   "arquivo": "curadoria/beleza/amazon.csv"
+  },
+  {
+   "id": "B0CTFGL2NQ",
+   "loja": "Amazon",
+   "nome": "Cortina de Luzes LED de Fada 3x3 m com Controle (Natal)",
+   "link": "https://www.amazon.com.br/dp/B0CTFGL2NQ?tag=lupinhadaari-20",
+   "preco": 46.5,
+   "falta": "foto",
+   "arquivo": "curadoria/casa/amazon.csv"
+  },
+  {
+   "id": "ml-1ALSwgh",
+   "loja": "Mercado Livre",
+   "nome": "Kit 2 Organizadores de Gaveta Colmeia 24 Nichos Cada para Roupas Íntim",
+   "link": "https://meli.la/1ALSwgh",
+   "preco": 32.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-1EHh3tV",
+   "loja": "Mercado Livre",
+   "nome": "Tapete Passadeira Cozinha Axia 1,40mx0,50cm Tear Jacquard",
+   "link": "https://meli.la/1EHh3tV",
+   "preco": 59.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-2bu5gSv",
+   "loja": "Mercado Livre",
+   "nome": "Luminária De Mesa Dapon Articulada Abajur Modelo Pixar Com Base e Garr",
+   "link": "https://meli.la/2bu5gSv",
+   "preco": 67.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-11rSG7W",
+   "loja": "Mercado Livre",
+   "nome": "EUCERIN Pomada Reparadora Aquaphor 50ml, Hidratação Intensiva, Hidrata",
+   "link": "https://meli.la/11rSG7W",
+   "preco": 62.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-2JyvkzU",
+   "loja": "Mercado Livre",
+   "nome": "Skincare Vitaminac Clareador+serum+mousse+protetor Dermachem",
+   "link": "https://meli.la/2JyvkzU",
+   "preco": 75.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-2cPo9hg",
+   "loja": "Mercado Livre",
+   "nome": "Kit Skincare Vitamina C Com Protetor Solar Facial Clareador",
+   "link": "https://meli.la/2cPo9hg",
+   "preco": 52.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-1a3PSJi",
+   "loja": "Mercado Livre",
+   "nome": "Natura Todo Dia Body Splash Loção 200ml Frasco Fragrância Macadâmia",
+   "link": "https://meli.la/1a3PSJi",
+   "preco": 56.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-1JFqJw3",
+   "loja": "Mercado Livre",
+   "nome": "Base Líquida Skin Foundation 35ml - Océane Edition",
+   "link": "https://meli.la/1JFqJw3",
+   "preco": 52.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-2Sqnz7N",
+   "loja": "Mercado Livre",
+   "nome": "L'Oréal Paris Elseve Collagen Lifter Kit Shampoo, Condicionador e Sérum",
+   "link": "https://meli.la/2Sqnz7N",
+   "preco": 84.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-1muy26y",
+   "loja": "Mercado Livre",
+   "nome": "Pisca Cortina 300 Leds 3x3m Usb Ip44 8 Modos Iluminação Luzes Fada Dec",
+   "link": "https://meli.la/1muy26y",
+   "preco": 27.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-1RJdfzi",
+   "loja": "Mercado Livre",
+   "nome": "3x3m Cortina 300 Led Pisca Pisca Decoração Natal Duplo Volt",
+   "link": "https://meli.la/1RJdfzi",
+   "preco": 37.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-2gwTNcg",
+   "loja": "Mercado Livre",
+   "nome": "Árvore De Natal Pequena 60cm 60 Galhos Pinheiro Verde Luxo",
+   "link": "https://meli.la/2gwTNcg",
+   "preco": 39.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-1jTc4Vu",
+   "loja": "Mercado Livre",
+   "nome": "Kit 60 Bolas Natal Lisas/foscas/glitter C/ Ponteira Enfeite",
+   "link": "https://meli.la/1jTc4Vu",
+   "preco": 67.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-1bq6gUB",
+   "loja": "Mercado Livre",
+   "nome": "Toalha de Mesa Natal Mesa Posta Oxford 1,40x2,10m Retangular 6 Lugares",
+   "link": "https://meli.la/1bq6gUB",
+   "preco": 54.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-2HyuSZe",
+   "loja": "Mercado Livre",
+   "nome": "Jogo De Lençol Casal Padrão 3 Pçs 400 Fios C/ Elástico Hotel",
+   "link": "https://meli.la/2HyuSZe",
+   "preco": 26.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-2M27yaY",
+   "loja": "Mercado Livre",
+   "nome": "Kit Air Fryer Forma Silicone Redonda + Tapete Protetor + Pegador Inox",
+   "link": "https://meli.la/2M27yaY",
+   "preco": 49.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-16RH5K8",
+   "loja": "Mercado Livre",
+   "nome": "Kit 10 Colmeia Organizadora gaveta organizador porta calcinhas meia cu",
+   "link": "https://meli.la/16RH5K8",
+   "preco": 69.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-1jHDM6o",
+   "loja": "Mercado Livre",
+   "nome": "Luminária Pixar Preta De Mesa Articulada Multicor",
+   "link": "https://meli.la/1jHDM6o",
+   "preco": 64.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-154MNjY",
+   "loja": "Mercado Livre",
+   "nome": "Protetor Solar Oil Control Tinted Claro 70 Fps 50g Eucerin",
+   "link": "https://meli.la/154MNjY",
+   "preco": 88.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-1sAbrq3",
+   "loja": "Mercado Livre",
+   "nome": "Máscara De Cílios I Love Extreme Crazy Volume Essence",
+   "link": "https://meli.la/1sAbrq3",
+   "preco": 35.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-32Ekpun",
+   "loja": "Mercado Livre",
+   "nome": "Máscara de Cílios Lavável, Longa Duração, 9x Mais Volume e Definição",
+   "link": "https://meli.la/32Ekpun",
+   "preco": 45.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-1z1FrXQ",
+   "loja": "Mercado Livre",
+   "nome": "Avon Deo Parfum Far Away 50ml",
+   "link": "https://meli.la/1z1FrXQ",
+   "preco": 59.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-1eAyBEm",
+   "loja": "Mercado Livre",
+   "nome": "Froog Top Feminino Fitness Academia Com Bojo Alta Sustentação",
+   "link": "https://meli.la/1eAyBEm",
+   "preco": 30.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-1gkjVhj",
+   "loja": "Mercado Livre",
+   "nome": "Conjunto Fitness Top Short Roupa Academia Feminino Treino",
+   "link": "https://meli.la/1gkjVhj",
+   "preco": 76.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-2Fc7Xxi",
+   "loja": "Mercado Livre",
+   "nome": "Faixa Elástica Kit 3 Thera Band Exercicios Fisioterapia",
+   "link": "https://meli.la/2Fc7Xxi",
+   "preco": 24.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-2X3sA5R",
+   "loja": "Mercado Livre",
+   "nome": "Tênis Feminino Ortopédico Caminhada Academia Corrida Fitness",
+   "link": "https://meli.la/2X3sA5R",
+   "preco": 69.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-2RaaELG",
+   "loja": "Mercado Livre",
+   "nome": "Caixa Caixinha De Som Bluetooth Pendrive Fm Sd Portátil 50w",
+   "link": "https://meli.la/2RaaELG",
+   "preco": 61.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-13unN7k",
+   "loja": "Mercado Livre",
+   "nome": "Boneco Papai Noel 32 Cm Decoração Natalina",
+   "link": "https://meli.la/13unN7k",
+   "preco": 36.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-314Rm99",
+   "loja": "Mercado Livre",
+   "nome": "Kit 12 Laços De Natal Lacinho Enfeite Árvore Natal Decoração",
+   "link": "https://meli.la/314Rm99",
+   "preco": 35.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-1nSdFkx",
+   "loja": "Mercado Livre",
+   "nome": "Jogo De Toalha Banho 4 100 Algodão 400 gr/m Loft Camesa",
+   "link": "https://meli.la/1nSdFkx",
+   "preco": 84.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-1f64oZE",
+   "loja": "Mercado Livre",
+   "nome": "Jogo De Toalha Standard (4 Peças) - Branca Mercado Livre Basics",
+   "link": "https://meli.la/1f64oZE",
+   "preco": 46.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-1ivtxth",
+   "loja": "Mercado Livre",
+   "nome": "Jogo De Lençol Queen 3 Peças 400 Fios C/ Elástico Hotel Cinza Liso",
+   "link": "https://meli.la/1ivtxth",
+   "preco": 28.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-1ZPEPEJ",
+   "loja": "Mercado Livre",
+   "nome": "Mop Giratório 13 Litros Esfregão Limpeza",
+   "link": "https://meli.la/1ZPEPEJ",
+   "preco": 76.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-2xsUiWr",
+   "loja": "Mercado Livre",
+   "nome": "Tapete Kit Cozinha Antiderrapante Passadeira Jogo Lavável",
+   "link": "https://meli.la/2xsUiWr",
+   "preco": 47.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-2HewcfS",
+   "loja": "Mercado Livre",
+   "nome": "Bruna Tavares - Base Líquida - Bt Skin",
+   "link": "https://meli.la/2HewcfS",
+   "preco": 77.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-1wwgBao",
+   "loja": "Mercado Livre",
+   "nome": "Kit Shampoo + Condicionador Hidra Hialurônico Loréal Elseve",
+   "link": "https://meli.la/1wwgBao",
+   "preco": 46.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-2MjPFCp",
+   "loja": "Mercado Livre",
+   "nome": "Calça Legging Leg Flare Zero Transparência Grossa Academia",
+   "link": "https://meli.la/2MjPFCp",
+   "preco": 34.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-27epmBC",
+   "loja": "Mercado Livre",
+   "nome": "Legging Zero Transparencia Suplex Fitness Feminina Blackout",
+   "link": "https://meli.la/27epmBC",
+   "preco": 46.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-2dRFaKU",
+   "loja": "Mercado Livre",
+   "nome": "Short Saia Academia Feminino Cintura Alta Legging Fitness",
+   "link": "https://meli.la/2dRFaKU",
+   "preco": 29.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-21KZvZ3",
+   "loja": "Mercado Livre",
+   "nome": "Colchonete Eva Tapete Yoga Academia Fitness Exercícios 10mm Cor Preto",
+   "link": "https://meli.la/21KZvZ3",
+   "preco": 29.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-2kYUyAM",
+   "loja": "Mercado Livre",
+   "nome": "Tênis Feminino Olimp Academia Corrida Caminhada Esportivo",
+   "link": "https://meli.la/2kYUyAM",
+   "preco": 97.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-1uoxLss",
+   "loja": "Mercado Livre",
+   "nome": "Boneco Papai Noel Corda Sobe E Desce Musical Com Movimento Vermelho",
+   "link": "https://meli.la/1uoxLss",
+   "preco": 67.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-2ySbHgV",
+   "loja": "Mercado Livre",
+   "nome": "Kit C/ 12 Flor Natalina Decoração Árvore Natal Luxo Enfeite",
+   "link": "https://meli.la/2ySbHgV",
+   "preco": 32.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-1U3vSaW",
+   "loja": "Mercado Livre",
+   "nome": "Caçarola Turim em Alumínio com Revestimento Interno e Externo em Antia",
+   "link": "https://meli.la/1U3vSaW",
+   "preco": 68.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-1c7HyFm",
+   "loja": "Mercado Livre",
+   "nome": "Mop Giratório Balde 12l Esfregão Cabo 130cm Rodinhas Com Refil Sujeira",
+   "link": "https://meli.la/1c7HyFm",
+   "preco": 63.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-31xoNe3",
+   "loja": "Mercado Livre",
+   "nome": "Kit 6 Formas Silicone Reutilizável Fritadeira Air Fryer",
+   "link": "https://meli.la/31xoNe3",
+   "preco": 22.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-1So14MG",
+   "loja": "Mercado Livre",
+   "nome": "Conjunto Academia Short Top Fitness Zero Transparência",
+   "link": "https://meli.la/1So14MG",
+   "preco": 57.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-2YBGp6D",
+   "loja": "Mercado Livre",
+   "nome": "Garrafa Térmica Água Café 800ml Inox Parede Dupla Premium",
+   "link": "https://meli.la/2YBGp6D",
+   "preco": 32.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-1T1WJE7",
+   "loja": "Mercado Livre",
+   "nome": "Fone De Ouvido Bluetooth Xiaomi Redmi Airdots Cor Preto",
+   "link": "https://meli.la/1T1WJE7",
+   "preco": 29.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-1gVDFye",
+   "loja": "Mercado Livre",
+   "nome": "Relogio Smartwatch 10 Ultra Plus Preto Tela AMOLED Monitor Saúde GPS",
+   "link": "https://meli.la/1gVDFye",
+   "preco": 52.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-2rEnxzj",
+   "loja": "Mercado Livre",
+   "nome": "Smartwatch S10 Série 10 Relógio Digital Masculino Feminino Resistente",
+   "link": "https://meli.la/2rEnxzj",
+   "preco": 76.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-33gz8ND",
+   "loja": "Mercado Livre",
+   "nome": "Arvore De Natal 90cm Árvore Pequena 43enfeites 90galhos Luxo Stronex",
+   "link": "https://meli.la/33gz8ND",
+   "preco": 74.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-1R1WYBk",
+   "loja": "Mercado Livre",
+   "nome": "Kit C/24/18/12 Bolas De Natal Lisa/fosca/glitter 3cm Pequena",
+   "link": "https://meli.la/1R1WYBk",
+   "preco": 29.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-2GB4Xq6",
+   "loja": "Mercado Livre",
+   "nome": "Body Splash Desodorante Corporal Cheiro De Rica N1 Kokeshi Fragrância",
+   "link": "https://meli.la/2GB4Xq6",
+   "preco": 29.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-2vK3znE",
+   "loja": "Mercado Livre",
+   "nome": "Kit Conjunto Fitness Feminino + Camiseta Roupa Academia",
+   "link": "https://meli.la/2vK3znE",
+   "preco": 54.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-1L1pu2R",
+   "loja": "Mercado Livre",
+   "nome": "Roupa De Academia Conjunto Moda Fitness Feminino Calça E Top",
+   "link": "https://meli.la/1L1pu2R",
+   "preco": 53.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "ml-2kS19ND",
+   "loja": "Mercado Livre",
+   "nome": "Kit 5 Faixa Elastica P/ Treino Extersor Super Band Academia",
+   "link": "https://meli.la/2kS19ND",
+   "preco": 19.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/mercadolivre.csv"
+  },
+  {
+   "id": "MLB62000830",
+   "loja": "Mercado Livre",
+   "nome": "Chaleira Elétrica Inox 1,8 L 1500 W",
+   "link": "https://meli.la/1gM3y5P",
+   "preco": 39.67,
+   "falta": "preco_antigo",
+   "arquivo": "curadoria/casa/mercadolivre.csv"
+  },
+  {
+   "id": "MLB32043715",
+   "loja": "Mercado Livre",
+   "nome": "Tapete Peludo 2x1,5 m para Sala e Quarto",
+   "link": "https://meli.la/23JWxiu",
+   "preco": 59.9,
+   "falta": "preco_antigo",
+   "arquivo": "curadoria/casa/mercadolivre.csv"
+  },
+  {
+   "id": "MLB69749352",
+   "loja": "Mercado Livre",
+   "nome": "Cobre Leito Queen Matelado Dupla Face",
+   "link": "https://meli.la/2qihSn8",
+   "preco": 42.9,
+   "falta": "preco_antigo",
+   "arquivo": "curadoria/casa/mercadolivre.csv"
+  },
+  {
+   "id": "MLB59321432",
+   "loja": "Mercado Livre",
+   "nome": "Kit 3 Formas de Silicone para Air Fryer e Micro-ondas",
+   "link": "https://meli.la/1fRon17",
+   "preco": 37.0,
+   "falta": "preco_antigo",
+   "arquivo": "curadoria/casa/mercadolivre.csv"
+  },
+  {
+   "id": "MLB64970567",
+   "loja": "Mercado Livre",
+   "nome": "Jogo 6 Copos de Vidro Canelado 423 ml",
+   "link": "https://meli.la/1k59joJ",
+   "preco": 36.89,
+   "falta": "preco_antigo",
+   "arquivo": "curadoria/casa/mercadolivre.csv"
+  },
+  {
+   "id": "MLBU3923891290",
+   "loja": "Mercado Livre",
+   "nome": "Jogo 4 Frigideiras Antiaderentes 14/18/22 cm + Espátula",
+   "link": "https://meli.la/1DHgDu9",
+   "preco": 69.43,
+   "falta": "preco_antigo",
+   "arquivo": "curadoria/casa/mercadolivre.csv"
+  },
+  {
+   "id": "ML-capas-almofada-suede",
+   "loja": "Mercado Livre",
+   "nome": "Kit 4 Capas de Almofada Suede Drapeada",
+   "link": "https://meli.la/1tmm4Ud",
+   "preco": 49.9,
+   "falta": "preco_antigo",
+   "arquivo": "curadoria/casa/mercadolivre.csv"
+  },
+  {
+   "id": "MLB81243184",
+   "loja": "Mercado Livre",
+   "nome": "Árvore de Natal Pinheiro Canadense Luxo 2,10 m com 800 galhos e 5 bolas de brinde",
+   "link": "https://meli.la/2fiXxRV",
+   "preco": 227.0,
+   "falta": "preco_antigo",
+   "arquivo": "curadoria/casa/mercadolivre.csv"
+  },
+  {
+   "id": "shein-564503480",
+   "loja": "Shein",
+   "nome": "SHEGLAM Bubble Dew SéRum Blush-001 Love Cake Blush LíQuido Nutritivo",
+   "link": "https://onelink.shein.com/60/686vjx1zzvbg?ismg_ol=GA9P7EI2hoT_01_KOC-C",
+   "preco": 28.86,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/shein.csv"
+  },
+  {
+   "id": "shein-398989382",
+   "loja": "Shein",
+   "nome": "XLLAIS Calça Feminina Preta Elástica Casual Esportiva Fitness com",
+   "link": "https://onelink.shein.com/60/686vf1g8jjbc?ismg_ol=2DDLC5et3fC_01_KOC-C",
+   "preco": 57.59,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/shein.csv"
+  },
+  {
+   "id": "shein-464224801",
+   "loja": "Shein",
+   "nome": "1 Peça Legging Esportiva Feminina, Calça Fitness 2 em 1 para 4",
+   "link": "https://onelink.shein.com/60/686vf3f9nlb1?ismg_ol=LC0FDUc698b_01_KOC-C",
+   "preco": 68.06,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/shein.csv"
+  },
+  {
+   "id": "shein-123346681",
+   "loja": "Shein",
+   "nome": "2 Pacotes Calça Legging Feminina Primavera Verão Moda Casual Cor",
+   "link": "https://onelink.shein.com/60/686vf5eb6e8n?ismg_ol=00elQY8pnuB_01_KOC-C",
+   "preco": 79.28,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/shein.csv"
+  },
+  {
+   "id": "shein-524860636",
+   "loja": "Shein",
+   "nome": "Knot & Curve Legging de Yoga Cargo Feminina de Cintura Alta com",
+   "link": "https://onelink.shein.com/60/686vf7dc9qxc?ismg_ol=9YbDllxUr2h_01_KOC-C",
+   "preco": 58.32,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/shein.csv"
+  },
+  {
+   "id": "shein-514056091",
+   "loja": "Shein",
+   "nome": "XLLAIS Legging Capri Feminina Preta com Cintura Dobrada Elástica",
+   "link": "https://onelink.shein.com/60/686vf9cczr8h?ismg_ol=4bj5yAhSWwc_01_KOC-C",
+   "preco": 93.95,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/shein.csv"
+  },
+  {
+   "id": "shein-15530031",
+   "loja": "Shein",
+   "nome": "Leggings Esportivas Casuais Elásticas Femininas, Leggings de Cor",
+   "link": "https://onelink.shein.com/60/686vfbbe3t6l?ismg_ol=DdGoF2qvsxI_01_KOC-C",
+   "preco": 42.04,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/shein.csv"
+  },
+  {
+   "id": "shein-137931011",
+   "loja": "Shein",
+   "nome": "Legging Feminina Skinny com Forro Térmico, Estampa Listrada Preto e",
+   "link": "https://onelink.shein.com/60/686vfdaflwte?ismg_ol=4pLGYioQuar_01_KOC-C",
+   "preco": 80.72,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/shein.csv"
+  },
+  {
+   "id": "shein-50085307",
+   "loja": "Shein",
+   "nome": "Legging de Yoga Cintura Alta com 4 Bolsos, Controle de Barriga, Calça",
+   "link": "https://onelink.shein.com/60/686vff9gqo17?ismg_ol=AVN0mkyobQz_01_KOC-C",
+   "preco": 93.52,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/shein.csv"
+  },
+  {
+   "id": "shein-450562887",
+   "loja": "Shein",
+   "nome": "Conjunto de Regata Fitness Esportiva Y2K e Shorts Casuais Amarelo",
+   "link": "https://onelink.shein.com/60/686vg6vvwoqb?ismg_ol=89NS0VxVy7J_01_KOC-C",
+   "preco": 75.36,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/shein.csv"
+  },
+  {
+   "id": "shein-61690270",
+   "loja": "Shein",
+   "nome": "Conjunto Esportivo Feminino com Top Cropped de Manga Curta e Calça",
+   "link": "https://onelink.shein.com/60/686vg8ux0qpc?ismg_ol=4ymTCcqZeUB_01_KOC-C",
+   "preco": 83.12,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/shein.csv"
+  },
+  {
+   "id": "shein-491658358",
+   "loja": "Shein",
+   "nome": "Conjunto Esportivo Feminino NOIRLYN de 2 Peças para Outono/Inverno",
+   "link": "https://onelink.shein.com/60/686vgaty4so8?ismg_ol=ExxPy2MZTL1_01_KOC-C",
+   "preco": 98.39,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/shein.csv"
+  },
+  {
+   "id": "shein-526401758",
+   "loja": "Shein",
+   "nome": "Conjunto Casual de Yoga de 2 Peças para Mulheres NOIRLYN, Camiseta",
+   "link": "https://onelink.shein.com/60/686vgcsz8umw?ismg_ol=EG86OSJeHUx_01_KOC-C",
+   "preco": 95.96,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/shein.csv"
+  },
+  {
+   "id": "shein-61429544",
+   "loja": "Shein",
+   "nome": "Conjunto Esportivo Feminino com Top de Manga Longa Curta + Calça",
+   "link": "https://onelink.shein.com/60/686vges0qya2?ismg_ol=DOHmhTaBbIT_01_KOC-C",
+   "preco": 89.59,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/shein.csv"
+  },
+  {
+   "id": "shein-465638945",
+   "loja": "Shein",
+   "nome": "2 peças/Conjunto Top Camisete e Calça Skinny Conjunto de Roupas",
+   "link": "https://onelink.shein.com/60/686vggr1wetm?ismg_ol=0m7jSZCRDza_01_KOC-C",
+   "preco": 82.36,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/shein.csv"
+  },
+  {
+   "id": "shein-436636242",
+   "loja": "Shein",
+   "nome": "Conjunto de 2 Peças EDGEYOG Feminino com Regata Sexy de Cor Sólida",
+   "link": "https://onelink.shein.com/60/686vggr1v0bp?ismg_ol=Gu4iTsnJs8L_01_KOC-C",
+   "preco": 84.35,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/shein.csv"
+  },
+  {
+   "id": "shein-154433802",
+   "loja": "Shein",
+   "nome": "XLLAIS Regata Feminina Casual Versátil de Cor Sólida, Dupla Camada",
+   "link": "https://onelink.shein.com/60/686vgqm7gosb?ismg_ol=94UzRvCLXL8_01_KOC-C",
+   "preco": 46.32,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/shein.csv"
+  },
+  {
+   "id": "shein-211321933",
+   "loja": "Shein",
+   "nome": "Regata Básica Casual Feminina Aoqta Sports com Dupla Camada Elástica",
+   "link": "https://onelink.shein.com/60/686vgsl85ai9?ismg_ol=282Zw9pxipB_01_KOC-C",
+   "preco": 72.62,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/shein.csv"
+  },
+  {
+   "id": "shein-38168603",
+   "loja": "Shein",
+   "nome": "XLLAIS Camiseta Branca de Manga Longa Slim Fit Elástica para",
+   "link": "https://onelink.shein.com/60/686vgyibwwoh?ismg_ol=KutpkuwiR1r_01_KOC-C",
+   "preco": 60.72,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/shein.csv"
+  },
+  {
+   "id": "shein-30562721",
+   "loja": "Shein",
+   "nome": "CATKIN Blush Assado com Mistura de Cores Rosadas, Blush + Iluminador",
+   "link": "https://onelink.shein.com/60/686vhaci5sb3?ismg_ol=8x3mFEYdxxI_01_KOC-C",
+   "preco": 51.09,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/shein.csv"
+  },
+  {
+   "id": "shein-569176673",
+   "loja": "Shein",
+   "nome": "TOMICCA 15ml/1 Peça Esmalte de Unha Vermelho à Base de Água, Secagem",
+   "link": "https://onelink.shein.com/60/686vhcbjpahv?ismg_ol=AQ1o3ic7QUz_01_KOC-C",
+   "preco": 15.99,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/shein.csv"
+  },
+  {
+   "id": "shein-69265223",
+   "loja": "Shein",
+   "nome": "FOR BEAUTY Nova Top de Malha Feminina Primavera/Verão, Estilo Casual",
+   "link": "https://onelink.shein.com/60/686vhg9lxee9?ismg_ol=GTYYtRcRISN_01_KOC-C",
+   "preco": 81.56,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/shein.csv"
+  },
+  {
+   "id": "shein-81497970",
+   "loja": "Shein",
+   "nome": "MEYOU FAIRY AGG, Bolsa de Maquiagem Pequena e Fresca para Mulheres",
+   "link": "https://onelink.shein.com/60/686vibu3pkpa?ismg_ol=9wtEb6X0gb7_01_KOC-C",
+   "preco": 26.45,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/shein.csv"
+  },
+  {
+   "id": "shein-66450192",
+   "loja": "Shein",
+   "nome": "1 Peça Bolsa de Maquiagem com Laço Xadrez Estilo Coreano, Organizador",
+   "link": "https://onelink.shein.com/60/686vibu3atv9?ismg_ol=IC1psg3GgYO_01_KOC-C",
+   "preco": 35.16,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/shein.csv"
+  },
+  {
+   "id": "shein-436061509",
+   "loja": "Shein",
+   "nome": "Pote de Armazenamento de Cotonete com Padrão de Laço, Pote de",
+   "link": "https://onelink.shein.com/60/686virmcm0jw?ismg_ol=5d7GJMHUXfP_01_KOC-C",
+   "preco": 25.56,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/shein.csv"
+  },
+  {
+   "id": "shein-418018169",
+   "loja": "Shein",
+   "nome": "Esta cesta de armazenamento de mesa de grande capacidade, doce e",
+   "link": "https://onelink.shein.com/60/686vitldbbjk?ismg_ol=BARVUgLJKjX_01_KOC-C",
+   "preco": 32.0,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/shein.csv"
+  },
+  {
+   "id": "shein-575306719",
+   "loja": "Shein",
+   "nome": "1/2 Peças Caixa de Armazenamento Portátil de Palitos de Dente e",
+   "link": "https://onelink.shein.com/60/686vivkeu4ge?ismg_ol=684u9pnsD53_01_KOC-C",
+   "preco": 21.9,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/shein.csv"
+  },
+  {
+   "id": "shein-564477948",
+   "loja": "Shein",
+   "nome": "1/2 Peças Caixa de Armazenamento Portátil com Padrão de Laço Fofo",
+   "link": "https://onelink.shein.com/60/686vivkeutum?ismg_ol=GzktwJbqtbc_01_KOC-C",
+   "preco": 16.79,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/shein.csv"
+  },
+  {
+   "id": "shein-278280500",
+   "loja": "Shein",
+   "nome": "Camiseta de Malha de Manga Curta Feminina, Cor Sólida e Leve, Top",
+   "link": "https://onelink.shein.com/60/686vj5fkf3pf?ismg_ol=DaOS2QTYAXm_01_KOC-C",
+   "preco": 81.24,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/shein.csv"
+  },
+  {
+   "id": "shein-308257028",
+   "loja": "Shein",
+   "nome": "Glamful Xadrez Quadrado Casual Elegante Férias Praia Encontro, Saia",
+   "link": "https://onelink.shein.com/60/686vj7el3pf8?ismg_ol=K1XbKmQaWNp_01_KOC-C",
+   "preco": 92.95,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/shein.csv"
+  },
+  {
+   "id": "shein-59202829",
+   "loja": "Shein",
+   "nome": "Camiseta Feminina Curta e Solta Refinada, Top de Malha Sem Mangas",
+   "link": "https://onelink.shein.com/60/686vjbcnqkcs?ismg_ol=7tyOwX6iVrm_01_KOC-C",
+   "preco": 72.42,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/shein.csv"
+  },
+  {
+   "id": "shein-492245446",
+   "loja": "Shein",
+   "nome": "Camiseta Feminina Casual de Manga Curta com Decote Redondo, Estampa",
+   "link": "https://onelink.shein.com/60/686vjfapjxak?ismg_ol=IP26Y4m6h5s_01_KOC-C",
+   "preco": 53.95,
+   "falta": "preco_antigo",
+   "arquivo": "estoque/shein.csv"
+  }
+ ]
+}
