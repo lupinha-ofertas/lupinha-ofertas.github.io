@@ -1,4 +1,7 @@
 name: Stories e Achados do dia
+# Pacote do dia: arte de story de cada achado (com link), 5 posts do feed, planilhas,
+# página "Posts do dia" (/posts/) e página "Achados do dia" (/achados/).
+# Imagens e o .zip ficam públicos no branch "midia" (só o dia de hoje; é refeito todo dia).
 # Roda sozinho quando o robô publica a lista do dia (enviar/ na main), por volta das 5h-7h.
 # Trava: a primeira execução do dia vale. Se a lista mudar depois, artes, planilha e
 # numeração da página NÃO mudam (para bater com os stories já agendados).
@@ -27,6 +30,7 @@ jobs:
         run: |
           hoje=$(date +%F)
           echo "hoje=$hoje" >> "$GITHUB_OUTPUT"
+          if [ "${{ github.ref }}" = "refs/heads/main" ]; then echo "ramo=midia" >> "$GITHUB_OUTPUT"; else echo "ramo=midia-previa" >> "$GITHUB_OUTPUT"; fi
           if [ "${{ github.ref }}" = "refs/heads/main" ] && grep -q "\"$hoje\"" achados/dia.json 2>/dev/null \
              && [ "${{ inputs.refazer }}" != "true" ]; then
             echo "pronto=sim" >> "$GITHUB_OUTPUT"
@@ -37,42 +41,52 @@ jobs:
         with: { python-version: "3.12" }
       - if: steps.trava.outputs.pronto != 'sim'
         run: pip install playwright && python -m playwright install --with-deps chromium
-      - name: Artes dos stories + planilha
+      - name: Artes (stories + feed) e planilhas
         if: steps.trava.outputs.pronto != 'sim'
-        run: python stories/gerar_artes.py
+        run: python stories/gerar_artes.py --ramo-midia ${{ steps.trava.outputs.ramo }}
       - name: Página Achados do dia
         if: steps.trava.outputs.pronto != 'sim'
         run: |
           python stories/gerar_pagina.py
+          python stories/gerar_posts.py --ramo-midia ${{ steps.trava.outputs.ramo }}
           python -c "import json,sys; json.dump({'data': sys.argv[1], 'numeracao': json.load(open('stories/saida/numeracao.json'))}, open('achados/dia.json','w'))" "${{ steps.trava.outputs.hoje }}"
-      - name: Guardar artes, planilha e página (baixe em Actions > esta execução > Artifacts)
+      - name: Montar o .zip do dia
+        if: steps.trava.outputs.pronto != 'sim'
+        run: |
+          d=stories/saida
+          mkdir -p pacote/stories pacote/feed
+          cp $d/artes/*.png pacote/stories/ 2>/dev/null || true
+          cp $d/feed/*.jpg pacote/feed/ 2>/dev/null || true
+          cp $d/agendar-stories.csv pacote/stories.csv
+          cp $d/agendar-feed.csv pacote/feed.csv
+          (cd pacote && zip -qr ../posts-do-dia.zip .)
+      - name: Publicar imagens e .zip no branch ${{ steps.trava.outputs.ramo }}
+        if: steps.trava.outputs.pronto != 'sim'
+        run: |
+          rm -rf /tmp/midia && mkdir /tmp/midia && cd /tmp/midia
+          cp -r "$GITHUB_WORKSPACE/pacote/stories" "$GITHUB_WORKSPACE/pacote/feed" .
+          cp "$GITHUB_WORKSPACE/posts-do-dia.zip" "$GITHUB_WORKSPACE/stories/saida/feed.json" .
+          git init -q -b "${{ steps.trava.outputs.ramo }}"
+          git config user.name "lupinha-robo-stories"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A && git commit -qm "Posts de ${{ steps.trava.outputs.hoje }}"
+          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" "HEAD:${{ steps.trava.outputs.ramo }}"
+      - name: Guardar o pacote (baixe em Actions > esta execução > Artifacts)
         if: steps.trava.outputs.pronto != 'sim'
         uses: actions/upload-artifact@v4
         with:
-          name: stories-${{ steps.trava.outputs.hoje }}
+          name: posts-${{ steps.trava.outputs.hoje }}
           path: |
-            stories/saida/artes/*.png
-            stories/saida/artes-bio/*.jpg
-            stories/saida/agendar-stories.csv
+            posts-do-dia.zip
+            posts/index.html
             achados/index.html
           retention-days: 30
-      - name: Publicar a página e travar o dia (só na main)
+      - name: Publicar as páginas e travar o dia (só na main)
         if: steps.trava.outputs.pronto != 'sim' && github.ref == 'refs/heads/main'
         run: |
           git config user.name "lupinha-robo-stories"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add achados/index.html achados/dia.json
+          git add achados/index.html achados/dia.json posts/index.html
           git diff --cached --quiet && exit 0
-          git commit -m "Achados do dia ${{ steps.trava.outputs.hoje }}"
+          git commit -m "Achados e posts do dia ${{ steps.trava.outputs.hoje }}"
           git pull --rebase origin main && git push origin HEAD:main
-      - name: Imagem pública para o teste de story (só na branch stories-fase1)
-        if: steps.trava.outputs.pronto != 'sim' && github.ref == 'refs/heads/stories-fase1'
-        run: |
-          mkdir -p stories/teste
-          cp "$(ls stories/saida/artes-bio/*.jpg | head -1)" stories/teste/story-teste.jpg
-          git config user.name "lupinha-robo-stories"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add stories/teste/story-teste.jpg
-          git diff --cached --quiet && exit 0
-          git commit -m "Imagem de teste do story (Link na bio)"
-          git pull --rebase origin stories-fase1 && git push origin HEAD:stories-fase1
