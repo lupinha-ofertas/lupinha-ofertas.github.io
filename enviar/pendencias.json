@@ -1,24 +1,6 @@
 {
- "data": "2026-11-17",
+ "data": "2026-11-18",
  "itens": [
-  {
-   "id": "amz-B0C2ZNDWK6",
-   "loja": "Amazon",
-   "nome": "Conjunto de Bowls Tigelas de Inox com Tampa Electrolux",
-   "link": "https://www.amazon.com.br/dp/B0C2ZNDWK6?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
-  {
-   "id": "amz-B0DK4975DJ",
-   "loja": "Amazon",
-   "nome": "NIVEA Kit Loção Hidratante Milk 400ml",
-   "link": "https://www.amazon.com.br/dp/B0DK4975DJ?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
   {
    "id": "amz-B07BSRM75G",
    "loja": "Amazon",
@@ -267,15 +249,6 @@
    "loja": "Amazon",
    "nome": "Garrafa Térmica Inox Parede Dupla 591ml",
    "link": "https://www.amazon.com.br/dp/B07K8XJF9D?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
-  {
-   "id": "amz-B0754J31B7",
-   "loja": "Amazon",
-   "nome": "Pilha Recarregável AA Elgin 4 unidades",
-   "link": "https://www.amazon.com.br/dp/B0754J31B7?tag=lupinhadaari-20",
    "preco": null,
    "falta": "foto",
    "arquivo": "estoque/amazon.csv"
@@ -722,15 +695,6 @@
    "arquivo": "curadoria/casa/amazon.csv"
   },
   {
-   "id": "ml-1ALSwgh",
-   "loja": "Mercado Livre",
-   "nome": "Kit 2 Organizadores de Gaveta Colmeia 24 Nichos Cada para Roupas Íntim",
-   "link": "https://meli.la/1ALSwgh",
-   "preco": 32.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
    "id": "ml-1EHh3tV",
    "loja": "Mercado Livre",
    "nome": "Tapete Passadeira Cozinha Axia 1,40mx0,50cm Tear Jacquard",
@@ -799,15 +763,6 @@
    "nome": "L'Oréal Paris Elseve Collagen Lifter Kit Shampoo, Condicionador e Sérum",
    "link": "https://meli.la/2Sqnz7N",
    "preco": 84.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
-   "id": "ml-1muy26y",
-   "loja": "Mercado Livre",
-   "nome": "Pisca Cortina 300 Leds 3x3m Usb Ip44 8 Modos Iluminação Luzes Fada Dec",
-   "link": "https://meli.la/1muy26y",
-   "preco": 27.0,
    "falta": "preco_antigo",
    "arquivo": "estoque/mercadolivre.csv"
   },
@@ -916,15 +871,6 @@
    "nome": "Avon Deo Parfum Far Away 50ml",
    "link": "https://meli.la/1z1FrXQ",
    "preco": 59.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
-   "id": "ml-1eAyBEm",
-   "loja": "Mercado Livre",
-   "nome": "Froog Top Feminino Fitness Academia Com Bojo Alta Sustentação",
-   "link": "https://meli.la/1eAyBEm",
-   "preco": 30.0,
    "falta": "preco_antigo",
    "arquivo": "estoque/mercadolivre.csv"
   },
@@ -1305,33 +1251,6 @@
    "preco": 227.0,
    "falta": "preco_antigo",
    "arquivo": "curadoria/casa/mercadolivre.csv"
-  },
-  {
-   "id": "shein-564503480",
-   "loja": "Shein",
-   "nome": "SHEGLAM Bubble Dew SéRum Blush-001 Love Cake Blush LíQuido Nutritivo",
-   "link": "https://onelink.shein.com/60/686vjx1zzvbg?ismg_ol=GA9P7EI2hoT_01_KOC-C",
-   "preco": 28.86,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/shein.csv"
-  },
-  {
-   "id": "shein-398989382",
-   "loja": "Shein",
-   "nome": "XLLAIS Calça Feminina Preta Elástica Casual Esportiva Fitness com",
-   "link": "https://onelink.shein.com/60/686vf1g8jjbc?ismg_ol=2DDLC5et3fC_01_KOC-C",
-   "preco": 57.59,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/shein.csv"
-  },
-  {
-   "id": "shein-464224801",
-   "loja": "Shein",
-   "nome": "1 Peça Legging Esportiva Feminina, Calça Fitness 2 em 1 para 4",
-   "link": "https://onelink.shein.com/60/686vf3f9nlb1?ismg_ol=LC0FDUc698b_01_KOC-C",
-   "preco": 68.06,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/shein.csv"
   },
   {
    "id": "shein-123346681",
