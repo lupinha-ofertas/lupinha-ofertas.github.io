@@ -37,6 +37,7 @@
   a.btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--coral-dark)}
   footer{font-size:12px;opacity:.85;margin-top:26px;line-height:1.5}
   footer a{color:var(--cream)}
+  .abas{display:flex;gap:6px;background:rgba(74,31,42,.18);padding:5px;border-radius:99px;margin-top:16px}.abas a{color:var(--cream);text-decoration:none;font-weight:700;font-size:14px;padding:7px 20px;border-radius:99px}.abas a.ativa{background:var(--cream);color:var(--coral)}
 </style>
 <script>
   // foto que não carregou (ou veio vazia, 1x1): mostra o logo e manda o card para o fim da lista (o nº não muda)
@@ -56,6 +57,8 @@
   <h1>Achados do dia</h1>
   <div class="tag">18/11/2026</div>
   <p class="aviso">Links de afiliada · preços e estoque podem mudar a qualquer momento</p>
+
+  <nav class="abas"><a href="/achados/" data-aba="hoje">Hoje</a><a href="/achados/ontem/" data-aba="ontem">Ontem</a></nav><script>(function(){var o=/\/ontem\/?$/.test(location.pathname)?"ontem":"hoje";document.querySelectorAll(".abas a").forEach(function(a){if(a.dataset.aba===o)a.classList.add("ativa")})})()</script>
 
   <section class="lista">
     <article class="item" data-n="1">

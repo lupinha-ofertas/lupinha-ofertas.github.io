@@ -20,6 +20,41 @@ from fotos import foto_reserva, url_da_foto_produto  # noqa: E402
 
 RAIZ = PASTA.parent
 DESTINO = RAIZ / "achados" / "index.html"
+ONTEM = RAIZ / "achados" / "ontem" / "index.html"  # cópia da página de ontem (posts agendados de ontem usam os nºs dela)
+DIA = RAIZ / "achados" / "dia.json"  # data da página que está no ar
+
+# Abas Hoje | Ontem: o mesmo HTML vai nas duas páginas; o JS marca a aba certa pelo endereço.
+ABAS_CSS = (".abas{display:flex;gap:6px;background:rgba(74,31,42,.18);padding:5px;border-radius:99px;margin-top:16px}"
+            ".abas a{color:var(--cream);text-decoration:none;font-weight:700;font-size:14px;padding:7px 20px;border-radius:99px}"
+            ".abas a.ativa{background:var(--cream);color:var(--coral)}")
+ABAS_HTML = ('<nav class="abas"><a href="/achados/" data-aba="hoje">Hoje</a><a href="/achados/ontem/" data-aba="ontem">Ontem</a></nav>'
+             '<script>(function(){var o=/\\/ontem\\/?$/.test(location.pathname)?"ontem":"hoje";'
+             'document.querySelectorAll(".abas a").forEach(function(a){if(a.dataset.aba===o)a.classList.add("ativa")})})()</script>')
+
+
+def com_abas(pagina: str) -> str:
+    """Põe as abas Hoje | Ontem logo abaixo do aviso (páginas antigas não tinham)."""
+    if 'class="abas"' in pagina:
+        return pagina
+    pagina = pagina.replace("</style>", "  " + ABAS_CSS + "\n</style>", 1)
+    return pagina.replace('<section class="lista">', ABAS_HTML + '\n\n  <section class="lista">', 1)
+
+
+def arquivar_ontem(hoje_iso: str) -> None:
+    """Antes de gerar a página nova, guarda a que está no ar (se for de outro dia) em achados/ontem/."""
+    if not DESTINO.exists() or not DIA.exists():
+        return
+    try:
+        data = json.loads(DIA.read_text(encoding="utf-8")).get("data")
+    except Exception:
+        return
+    if not data or data == hoje_iso:
+        return  # refazer no mesmo dia: não apaga o "ontem"
+    pagina = DESTINO.read_text(encoding="utf-8")
+    pagina = pagina.replace('href="../"', 'href="../../"').replace('src="../', 'src="../../')  # uma pasta abaixo
+    ONTEM.parent.mkdir(parents=True, exist_ok=True)
+    ONTEM.write_text(com_abas(pagina), encoding="utf-8")
+    print(f"Página de {data} guardada em {ONTEM.relative_to(RAIZ)}")
 LOGO = PASTA / "assets" / "logo.png"  # vai embutido na página (não depende de outro arquivo)
 NUMERACAO = PASTA / "saida" / "numeracao.json"  # gravado pelo gerar_artes.py
 
@@ -144,7 +179,8 @@ def main():
     ap.add_argument("--sem-busca", action="store_true", help="não busca foto pelo link (só reserva/logo)")
     args = ap.parse_args()
     DESTINO.parent.mkdir(parents=True, exist_ok=True)
-    DESTINO.write_text(montar(ler_produtos(), not args.sem_busca), encoding="utf-8")
+    arquivar_ontem(datetime.now(ZoneInfo("America/Sao_Paulo")).strftime("%Y-%m-%d"))
+    DESTINO.write_text(com_abas(montar(ler_produtos(), not args.sem_busca)), encoding="utf-8")
     print(f"Página gerada: {DESTINO.relative_to(RAIZ)}")
 
 
