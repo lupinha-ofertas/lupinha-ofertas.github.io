@@ -86,7 +86,7 @@ jobs:
         run: |
           git config user.name "lupinha-robo-stories"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add achados/index.html achados/dia.json posts/index.html
+          git add achados/index.html achados/ontem/index.html achados/dia.json posts/index.html
           git diff --cached --quiet && exit 0
           git commit -m "Achados e posts do dia ${{ steps.trava.outputs.hoje }}"
           git pull --rebase origin main && git push origin HEAD:main
