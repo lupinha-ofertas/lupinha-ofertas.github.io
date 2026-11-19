@@ -40,7 +40,10 @@ jobs:
         uses: actions/setup-python@v5
         with: { python-version: "3.12" }
       - if: steps.trava.outputs.pronto != 'sim'
-        run: pip install playwright && python -m playwright install --with-deps chromium
+        # Se o espelho do Ubuntu falhar (já aconteceu em 19/11), instala só o navegador: o runner já tem as libs do Chrome.
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium || python -m playwright install chromium
       - name: Artes (stories + feed) e planilhas
         if: steps.trava.outputs.pronto != 'sim'
         run: python stories/gerar_artes.py --ramo-midia ${{ steps.trava.outputs.ramo }}
