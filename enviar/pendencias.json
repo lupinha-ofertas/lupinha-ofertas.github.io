@@ -1,33 +1,6 @@
 {
- "data": "2026-11-18",
+ "data": "2026-11-19",
  "itens": [
-  {
-   "id": "amz-B07BSRM75G",
-   "loja": "Amazon",
-   "nome": "Finish Powerball Tabletes Lava-Louças 30 un",
-   "link": "https://www.amazon.com.br/dp/B07BSRM75G?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
-  {
-   "id": "amz-B07H113TPQ",
-   "loja": "Amazon",
-   "nome": "Elseve Óleo Extraordinário Finalizador Capilar",
-   "link": "https://www.amazon.com.br/dp/B07H113TPQ?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
-  {
-   "id": "amz-B074LTNQBP",
-   "loja": "Amazon",
-   "nome": "Lola Morte Súbita Máscara Super Hidratante 450g",
-   "link": "https://www.amazon.com.br/dp/B074LTNQBP?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
   {
    "id": "amz-B09KCYYZNG",
    "loja": "Amazon",
@@ -96,15 +69,6 @@
    "loja": "Amazon",
    "nome": "Cif Derrete Gordura 500ml",
    "link": "https://www.amazon.com.br/dp/B0C2R9DDPJ?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
-  {
-   "id": "amz-B086F9M5T8",
-   "loja": "Amazon",
-   "nome": "3 Corações Gourmet Sul de Minas Moído 250g",
-   "link": "https://www.amazon.com.br/dp/B086F9M5T8?tag=lupinhadaari-20",
    "preco": null,
    "falta": "foto",
    "arquivo": "estoque/amazon.csv"
@@ -330,15 +294,6 @@
    "loja": "Amazon",
    "nome": "Hada Labo Gokujyun White Gel Hidratante",
    "link": "https://www.amazon.com.br/dp/B0BVSTCXZY?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
-  {
-   "id": "amz-B0CMGXX165",
-   "loja": "Amazon",
-   "nome": "Pisca LED RGB 10m com Bluetooth e Controle",
-   "link": "https://www.amazon.com.br/dp/B0CMGXX165?tag=lupinhadaari-20",
    "preco": null,
    "falta": "foto",
    "arquivo": "estoque/amazon.csv"
@@ -695,51 +650,6 @@
    "arquivo": "curadoria/casa/amazon.csv"
   },
   {
-   "id": "ml-1EHh3tV",
-   "loja": "Mercado Livre",
-   "nome": "Tapete Passadeira Cozinha Axia 1,40mx0,50cm Tear Jacquard",
-   "link": "https://meli.la/1EHh3tV",
-   "preco": 59.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
-   "id": "ml-2bu5gSv",
-   "loja": "Mercado Livre",
-   "nome": "Luminária De Mesa Dapon Articulada Abajur Modelo Pixar Com Base e Garr",
-   "link": "https://meli.la/2bu5gSv",
-   "preco": 67.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
-   "id": "ml-11rSG7W",
-   "loja": "Mercado Livre",
-   "nome": "EUCERIN Pomada Reparadora Aquaphor 50ml, Hidratação Intensiva, Hidrata",
-   "link": "https://meli.la/11rSG7W",
-   "preco": 62.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
-   "id": "ml-2JyvkzU",
-   "loja": "Mercado Livre",
-   "nome": "Skincare Vitaminac Clareador+serum+mousse+protetor Dermachem",
-   "link": "https://meli.la/2JyvkzU",
-   "preco": 75.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
-   "id": "ml-2cPo9hg",
-   "loja": "Mercado Livre",
-   "nome": "Kit Skincare Vitamina C Com Protetor Solar Facial Clareador",
-   "link": "https://meli.la/2cPo9hg",
-   "preco": 52.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
    "id": "ml-1a3PSJi",
    "loja": "Mercado Livre",
    "nome": "Natura Todo Dia Body Splash Loção 200ml Frasco Fragrância Macadâmia",
@@ -898,15 +808,6 @@
    "nome": "Tênis Feminino Ortopédico Caminhada Academia Corrida Fitness",
    "link": "https://meli.la/2X3sA5R",
    "preco": 69.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
-   "id": "ml-2RaaELG",
-   "loja": "Mercado Livre",
-   "nome": "Caixa Caixinha De Som Bluetooth Pendrive Fm Sd Portátil 50w",
-   "link": "https://meli.la/2RaaELG",
-   "preco": 61.0,
    "falta": "preco_antigo",
    "arquivo": "estoque/mercadolivre.csv"
   },
@@ -1253,33 +1154,6 @@
    "arquivo": "curadoria/casa/mercadolivre.csv"
   },
   {
-   "id": "shein-123346681",
-   "loja": "Shein",
-   "nome": "2 Pacotes Calça Legging Feminina Primavera Verão Moda Casual Cor",
-   "link": "https://onelink.shein.com/60/686vf5eb6e8n?ismg_ol=00elQY8pnuB_01_KOC-C",
-   "preco": 79.28,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/shein.csv"
-  },
-  {
-   "id": "shein-524860636",
-   "loja": "Shein",
-   "nome": "Knot & Curve Legging de Yoga Cargo Feminina de Cintura Alta com",
-   "link": "https://onelink.shein.com/60/686vf7dc9qxc?ismg_ol=9YbDllxUr2h_01_KOC-C",
-   "preco": 58.32,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/shein.csv"
-  },
-  {
-   "id": "shein-514056091",
-   "loja": "Shein",
-   "nome": "XLLAIS Legging Capri Feminina Preta com Cintura Dobrada Elástica",
-   "link": "https://onelink.shein.com/60/686vf9cczr8h?ismg_ol=4bj5yAhSWwc_01_KOC-C",
-   "preco": 93.95,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/shein.csv"
-  },
-  {
    "id": "shein-15530031",
    "loja": "Shein",
    "nome": "Leggings Esportivas Casuais Elásticas Femininas, Leggings de Cor",
@@ -1415,15 +1289,6 @@
    "arquivo": "estoque/shein.csv"
   },
   {
-   "id": "shein-69265223",
-   "loja": "Shein",
-   "nome": "FOR BEAUTY Nova Top de Malha Feminina Primavera/Verão, Estilo Casual",
-   "link": "https://onelink.shein.com/60/686vhg9lxee9?ismg_ol=GTYYtRcRISN_01_KOC-C",
-   "preco": 81.56,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/shein.csv"
-  },
-  {
    "id": "shein-81497970",
    "loja": "Shein",
    "nome": "MEYOU FAIRY AGG, Bolsa de Maquiagem Pequena e Fresca para Mulheres",
@@ -1438,15 +1303,6 @@
    "nome": "1 Peça Bolsa de Maquiagem com Laço Xadrez Estilo Coreano, Organizador",
    "link": "https://onelink.shein.com/60/686vibu3atv9?ismg_ol=IC1psg3GgYO_01_KOC-C",
    "preco": 35.16,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/shein.csv"
-  },
-  {
-   "id": "shein-436061509",
-   "loja": "Shein",
-   "nome": "Pote de Armazenamento de Cotonete com Padrão de Laço, Pote de",
-   "link": "https://onelink.shein.com/60/686virmcm0jw?ismg_ol=5d7GJMHUXfP_01_KOC-C",
-   "preco": 25.56,
    "falta": "preco_antigo",
    "arquivo": "estoque/shein.csv"
   },
