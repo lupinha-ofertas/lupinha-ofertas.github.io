@@ -1,42 +1,6 @@
 {
- "data": "2026-11-19",
+ "data": "2026-11-20",
  "itens": [
-  {
-   "id": "amz-B09KCYYZNG",
-   "loja": "Amazon",
-   "nome": "Lola Densidade Acidificante Capilar 250g",
-   "link": "https://www.amazon.com.br/dp/B09KCYYZNG?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
-  {
-   "id": "amz-B072MK7BN2",
-   "loja": "Amazon",
-   "nome": "La Roche-Posay Cicaplast Baume B5+",
-   "link": "https://www.amazon.com.br/dp/B072MK7BN2?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
-  {
-   "id": "amz-B0CDJ4L7CZ",
-   "loja": "Amazon",
-   "nome": "Sanduicheira Elétrica Cadence Click",
-   "link": "https://www.amazon.com.br/dp/B0CDJ4L7CZ?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
-  {
-   "id": "amz-B09GHN14FP",
-   "loja": "Amazon",
-   "nome": "Lola Danos Vorazes Óleo Reparador 50ml",
-   "link": "https://www.amazon.com.br/dp/B09GHN14FP?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
   {
    "id": "amz-B0CTR4FL63",
    "loja": "Amazon",
@@ -258,15 +222,6 @@
    "loja": "Amazon",
    "nome": "Orfeu Intenso Moído 250g",
    "link": "https://www.amazon.com.br/dp/B077L8FVJD?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
-  {
-   "id": "amz-B0CCZNFDPF",
-   "loja": "Amazon",
-   "nome": "Strap Musculação Punch Par",
-   "link": "https://www.amazon.com.br/dp/B0CCZNFDPF?tag=lupinhadaari-20",
    "preco": null,
    "falta": "foto",
    "arquivo": "estoque/amazon.csv"
@@ -648,60 +603,6 @@
    "preco": 46.5,
    "falta": "foto",
    "arquivo": "curadoria/casa/amazon.csv"
-  },
-  {
-   "id": "ml-1a3PSJi",
-   "loja": "Mercado Livre",
-   "nome": "Natura Todo Dia Body Splash Loção 200ml Frasco Fragrância Macadâmia",
-   "link": "https://meli.la/1a3PSJi",
-   "preco": 56.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
-   "id": "ml-1JFqJw3",
-   "loja": "Mercado Livre",
-   "nome": "Base Líquida Skin Foundation 35ml - Océane Edition",
-   "link": "https://meli.la/1JFqJw3",
-   "preco": 52.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
-   "id": "ml-2Sqnz7N",
-   "loja": "Mercado Livre",
-   "nome": "L'Oréal Paris Elseve Collagen Lifter Kit Shampoo, Condicionador e Sérum",
-   "link": "https://meli.la/2Sqnz7N",
-   "preco": 84.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
-   "id": "ml-1RJdfzi",
-   "loja": "Mercado Livre",
-   "nome": "3x3m Cortina 300 Led Pisca Pisca Decoração Natal Duplo Volt",
-   "link": "https://meli.la/1RJdfzi",
-   "preco": 37.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
-   "id": "ml-2gwTNcg",
-   "loja": "Mercado Livre",
-   "nome": "Árvore De Natal Pequena 60cm 60 Galhos Pinheiro Verde Luxo",
-   "link": "https://meli.la/2gwTNcg",
-   "preco": 39.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
-   "id": "ml-1jTc4Vu",
-   "loja": "Mercado Livre",
-   "nome": "Kit 60 Bolas Natal Lisas/foscas/glitter C/ Ponteira Enfeite",
-   "link": "https://meli.la/1jTc4Vu",
-   "preco": 67.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
   },
   {
    "id": "ml-1bq6gUB",
@@ -1154,42 +1055,6 @@
    "arquivo": "curadoria/casa/mercadolivre.csv"
   },
   {
-   "id": "shein-15530031",
-   "loja": "Shein",
-   "nome": "Leggings Esportivas Casuais Elásticas Femininas, Leggings de Cor",
-   "link": "https://onelink.shein.com/60/686vfbbe3t6l?ismg_ol=DdGoF2qvsxI_01_KOC-C",
-   "preco": 42.04,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/shein.csv"
-  },
-  {
-   "id": "shein-137931011",
-   "loja": "Shein",
-   "nome": "Legging Feminina Skinny com Forro Térmico, Estampa Listrada Preto e",
-   "link": "https://onelink.shein.com/60/686vfdaflwte?ismg_ol=4pLGYioQuar_01_KOC-C",
-   "preco": 80.72,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/shein.csv"
-  },
-  {
-   "id": "shein-50085307",
-   "loja": "Shein",
-   "nome": "Legging de Yoga Cintura Alta com 4 Bolsos, Controle de Barriga, Calça",
-   "link": "https://onelink.shein.com/60/686vff9gqo17?ismg_ol=AVN0mkyobQz_01_KOC-C",
-   "preco": 93.52,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/shein.csv"
-  },
-  {
-   "id": "shein-450562887",
-   "loja": "Shein",
-   "nome": "Conjunto de Regata Fitness Esportiva Y2K e Shorts Casuais Amarelo",
-   "link": "https://onelink.shein.com/60/686vg6vvwoqb?ismg_ol=89NS0VxVy7J_01_KOC-C",
-   "preco": 75.36,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/shein.csv"
-  },
-  {
    "id": "shein-61690270",
    "loja": "Shein",
    "nome": "Conjunto Esportivo Feminino com Top Cropped de Manga Curta e Calça",
@@ -1267,15 +1132,6 @@
    "nome": "XLLAIS Camiseta Branca de Manga Longa Slim Fit Elástica para",
    "link": "https://onelink.shein.com/60/686vgyibwwoh?ismg_ol=KutpkuwiR1r_01_KOC-C",
    "preco": 60.72,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/shein.csv"
-  },
-  {
-   "id": "shein-30562721",
-   "loja": "Shein",
-   "nome": "CATKIN Blush Assado com Mistura de Cores Rosadas, Blush + Iluminador",
-   "link": "https://onelink.shein.com/60/686vhaci5sb3?ismg_ol=8x3mFEYdxxI_01_KOC-C",
-   "preco": 51.09,
    "falta": "preco_antigo",
    "arquivo": "estoque/shein.csv"
   },
