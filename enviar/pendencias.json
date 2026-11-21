@@ -1,33 +1,6 @@
 {
- "data": "2026-11-20",
+ "data": "2026-11-21",
  "itens": [
-  {
-   "id": "amz-B0CTR4FL63",
-   "loja": "Amazon",
-   "nome": "Principia Protetor Solar Mix de Filtros UV",
-   "link": "https://www.amazon.com.br/dp/B0CTR4FL63?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
-  {
-   "id": "amz-B098FKK5QD",
-   "loja": "Amazon",
-   "nome": "Detergente para Extratoras WAP Concentrado",
-   "link": "https://www.amazon.com.br/dp/B098FKK5QD?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
-  {
-   "id": "amz-B09GSQMVJS",
-   "loja": "Amazon",
-   "nome": "L'Oréal Professionnel Inforcer Shampoo Fortificante",
-   "link": "https://www.amazon.com.br/dp/B09GSQMVJS?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
   {
    "id": "amz-B0C2R9DDPJ",
    "loja": "Amazon",
@@ -254,15 +227,6 @@
    "arquivo": "estoque/amazon.csv"
   },
   {
-   "id": "amz-B0FN9F9FMB",
-   "loja": "Amazon",
-   "nome": "Pisca Smart Bluetooth 100 LEDs 10m",
-   "link": "https://www.amazon.com.br/dp/B0FN9F9FMB?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
-  {
    "id": "amz-B0FNND59BM",
    "loja": "Amazon",
    "nome": "Selene Legging Sem Costura Zero Transparência",
@@ -312,15 +276,6 @@
    "loja": "Amazon",
    "nome": "Ventilador de Mesa Mondial 30cm Super Power",
    "link": "https://www.amazon.com.br/dp/B09B17MQLC?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
-  {
-   "id": "amz-B0DVMQVVDY",
-   "loja": "Amazon",
-   "nome": "Fone Sem Fio Philips TWS TAT1109",
-   "link": "https://www.amazon.com.br/dp/B0DVMQVVDY?tag=lupinhadaari-20",
    "preco": null,
    "falta": "foto",
    "arquivo": "estoque/amazon.csv"
@@ -605,51 +560,6 @@
    "arquivo": "curadoria/casa/amazon.csv"
   },
   {
-   "id": "ml-1bq6gUB",
-   "loja": "Mercado Livre",
-   "nome": "Toalha de Mesa Natal Mesa Posta Oxford 1,40x2,10m Retangular 6 Lugares",
-   "link": "https://meli.la/1bq6gUB",
-   "preco": 54.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
-   "id": "ml-2HyuSZe",
-   "loja": "Mercado Livre",
-   "nome": "Jogo De Lençol Casal Padrão 3 Pçs 400 Fios C/ Elástico Hotel",
-   "link": "https://meli.la/2HyuSZe",
-   "preco": 26.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
-   "id": "ml-2M27yaY",
-   "loja": "Mercado Livre",
-   "nome": "Kit Air Fryer Forma Silicone Redonda + Tapete Protetor + Pegador Inox",
-   "link": "https://meli.la/2M27yaY",
-   "preco": 49.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
-   "id": "ml-16RH5K8",
-   "loja": "Mercado Livre",
-   "nome": "Kit 10 Colmeia Organizadora gaveta organizador porta calcinhas meia cu",
-   "link": "https://meli.la/16RH5K8",
-   "preco": 69.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
-   "id": "ml-1jHDM6o",
-   "loja": "Mercado Livre",
-   "nome": "Luminária Pixar Preta De Mesa Articulada Multicor",
-   "link": "https://meli.la/1jHDM6o",
-   "preco": 64.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
    "id": "ml-154MNjY",
    "loja": "Mercado Livre",
    "nome": "Protetor Solar Oil Control Tinted Claro 70 Fps 50g Eucerin",
@@ -682,15 +592,6 @@
    "nome": "Avon Deo Parfum Far Away 50ml",
    "link": "https://meli.la/1z1FrXQ",
    "preco": 59.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
-   "id": "ml-1gkjVhj",
-   "loja": "Mercado Livre",
-   "nome": "Conjunto Fitness Top Short Roupa Academia Feminino Treino",
-   "link": "https://meli.la/1gkjVhj",
-   "preco": 76.0,
    "falta": "preco_antigo",
    "arquivo": "estoque/mercadolivre.csv"
   },
@@ -1055,42 +956,6 @@
    "arquivo": "curadoria/casa/mercadolivre.csv"
   },
   {
-   "id": "shein-61690270",
-   "loja": "Shein",
-   "nome": "Conjunto Esportivo Feminino com Top Cropped de Manga Curta e Calça",
-   "link": "https://onelink.shein.com/60/686vg8ux0qpc?ismg_ol=4ymTCcqZeUB_01_KOC-C",
-   "preco": 83.12,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/shein.csv"
-  },
-  {
-   "id": "shein-491658358",
-   "loja": "Shein",
-   "nome": "Conjunto Esportivo Feminino NOIRLYN de 2 Peças para Outono/Inverno",
-   "link": "https://onelink.shein.com/60/686vgaty4so8?ismg_ol=ExxPy2MZTL1_01_KOC-C",
-   "preco": 98.39,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/shein.csv"
-  },
-  {
-   "id": "shein-526401758",
-   "loja": "Shein",
-   "nome": "Conjunto Casual de Yoga de 2 Peças para Mulheres NOIRLYN, Camiseta",
-   "link": "https://onelink.shein.com/60/686vgcsz8umw?ismg_ol=EG86OSJeHUx_01_KOC-C",
-   "preco": 95.96,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/shein.csv"
-  },
-  {
-   "id": "shein-61429544",
-   "loja": "Shein",
-   "nome": "Conjunto Esportivo Feminino com Top de Manga Longa Curta + Calça",
-   "link": "https://onelink.shein.com/60/686vges0qya2?ismg_ol=DOHmhTaBbIT_01_KOC-C",
-   "preco": 89.59,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/shein.csv"
-  },
-  {
    "id": "shein-465638945",
    "loja": "Shein",
    "nome": "2 peças/Conjunto Top Camisete e Calça Skinny Conjunto de Roupas",
@@ -1159,15 +1024,6 @@
    "nome": "1 Peça Bolsa de Maquiagem com Laço Xadrez Estilo Coreano, Organizador",
    "link": "https://onelink.shein.com/60/686vibu3atv9?ismg_ol=IC1psg3GgYO_01_KOC-C",
    "preco": 35.16,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/shein.csv"
-  },
-  {
-   "id": "shein-418018169",
-   "loja": "Shein",
-   "nome": "Esta cesta de armazenamento de mesa de grande capacidade, doce e",
-   "link": "https://onelink.shein.com/60/686vitldbbjk?ismg_ol=BARVUgLJKjX_01_KOC-C",
-   "preco": 32.0,
    "falta": "preco_antigo",
    "arquivo": "estoque/shein.csv"
   },
