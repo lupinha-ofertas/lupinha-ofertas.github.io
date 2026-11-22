@@ -1,33 +1,6 @@
 {
- "data": "2026-11-21",
+ "data": "2026-11-22",
  "itens": [
-  {
-   "id": "amz-B0C2R9DDPJ",
-   "loja": "Amazon",
-   "nome": "Cif Derrete Gordura 500ml",
-   "link": "https://www.amazon.com.br/dp/B0C2R9DDPJ?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
-  {
-   "id": "amz-B0FWCTHSWQ",
-   "loja": "Amazon",
-   "nome": "Percarbonato de Sódio 1kg Tira Manchas",
-   "link": "https://www.amazon.com.br/dp/B0FWCTHSWQ?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
-  {
-   "id": "amz-B08B5GFHZN",
-   "loja": "Amazon",
-   "nome": "Protetor Solar Facial Anasol FPS 70 Clareador",
-   "link": "https://www.amazon.com.br/dp/B08B5GFHZN?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
   {
    "id": "amz-B08CPW5BR2",
    "loja": "Amazon",
@@ -69,15 +42,6 @@
    "loja": "Amazon",
    "nome": "Óleo Corporal Paixão Avelã 100ml",
    "link": "https://www.amazon.com.br/dp/B07F1TLCYG?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
-  {
-   "id": "amz-B0D8CSWFJ8",
-   "loja": "Amazon",
-   "nome": "Nescafé Farmers Origins Cápsula (Nespresso)",
-   "link": "https://www.amazon.com.br/dp/B0D8CSWFJ8?tag=lupinhadaari-20",
    "preco": null,
    "falta": "foto",
    "arquivo": "estoque/amazon.csv"
@@ -222,15 +186,6 @@
    "loja": "Amazon",
    "nome": "Hada Labo Gokujyun White Gel Hidratante",
    "link": "https://www.amazon.com.br/dp/B0BVSTCXZY?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
-  {
-   "id": "amz-B0FNND59BM",
-   "loja": "Amazon",
-   "nome": "Selene Legging Sem Costura Zero Transparência",
-   "link": "https://www.amazon.com.br/dp/B0FNND59BM?tag=lupinhadaari-20",
    "preco": null,
    "falta": "foto",
    "arquivo": "estoque/amazon.csv"
@@ -560,42 +515,6 @@
    "arquivo": "curadoria/casa/amazon.csv"
   },
   {
-   "id": "ml-154MNjY",
-   "loja": "Mercado Livre",
-   "nome": "Protetor Solar Oil Control Tinted Claro 70 Fps 50g Eucerin",
-   "link": "https://meli.la/154MNjY",
-   "preco": 88.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
-   "id": "ml-1sAbrq3",
-   "loja": "Mercado Livre",
-   "nome": "Máscara De Cílios I Love Extreme Crazy Volume Essence",
-   "link": "https://meli.la/1sAbrq3",
-   "preco": 35.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
-   "id": "ml-32Ekpun",
-   "loja": "Mercado Livre",
-   "nome": "Máscara de Cílios Lavável, Longa Duração, 9x Mais Volume e Definição",
-   "link": "https://meli.la/32Ekpun",
-   "preco": 45.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
-   "id": "ml-1z1FrXQ",
-   "loja": "Mercado Livre",
-   "nome": "Avon Deo Parfum Far Away 50ml",
-   "link": "https://meli.la/1z1FrXQ",
-   "preco": 59.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
    "id": "ml-2Fc7Xxi",
    "loja": "Mercado Livre",
    "nome": "Faixa Elástica Kit 3 Thera Band Exercicios Fisioterapia",
@@ -610,15 +529,6 @@
    "nome": "Tênis Feminino Ortopédico Caminhada Academia Corrida Fitness",
    "link": "https://meli.la/2X3sA5R",
    "preco": 69.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
-   "id": "ml-13unN7k",
-   "loja": "Mercado Livre",
-   "nome": "Boneco Papai Noel 32 Cm Decoração Natalina",
-   "link": "https://meli.la/13unN7k",
-   "preco": 36.0,
    "falta": "preco_antigo",
    "arquivo": "estoque/mercadolivre.csv"
   },
@@ -803,15 +713,6 @@
    "arquivo": "estoque/mercadolivre.csv"
   },
   {
-   "id": "ml-1T1WJE7",
-   "loja": "Mercado Livre",
-   "nome": "Fone De Ouvido Bluetooth Xiaomi Redmi Airdots Cor Preto",
-   "link": "https://meli.la/1T1WJE7",
-   "preco": 29.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
    "id": "ml-1gVDFye",
    "loja": "Mercado Livre",
    "nome": "Relogio Smartwatch 10 Ultra Plus Preto Tela AMOLED Monitor Saúde GPS",
@@ -956,33 +857,6 @@
    "arquivo": "curadoria/casa/mercadolivre.csv"
   },
   {
-   "id": "shein-465638945",
-   "loja": "Shein",
-   "nome": "2 peças/Conjunto Top Camisete e Calça Skinny Conjunto de Roupas",
-   "link": "https://onelink.shein.com/60/686vggr1wetm?ismg_ol=0m7jSZCRDza_01_KOC-C",
-   "preco": 82.36,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/shein.csv"
-  },
-  {
-   "id": "shein-436636242",
-   "loja": "Shein",
-   "nome": "Conjunto de 2 Peças EDGEYOG Feminino com Regata Sexy de Cor Sólida",
-   "link": "https://onelink.shein.com/60/686vggr1v0bp?ismg_ol=Gu4iTsnJs8L_01_KOC-C",
-   "preco": 84.35,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/shein.csv"
-  },
-  {
-   "id": "shein-154433802",
-   "loja": "Shein",
-   "nome": "XLLAIS Regata Feminina Casual Versátil de Cor Sólida, Dupla Camada",
-   "link": "https://onelink.shein.com/60/686vgqm7gosb?ismg_ol=94UzRvCLXL8_01_KOC-C",
-   "preco": 46.32,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/shein.csv"
-  },
-  {
    "id": "shein-211321933",
    "loja": "Shein",
    "nome": "Regata Básica Casual Feminina Aoqta Sports com Dupla Camada Elástica",
@@ -997,15 +871,6 @@
    "nome": "XLLAIS Camiseta Branca de Manga Longa Slim Fit Elástica para",
    "link": "https://onelink.shein.com/60/686vgyibwwoh?ismg_ol=KutpkuwiR1r_01_KOC-C",
    "preco": 60.72,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/shein.csv"
-  },
-  {
-   "id": "shein-569176673",
-   "loja": "Shein",
-   "nome": "TOMICCA 15ml/1 Peça Esmalte de Unha Vermelho à Base de Água, Secagem",
-   "link": "https://onelink.shein.com/60/686vhcbjpahv?ismg_ol=AQ1o3ic7QUz_01_KOC-C",
-   "preco": 15.99,
    "falta": "preco_antigo",
    "arquivo": "estoque/shein.csv"
   },
@@ -1042,15 +907,6 @@
    "nome": "1/2 Peças Caixa de Armazenamento Portátil com Padrão de Laço Fofo",
    "link": "https://onelink.shein.com/60/686vivkeutum?ismg_ol=GzktwJbqtbc_01_KOC-C",
    "preco": 16.79,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/shein.csv"
-  },
-  {
-   "id": "shein-278280500",
-   "loja": "Shein",
-   "nome": "Camiseta de Malha de Manga Curta Feminina, Cor Sólida e Leve, Top",
-   "link": "https://onelink.shein.com/60/686vj5fkf3pf?ismg_ol=DaOS2QTYAXm_01_KOC-C",
-   "preco": 81.24,
    "falta": "preco_antigo",
    "arquivo": "estoque/shein.csv"
   },
