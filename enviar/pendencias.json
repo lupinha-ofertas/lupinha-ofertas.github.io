@@ -1,42 +1,6 @@
 {
- "data": "2026-11-22",
+ "data": "2026-11-23",
  "itens": [
-  {
-   "id": "amz-B08CPW5BR2",
-   "loja": "Amazon",
-   "nome": "Kit 5 Potes de Vidro 640ml com Tampa",
-   "link": "https://www.amazon.com.br/dp/B08CPW5BR2?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
-  {
-   "id": "amz-B076M7Z56P",
-   "loja": "Amazon",
-   "nome": "Conjunto 3 Facas Inox Tramontina",
-   "link": "https://www.amazon.com.br/dp/B076M7Z56P?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
-  {
-   "id": "amz-B0G3YGYW4Z",
-   "loja": "Amazon",
-   "nome": "Sérum Leave-in Elseve Colágeno",
-   "link": "https://www.amazon.com.br/dp/B0G3YGYW4Z?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
-  {
-   "id": "amz-B0G45KPX15",
-   "loja": "Amazon",
-   "nome": "Máscara Elseve Colágeno Encorpador",
-   "link": "https://www.amazon.com.br/dp/B0G45KPX15?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
   {
    "id": "amz-B07F1TLCYG",
    "loja": "Amazon",
@@ -258,15 +222,6 @@
    "loja": "Amazon",
    "nome": "Bandeja de Bambu Lyor 28cm Mesa Posta",
    "link": "https://www.amazon.com.br/dp/B08X1B72TP?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
-  {
-   "id": "amz-B0FDB9Z96L",
-   "loja": "Amazon",
-   "nome": "Fone Bluetooth 5.4 à Prova D'Água 45h",
-   "link": "https://www.amazon.com.br/dp/B0FDB9Z96L?tag=lupinhadaari-20",
    "preco": null,
    "falta": "foto",
    "arquivo": "estoque/amazon.csv"
@@ -513,60 +468,6 @@
    "preco": 46.5,
    "falta": "foto",
    "arquivo": "curadoria/casa/amazon.csv"
-  },
-  {
-   "id": "ml-2Fc7Xxi",
-   "loja": "Mercado Livre",
-   "nome": "Faixa Elástica Kit 3 Thera Band Exercicios Fisioterapia",
-   "link": "https://meli.la/2Fc7Xxi",
-   "preco": 24.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
-   "id": "ml-2X3sA5R",
-   "loja": "Mercado Livre",
-   "nome": "Tênis Feminino Ortopédico Caminhada Academia Corrida Fitness",
-   "link": "https://meli.la/2X3sA5R",
-   "preco": 69.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
-   "id": "ml-314Rm99",
-   "loja": "Mercado Livre",
-   "nome": "Kit 12 Laços De Natal Lacinho Enfeite Árvore Natal Decoração",
-   "link": "https://meli.la/314Rm99",
-   "preco": 35.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
-   "id": "ml-1nSdFkx",
-   "loja": "Mercado Livre",
-   "nome": "Jogo De Toalha Banho 4 100 Algodão 400 gr/m Loft Camesa",
-   "link": "https://meli.la/1nSdFkx",
-   "preco": 84.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
-   "id": "ml-1f64oZE",
-   "loja": "Mercado Livre",
-   "nome": "Jogo De Toalha Standard (4 Peças) - Branca Mercado Livre Basics",
-   "link": "https://meli.la/1f64oZE",
-   "preco": 46.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
-   "id": "ml-1ivtxth",
-   "loja": "Mercado Livre",
-   "nome": "Jogo De Lençol Queen 3 Peças 400 Fios C/ Elástico Hotel Cinza Liso",
-   "link": "https://meli.la/1ivtxth",
-   "preco": 28.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
   },
   {
    "id": "ml-1ZPEPEJ",
@@ -855,51 +756,6 @@
    "preco": 227.0,
    "falta": "preco_antigo",
    "arquivo": "curadoria/casa/mercadolivre.csv"
-  },
-  {
-   "id": "shein-211321933",
-   "loja": "Shein",
-   "nome": "Regata Básica Casual Feminina Aoqta Sports com Dupla Camada Elástica",
-   "link": "https://onelink.shein.com/60/686vgsl85ai9?ismg_ol=282Zw9pxipB_01_KOC-C",
-   "preco": 72.62,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/shein.csv"
-  },
-  {
-   "id": "shein-38168603",
-   "loja": "Shein",
-   "nome": "XLLAIS Camiseta Branca de Manga Longa Slim Fit Elástica para",
-   "link": "https://onelink.shein.com/60/686vgyibwwoh?ismg_ol=KutpkuwiR1r_01_KOC-C",
-   "preco": 60.72,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/shein.csv"
-  },
-  {
-   "id": "shein-81497970",
-   "loja": "Shein",
-   "nome": "MEYOU FAIRY AGG, Bolsa de Maquiagem Pequena e Fresca para Mulheres",
-   "link": "https://onelink.shein.com/60/686vibu3pkpa?ismg_ol=9wtEb6X0gb7_01_KOC-C",
-   "preco": 26.45,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/shein.csv"
-  },
-  {
-   "id": "shein-66450192",
-   "loja": "Shein",
-   "nome": "1 Peça Bolsa de Maquiagem com Laço Xadrez Estilo Coreano, Organizador",
-   "link": "https://onelink.shein.com/60/686vibu3atv9?ismg_ol=IC1psg3GgYO_01_KOC-C",
-   "preco": 35.16,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/shein.csv"
-  },
-  {
-   "id": "shein-575306719",
-   "loja": "Shein",
-   "nome": "1/2 Peças Caixa de Armazenamento Portátil de Palitos de Dente e",
-   "link": "https://onelink.shein.com/60/686vivkeu4ge?ismg_ol=684u9pnsD53_01_KOC-C",
-   "preco": 21.9,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/shein.csv"
   },
   {
    "id": "shein-564477948",
