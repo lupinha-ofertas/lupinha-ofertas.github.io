@@ -1,42 +1,6 @@
 {
- "data": "2026-11-23",
+ "data": "2026-11-24",
  "itens": [
-  {
-   "id": "amz-B07F1TLCYG",
-   "loja": "Amazon",
-   "nome": "Óleo Corporal Paixão Avelã 100ml",
-   "link": "https://www.amazon.com.br/dp/B07F1TLCYG?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
-  {
-   "id": "amz-B099Z2K8PW",
-   "loja": "Amazon",
-   "nome": "Orfeu Clássico Drip Coffee 10 Sachês",
-   "link": "https://www.amazon.com.br/dp/B099Z2K8PW?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
-  {
-   "id": "amz-B09VM5MPDZ",
-   "loja": "Amazon",
-   "nome": "3 Corações Drip Coffee Dark Roast",
-   "link": "https://www.amazon.com.br/dp/B09VM5MPDZ?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
-  {
-   "id": "amz-B00EV5DLL0",
-   "loja": "Amazon",
-   "nome": "Filtro de Papel Melitta 103 30 unidades",
-   "link": "https://www.amazon.com.br/dp/B00EV5DLL0?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
   {
    "id": "amz-B0B75DWXZX",
    "loja": "Amazon",
@@ -150,24 +114,6 @@
    "loja": "Amazon",
    "nome": "Hada Labo Gokujyun White Gel Hidratante",
    "link": "https://www.amazon.com.br/dp/B0BVSTCXZY?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
-  {
-   "id": "amz-B0GTPWBMK6",
-   "loja": "Amazon",
-   "nome": "Shorts Academia Feminino Cintura Alta Romantic Crown",
-   "link": "https://www.amazon.com.br/dp/B0GTPWBMK6?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
-  {
-   "id": "amz-B0FH7BL59G",
-   "loja": "Amazon",
-   "nome": "Balão Letreiro Feliz Natal Metalizado",
-   "link": "https://www.amazon.com.br/dp/B0FH7BL59G?tag=lupinhadaari-20",
    "preco": null,
    "falta": "foto",
    "arquivo": "estoque/amazon.csv"
@@ -470,51 +416,6 @@
    "arquivo": "curadoria/casa/amazon.csv"
   },
   {
-   "id": "ml-1ZPEPEJ",
-   "loja": "Mercado Livre",
-   "nome": "Mop Giratório 13 Litros Esfregão Limpeza",
-   "link": "https://meli.la/1ZPEPEJ",
-   "preco": 76.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
-   "id": "ml-2xsUiWr",
-   "loja": "Mercado Livre",
-   "nome": "Tapete Kit Cozinha Antiderrapante Passadeira Jogo Lavável",
-   "link": "https://meli.la/2xsUiWr",
-   "preco": 47.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
-   "id": "ml-2HewcfS",
-   "loja": "Mercado Livre",
-   "nome": "Bruna Tavares - Base Líquida - Bt Skin",
-   "link": "https://meli.la/2HewcfS",
-   "preco": 77.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
-   "id": "ml-1wwgBao",
-   "loja": "Mercado Livre",
-   "nome": "Kit Shampoo + Condicionador Hidra Hialurônico Loréal Elseve",
-   "link": "https://meli.la/1wwgBao",
-   "preco": 46.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
-   "id": "ml-2MjPFCp",
-   "loja": "Mercado Livre",
-   "nome": "Calça Legging Leg Flare Zero Transparência Grossa Academia",
-   "link": "https://meli.la/2MjPFCp",
-   "preco": 34.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
    "id": "ml-27epmBC",
    "loja": "Mercado Livre",
    "nome": "Legging Zero Transparencia Suplex Fitness Feminina Blackout",
@@ -610,15 +511,6 @@
    "nome": "Garrafa Térmica Água Café 800ml Inox Parede Dupla Premium",
    "link": "https://meli.la/2YBGp6D",
    "preco": 32.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
-   "id": "ml-1gVDFye",
-   "loja": "Mercado Livre",
-   "nome": "Relogio Smartwatch 10 Ultra Plus Preto Tela AMOLED Monitor Saúde GPS",
-   "link": "https://meli.la/1gVDFye",
-   "preco": 52.0,
    "falta": "preco_antigo",
    "arquivo": "estoque/mercadolivre.csv"
   },
@@ -756,42 +648,6 @@
    "preco": 227.0,
    "falta": "preco_antigo",
    "arquivo": "curadoria/casa/mercadolivre.csv"
-  },
-  {
-   "id": "shein-564477948",
-   "loja": "Shein",
-   "nome": "1/2 Peças Caixa de Armazenamento Portátil com Padrão de Laço Fofo",
-   "link": "https://onelink.shein.com/60/686vivkeutum?ismg_ol=GzktwJbqtbc_01_KOC-C",
-   "preco": 16.79,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/shein.csv"
-  },
-  {
-   "id": "shein-308257028",
-   "loja": "Shein",
-   "nome": "Glamful Xadrez Quadrado Casual Elegante Férias Praia Encontro, Saia",
-   "link": "https://onelink.shein.com/60/686vj7el3pf8?ismg_ol=K1XbKmQaWNp_01_KOC-C",
-   "preco": 92.95,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/shein.csv"
-  },
-  {
-   "id": "shein-59202829",
-   "loja": "Shein",
-   "nome": "Camiseta Feminina Curta e Solta Refinada, Top de Malha Sem Mangas",
-   "link": "https://onelink.shein.com/60/686vjbcnqkcs?ismg_ol=7tyOwX6iVrm_01_KOC-C",
-   "preco": 72.42,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/shein.csv"
-  },
-  {
-   "id": "shein-492245446",
-   "loja": "Shein",
-   "nome": "Camiseta Feminina Casual de Manga Curta com Decote Redondo, Estampa",
-   "link": "https://onelink.shein.com/60/686vjfapjxak?ismg_ol=IP26Y4m6h5s_01_KOC-C",
-   "preco": 53.95,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/shein.csv"
   }
  ]
 }
