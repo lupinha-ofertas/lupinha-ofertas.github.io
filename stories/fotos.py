@@ -47,20 +47,60 @@ def url_foto_amazon(link: str) -> str | None:
     return AMAZON_FOTO.format(asin=m.group(1)) if m else None
 
 
+class FotoNaoConfere(Exception):
+    """A página do link é de outro produto (ou é vitrine/perfil): a foto dela não serve."""
+
+
+PALAVRAS_FRACAS = {"para", "com", "sem", "kit", "unidades", "unidade", "pecas", "peca", "feminino", "feminina",
+                   "masculino", "masculina", "cor", "tamanho", "novo", "nova", "original", "promocao", "mercado",
+                   "livre", "shein", "loja", "oficial", "frete", "gratis", "envio", "full"}
+
+
+def _palavras(texto: str) -> set[str]:
+    from lista import slug
+    return {w for w in slug(texto, 400).split("-") if len(w) >= 4 and not w.isdigit() and w not in PALAVRAS_FRACAS}
+
+
+def confere(titulo: str | None, nome: str) -> bool:
+    """O título da página fala do mesmo produto? Sem título não dá para conferir: aceita."""
+    if not titulo:
+        return True
+    a, b = _palavras(titulo), _palavras(nome)
+    if not a or not b:
+        return True
+    comuns = a & b
+    return len(comuns) >= 2 or len(comuns) / min(len(a), len(b)) >= 0.5
+
+
 def url_da_foto_produto(produto: dict) -> str | None:
     """Foto do robô (Shopee, pela API) ou, no ML e na Shein, a foto da página da loja."""
     if produto.get("foto_url"):
         return produto["foto_url"]
     if produto.get("loja") in LOJAS_PELO_LINK:
-        return url_da_foto(produto["link"])
+        return url_da_foto(produto["link"], produto.get("nome"))
     if produto.get("loja") == "Amazon":
         return url_foto_amazon(produto["link"])
     return None
 
 
-def url_da_foto(link: str) -> str | None:
-    pagina, _ = _baixar(link)
+def titulo_da_pagina(texto: str) -> str | None:
+    import html
+    for padrao in (r'<meta[^>]+property=["\']og:title["\'][^>]+content=["\']([^"\']+)',
+                   r'<meta[^>]+content=["\']([^"\']+)["\'][^>]+property=["\']og:title',
+                   r'<title[^>]*>([^<]+)</title>'):
+        m = re.search(padrao, texto, re.I)
+        if m and m.group(1).strip():
+            return html.unescape(m.group(1)).strip()
+    return None
+
+
+def url_da_foto(link: str, nome: str | None = None) -> str | None:
+    pagina, final = _baixar(link)
     texto = pagina.decode("utf-8", "ignore")
+    if nome:
+        titulo = titulo_da_pagina(texto)
+        if not confere(titulo, nome):
+            raise FotoNaoConfere(f"a página do link é de outra coisa: \"{(titulo or '')[:60]}\" ({final[:60]})")
     for padrao in (
         r'<meta[^>]+property=["\']og:image["\'][^>]+content=["\']([^"\']+)',
         r'<meta[^>]+content=["\']([^"\']+)["\'][^>]+property=["\']og:image',
@@ -95,6 +135,8 @@ def achar_foto(produto: dict) -> tuple[Path | None, str]:
         arq = foto_do_link(produto)
         if arq:
             return arq, "link"
+    except FotoNaoConfere as e:  # melhor ficar sem arte do que postar foto de outro produto
+        return None, f"foto não confere: {e}"
     except Exception as e:  # loja bloqueou, caiu etc.
         return None, f"falhou ({type(e).__name__})"
     return None, ("sem foto (salve uma reserva)" if produto.get("loja") == "Shopee" and not produto.get("foto_url")
