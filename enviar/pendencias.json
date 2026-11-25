@@ -1,51 +1,6 @@
 {
- "data": "2026-11-24",
+ "data": "2026-11-25",
  "itens": [
-  {
-   "id": "amz-B0B75DWXZX",
-   "loja": "Amazon",
-   "nome": "3 Corações Drip Coffee Portinari",
-   "link": "https://www.amazon.com.br/dp/B0B75DWXZX?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
-  {
-   "id": "amz-B09QFLV3CD",
-   "loja": "Amazon",
-   "nome": "Coffee Mais ARARA Drip Coffee",
-   "link": "https://www.amazon.com.br/dp/B09QFLV3CD?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
-  {
-   "id": "amz-B0789M146B",
-   "loja": "Amazon",
-   "nome": "Faqueiro Tramontina Búzios Inox 24 Peças",
-   "link": "https://www.amazon.com.br/dp/B0789M146B?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
-  {
-   "id": "amz-B07HDSL78H",
-   "loja": "Amazon",
-   "nome": "Café Especial Orfeu Clássico em Grãos 1kg",
-   "link": "https://www.amazon.com.br/dp/B07HDSL78H?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
-  {
-   "id": "amz-B07K8XJF9D",
-   "loja": "Amazon",
-   "nome": "Garrafa Térmica Inox Parede Dupla 591ml",
-   "link": "https://www.amazon.com.br/dp/B07K8XJF9D?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
   {
    "id": "amz-B0C9L4ZNZ8",
    "loja": "Amazon",
@@ -204,15 +159,6 @@
    "loja": "Amazon",
    "nome": "Selene Legging Academia Poliamida Cintura Alta",
    "link": "https://www.amazon.com.br/dp/B0F4RFKH1S?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
-  {
-   "id": "amz-B085YDLGFR",
-   "loja": "Amazon",
-   "nome": "Caixa de Som Bluetooth I2GO Essential Sound Go",
-   "link": "https://www.amazon.com.br/dp/B085YDLGFR?tag=lupinhadaari-20",
    "preco": null,
    "falta": "foto",
    "arquivo": "estoque/amazon.csv"
@@ -414,60 +360,6 @@
    "preco": 46.5,
    "falta": "foto",
    "arquivo": "curadoria/casa/amazon.csv"
-  },
-  {
-   "id": "ml-27epmBC",
-   "loja": "Mercado Livre",
-   "nome": "Legging Zero Transparencia Suplex Fitness Feminina Blackout",
-   "link": "https://meli.la/27epmBC",
-   "preco": 46.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
-   "id": "ml-2dRFaKU",
-   "loja": "Mercado Livre",
-   "nome": "Short Saia Academia Feminino Cintura Alta Legging Fitness",
-   "link": "https://meli.la/2dRFaKU",
-   "preco": 29.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
-   "id": "ml-21KZvZ3",
-   "loja": "Mercado Livre",
-   "nome": "Colchonete Eva Tapete Yoga Academia Fitness Exercícios 10mm Cor Preto",
-   "link": "https://meli.la/21KZvZ3",
-   "preco": 29.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
-   "id": "ml-2kYUyAM",
-   "loja": "Mercado Livre",
-   "nome": "Tênis Feminino Olimp Academia Corrida Caminhada Esportivo",
-   "link": "https://meli.la/2kYUyAM",
-   "preco": 97.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
-   "id": "ml-1uoxLss",
-   "loja": "Mercado Livre",
-   "nome": "Boneco Papai Noel Corda Sobe E Desce Musical Com Movimento Vermelho",
-   "link": "https://meli.la/1uoxLss",
-   "preco": 67.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
-   "id": "ml-2ySbHgV",
-   "loja": "Mercado Livre",
-   "nome": "Kit C/ 12 Flor Natalina Decoração Árvore Natal Luxo Enfeite",
-   "link": "https://meli.la/2ySbHgV",
-   "preco": 32.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
   },
   {
    "id": "ml-1U3vSaW",
