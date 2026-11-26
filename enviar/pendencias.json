@@ -1,51 +1,6 @@
 {
- "data": "2026-11-25",
+ "data": "2026-11-26",
  "itens": [
-  {
-   "id": "amz-B0C9L4ZNZ8",
-   "loja": "Amazon",
-   "nome": "Skin Aqua Protetor Solar Super Moisture Milk",
-   "link": "https://www.amazon.com.br/dp/B0C9L4ZNZ8?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
-  {
-   "id": "amz-B07HWWTY3K",
-   "loja": "Amazon",
-   "nome": "Café Orfeu Intenso em Grãos 1kg",
-   "link": "https://www.amazon.com.br/dp/B07HWWTY3K?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
-  {
-   "id": "amz-B0BXFM8PXN",
-   "loja": "Amazon",
-   "nome": "3 Corações Cápsulas Cerrado Mineiro (Nespresso)",
-   "link": "https://www.amazon.com.br/dp/B0BXFM8PXN?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
-  {
-   "id": "amz-B089T37GDT",
-   "loja": "Amazon",
-   "nome": "Orfeu Bourbon Amarelo Moído",
-   "link": "https://www.amazon.com.br/dp/B089T37GDT?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
-  {
-   "id": "amz-B077L8FVJD",
-   "loja": "Amazon",
-   "nome": "Orfeu Intenso Moído 250g",
-   "link": "https://www.amazon.com.br/dp/B077L8FVJD?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
   {
    "id": "amz-B0B7K553HL",
    "loja": "Amazon",
@@ -195,15 +150,6 @@
    "loja": "Amazon",
    "nome": "Caixa de Som Bluetooth INAVA Go-4",
    "link": "https://www.amazon.com.br/dp/B0FCMLQ95G?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
-  {
-   "id": "amz-B0FN88Q38T",
-   "loja": "Amazon",
-   "nome": "Cortina 300 LEDs 3x3m a Pilha com Temporizador",
-   "link": "https://www.amazon.com.br/dp/B0FN88Q38T?tag=lupinhadaari-20",
    "preco": null,
    "falta": "foto",
    "arquivo": "estoque/amazon.csv"
@@ -360,60 +306,6 @@
    "preco": 46.5,
    "falta": "foto",
    "arquivo": "curadoria/casa/amazon.csv"
-  },
-  {
-   "id": "ml-1U3vSaW",
-   "loja": "Mercado Livre",
-   "nome": "Caçarola Turim em Alumínio com Revestimento Interno e Externo em Antia",
-   "link": "https://meli.la/1U3vSaW",
-   "preco": 68.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
-   "id": "ml-1c7HyFm",
-   "loja": "Mercado Livre",
-   "nome": "Mop Giratório Balde 12l Esfregão Cabo 130cm Rodinhas Com Refil Sujeira",
-   "link": "https://meli.la/1c7HyFm",
-   "preco": 63.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
-   "id": "ml-31xoNe3",
-   "loja": "Mercado Livre",
-   "nome": "Kit 6 Formas Silicone Reutilizável Fritadeira Air Fryer",
-   "link": "https://meli.la/31xoNe3",
-   "preco": 22.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
-   "id": "ml-1So14MG",
-   "loja": "Mercado Livre",
-   "nome": "Conjunto Academia Short Top Fitness Zero Transparência",
-   "link": "https://meli.la/1So14MG",
-   "preco": 57.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
-   "id": "ml-2YBGp6D",
-   "loja": "Mercado Livre",
-   "nome": "Garrafa Térmica Água Café 800ml Inox Parede Dupla Premium",
-   "link": "https://meli.la/2YBGp6D",
-   "preco": 32.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
-   "id": "ml-2rEnxzj",
-   "loja": "Mercado Livre",
-   "nome": "Smartwatch S10 Série 10 Relógio Digital Masculino Feminino Resistente",
-   "link": "https://meli.la/2rEnxzj",
-   "preco": 76.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
   },
   {
    "id": "ml-33gz8ND",
