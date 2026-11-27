@@ -1,60 +1,6 @@
 {
- "data": "2026-11-26",
+ "data": "2026-11-27",
  "itens": [
-  {
-   "id": "amz-B0B7K553HL",
-   "loja": "Amazon",
-   "nome": "3 Corações Drip Coffee Matas de Minas",
-   "link": "https://www.amazon.com.br/dp/B0B7K553HL?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
-  {
-   "id": "amz-B008S8RLTE",
-   "loja": "Amazon",
-   "nome": "Café Pilão Grãos Espresso 1kg",
-   "link": "https://www.amazon.com.br/dp/B008S8RLTE?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
-  {
-   "id": "amz-B0BVSTCXZY",
-   "loja": "Amazon",
-   "nome": "Hada Labo Gokujyun White Gel Hidratante",
-   "link": "https://www.amazon.com.br/dp/B0BVSTCXZY?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
-  {
-   "id": "amz-B07QKN5NF1",
-   "loja": "Amazon",
-   "nome": "Liquidificador Mondial Turbo Power 550W",
-   "link": "https://www.amazon.com.br/dp/B07QKN5NF1?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
-  {
-   "id": "amz-B09DF9NWC7",
-   "loja": "Amazon",
-   "nome": "Corda de Pular Sem Emaranhados",
-   "link": "https://www.amazon.com.br/dp/B09DF9NWC7?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
-  {
-   "id": "amz-B09B17MQLC",
-   "loja": "Amazon",
-   "nome": "Ventilador de Mesa Mondial 30cm Super Power",
-   "link": "https://www.amazon.com.br/dp/B09B17MQLC?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
   {
    "id": "amz-B01C5WCNPA",
    "loja": "Amazon",
@@ -306,60 +252,6 @@
    "preco": 46.5,
    "falta": "foto",
    "arquivo": "curadoria/casa/amazon.csv"
-  },
-  {
-   "id": "ml-33gz8ND",
-   "loja": "Mercado Livre",
-   "nome": "Arvore De Natal 90cm Árvore Pequena 43enfeites 90galhos Luxo Stronex",
-   "link": "https://meli.la/33gz8ND",
-   "preco": 74.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
-   "id": "ml-1R1WYBk",
-   "loja": "Mercado Livre",
-   "nome": "Kit C/24/18/12 Bolas De Natal Lisa/fosca/glitter 3cm Pequena",
-   "link": "https://meli.la/1R1WYBk",
-   "preco": 29.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
-   "id": "ml-2GB4Xq6",
-   "loja": "Mercado Livre",
-   "nome": "Body Splash Desodorante Corporal Cheiro De Rica N1 Kokeshi Fragrância",
-   "link": "https://meli.la/2GB4Xq6",
-   "preco": 29.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
-   "id": "ml-2vK3znE",
-   "loja": "Mercado Livre",
-   "nome": "Kit Conjunto Fitness Feminino + Camiseta Roupa Academia",
-   "link": "https://meli.la/2vK3znE",
-   "preco": 54.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
-   "id": "ml-1L1pu2R",
-   "loja": "Mercado Livre",
-   "nome": "Roupa De Academia Conjunto Moda Fitness Feminino Calça E Top",
-   "link": "https://meli.la/1L1pu2R",
-   "preco": 53.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
-  },
-  {
-   "id": "ml-2kS19ND",
-   "loja": "Mercado Livre",
-   "nome": "Kit 5 Faixa Elastica P/ Treino Extersor Super Band Academia",
-   "link": "https://meli.la/2kS19ND",
-   "preco": 19.0,
-   "falta": "preco_antigo",
-   "arquivo": "estoque/mercadolivre.csv"
   },
   {
    "id": "MLB62000830",
