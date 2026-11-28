@@ -1,33 +1,6 @@
 {
- "data": "2026-11-27",
+ "data": "2026-11-28",
  "itens": [
-  {
-   "id": "amz-B01C5WCNPA",
-   "loja": "Amazon",
-   "nome": "Café Santa Mônica Gourmet em Grãos 1kg",
-   "link": "https://www.amazon.com.br/dp/B01C5WCNPA?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
-  {
-   "id": "amz-B07FW4BVZW",
-   "loja": "Amazon",
-   "nome": "Touca de Natação Speedo Flat Cap Silicone",
-   "link": "https://www.amazon.com.br/dp/B07FW4BVZW?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
-  {
-   "id": "amz-B08X1B72TP",
-   "loja": "Amazon",
-   "nome": "Bandeja de Bambu Lyor 28cm Mesa Posta",
-   "link": "https://www.amazon.com.br/dp/B08X1B72TP?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
   {
    "id": "amz-B07YVPPZKQ",
    "loja": "Amazon",
@@ -92,28 +65,10 @@
    "arquivo": "estoque/amazon.csv"
   },
   {
-   "id": "amz-B0FCMLQ95G",
-   "loja": "Amazon",
-   "nome": "Caixa de Som Bluetooth INAVA Go-4",
-   "link": "https://www.amazon.com.br/dp/B0FCMLQ95G?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
-  {
    "id": "amz-B0GTPWTTGM",
    "loja": "Amazon",
    "nome": "Calça Legging Feminina Fitness Romantic Crown",
    "link": "https://www.amazon.com.br/dp/B0GTPWTTGM?tag=lupinhadaari-20",
-   "preco": null,
-   "falta": "foto",
-   "arquivo": "estoque/amazon.csv"
-  },
-  {
-   "id": "amz-B0FXSBN5BB",
-   "loja": "Amazon",
-   "nome": "Cortina de LED 3x3m 300 LEDs",
-   "link": "https://www.amazon.com.br/dp/B0FXSBN5BB?tag=lupinhadaari-20",
    "preco": null,
    "falta": "foto",
    "arquivo": "estoque/amazon.csv"
@@ -218,15 +173,6 @@
    "arquivo": "curadoria/casa/amazon.csv"
   },
   {
-   "id": "B08YZGMQ3S",
-   "loja": "Amazon",
-   "nome": "Neutrogena Hidratante Corporal Hidrata&Repara 400 ml",
-   "link": "https://link.amazon/B0gNagjCu",
-   "preco": 23.09,
-   "falta": "foto",
-   "arquivo": "curadoria/beleza/amazon.csv"
-  },
-  {
    "id": "B07LC6189D",
    "loja": "Amazon",
    "nome": "Electrolux Kit 4 Potes Herméticos com Vedação de Silicone",
@@ -252,60 +198,6 @@
    "preco": 46.5,
    "falta": "foto",
    "arquivo": "curadoria/casa/amazon.csv"
-  },
-  {
-   "id": "MLB62000830",
-   "loja": "Mercado Livre",
-   "nome": "Chaleira Elétrica Inox 1,8 L 1500 W",
-   "link": "https://meli.la/1gM3y5P",
-   "preco": 39.67,
-   "falta": "preco_antigo",
-   "arquivo": "curadoria/casa/mercadolivre.csv"
-  },
-  {
-   "id": "MLB32043715",
-   "loja": "Mercado Livre",
-   "nome": "Tapete Peludo 2x1,5 m para Sala e Quarto",
-   "link": "https://meli.la/23JWxiu",
-   "preco": 59.9,
-   "falta": "preco_antigo",
-   "arquivo": "curadoria/casa/mercadolivre.csv"
-  },
-  {
-   "id": "MLB69749352",
-   "loja": "Mercado Livre",
-   "nome": "Cobre Leito Queen Matelado Dupla Face",
-   "link": "https://meli.la/2qihSn8",
-   "preco": 42.9,
-   "falta": "preco_antigo",
-   "arquivo": "curadoria/casa/mercadolivre.csv"
-  },
-  {
-   "id": "MLB59321432",
-   "loja": "Mercado Livre",
-   "nome": "Kit 3 Formas de Silicone para Air Fryer e Micro-ondas",
-   "link": "https://meli.la/1fRon17",
-   "preco": 37.0,
-   "falta": "preco_antigo",
-   "arquivo": "curadoria/casa/mercadolivre.csv"
-  },
-  {
-   "id": "MLB64970567",
-   "loja": "Mercado Livre",
-   "nome": "Jogo 6 Copos de Vidro Canelado 423 ml",
-   "link": "https://meli.la/1k59joJ",
-   "preco": 36.89,
-   "falta": "preco_antigo",
-   "arquivo": "curadoria/casa/mercadolivre.csv"
-  },
-  {
-   "id": "MLBU3923891290",
-   "loja": "Mercado Livre",
-   "nome": "Jogo 4 Frigideiras Antiaderentes 14/18/22 cm + Espátula",
-   "link": "https://meli.la/1DHgDu9",
-   "preco": 69.43,
-   "falta": "preco_antigo",
-   "arquivo": "curadoria/casa/mercadolivre.csv"
   },
   {
    "id": "ML-capas-almofada-suede",
